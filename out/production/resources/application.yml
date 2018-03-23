@@ -1,0 +1,22 @@
+server:
+  port: 8081
+
+
+spring:
+  thymeleaf:
+    mode: HTML5
+  datasource:
+    #url: jdbc:mysql://localhost:3306/db_jobanalysis?serverTimezone=UTC
+    url: jdbc:mysql://118.126.110.120:3306/test?serverTimezone=UTC
+    username: root
+    password: zb104207
+    driver-class-name: com.mysql.jdbc.Driver
+
+
+#mybatis:
+#    mapperLocations : classpath:com/swpu/jobanalysissystem/*.xml
+mybatis:
+  #实体类所做包
+  type-aliases-package: learning.model2
+  #mapper.xml所在位置
+  mapper-locations: classpath:mappers/*.xml

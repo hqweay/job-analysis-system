@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>职位分析</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+
+  <style type="text/css">
+  * {
+      margin: 0px;
+      padding: 0px;
+  }
+		body {
+		  background: #060e1b;
+      color: white;
+      width: 100%;
+      height: 100%;
+		}
+		#canvas{
+        z-index : -1;
+        position : absolute;
+		}
+    header, nav, form, div{
+      text-align: center;
+    }
+
+    .form-group{
+      margin: 0 auto;
+      width: 50%;
+    }
+    form button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <header class="nav">
+    <div class="page-header">
+      <h1>职位分析 <small><a style="color:red;" href="index.html">Job Analisis</a></small></h1>
+    </div>
+    <label>
+      输入您的资料，我们将通过大数据为你匹配最适合你的职位。
+    </label>
+  </header>
+
+    <form role="form">
+      <div class="form-group">
+        <label for="name">学历</label>
+        <input type="text" class="form-control" id="xueli" placeholder="请输入名称">
+        <label for="name">专业</label>
+        <input type="text" class="form-control" id="zhuanye" placeholder="请输入名称">
+        <label for="name">学校</label>
+        <input type="text" class="form-control" id="xuexiao" placeholder="请输入名称">
+        <label for="name">求职地</label>
+        <input type="text" class="form-control" id="qiuzhidi" placeholder="请输入名称">
+        <label for="name">工作年限</label>
+        <input type="text" class="form-control" id="gongzuonianxian" placeholder="请输入名称">
+        <label for="name">技能</label>
+        <input type="text" class="form-control" id="jineng" placeholder="请输入名称">
+        <label for="name">工作经历</label>
+        <input type="text" class="form-control" id="jingli" placeholder="请输入名称">
+      </div>
+      <button type="submit" class="btn btn-default">
+        提交
+      </button>
+    </form>
+    <footer>
+      <h2>By 挖石油创业</h2>
+    </footer>
+
+  <script src="js/background-star.js"></script>
+  <script src="js/jquery/jquery.min.js"></script>
+	<script src="bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

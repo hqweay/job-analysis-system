@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>分析系统</title>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+
+  <style type="text/css">
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    body {
+      background: #060e1b;
+      color: white;
+
+    }
+
+    #canvas {
+      z-index: -1;
+      position: absolute;
+    }
+
+    header,
+    nav,
+    form,
+    div {
+      text-align: center;
+    }
+
+
+
+    .list-group {
+      margin: 0 auto;
+      width: 50%;
+      color: black;
+    }
+    .list-group li{
+      text-align: left;
+    }
+    .list-group div{
+      text-align: left;
+      color: red;
+    }
+    .list-group a{
+      text-decoration: none;
+      margin-left: 15px;
+
+    }
+
+  </style>
+</head>
+
+<body>
+  <canvas id="canvas"></canvas>
+  <header class="nav">
+    <div class="page-header">
+      <h1>职位分析 <small><a style="color:red;" href="index.html">Job Analisis</a></small></h1>
+    </div>
+    <h1>
+      我们为您生成了专属您的用户画像。
+    </h1>
+    <div>
+      <img src="images/user.jpg" alt="">
+    </div>
+  </header>
+<div>
+  <h1>根据您的信息，我们发现以下职位非常适合您！！</h1>
+  <div id="job-list">
+
+    <ul class="list-group">
+      <div>
+        <li class="list-group-item">
+          <a href="#">鉴黄师</a>
+          <a href="#">挖石油创业公司</a>
+          <a href="#">四川新都</a>
+          <a href="#">3k~5k</a>
+        </li>
+        <div id="information" style="display:none;">
+                  详细资料详细资料详细资料详细资料
+                  详细资料详细资料详细资料详细资料
+                  详细资料详细资料详细资料详细资料
+        </div>
+      </div>
+      <div>
+        <li class="list-group-item">
+          <a href="#">幼儿园教师</a>
+        </li>
+      </div>
+      <div>
+        <li class="list-group-item">
+          <a href="">牛逼</a>
+        </li>
+      </div>
+      <div>
+        <li class="list-group-item">
+          <a href="">不错</a>
+        </li>
+      </div>
+      <div>
+        <li class="list-group-item">
+          <a href="">阔以</a>
+        </li>
+      </div>
+    </ul>
+
+  </div>
+</div>
+
+<footer>
+  <h2>By 挖石油创业</h2>
+</footer>
+  <script src="js/background-star.js"></script>
+  <script src="js/jquery/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <script type="text/javascript">
+    $(".list-group-item").mouseover(function(){
+      $(this).next().css('display', 'block');
+      $(this).css('background-color', 'beige');
+    });
+    $(".list-group-item").mouseout(function(){
+      $(this).next().css('display', 'none');
+      $(this).css('background-color', 'white');
+    });
+  </script>
+</body>
+
+</html>

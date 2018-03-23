@@ -1,0 +1,72 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+		//添加maven仓库 mybatis-generetor
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		}
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+
+		// mybatis-generator 插件路径mybatis-generetor
+		classpath "gradle.plugin.com.arenagod.gradle:mybatis-generator-plugin:1.4"
+	}
+}
+//配置从阿里云 ？？？
+allprojects {
+	repositories {
+		maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+		maven{ url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
+//引入 mybatis-generator 插件mybatis-generetor
+apply plugin: "com.arenagod.gradle.MybatisGenerator"
+
+group = 'com.swpu'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+configurations {
+	//	providedRuntime
+	//由于代码生成单独运行即可，不需要参与到整个项目的编译mybatis-generetor
+	//	mybatisGenerator
+}
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-web')
+	//thymeleaf
+	compile ('org.springframework.boot:spring-boot-starter-thymeleaf')
+	// 配置mybatis
+	compile('org.mybatis.spring.boot:mybatis-spring-boot-starter:1.3.1')
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+	compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.45'
+	// https://mvnrepository.com/artifact/com.alibaba/fastjson
+	compile group: 'com.alibaba', name: 'fastjson', version: '1.2.47'
+
+	//mybatis-geerator
+	// https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core
+	compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.3.6'
+
+
+}
+
+// mybatis-generator.xml 配置路径
+//这里会遇到个问题：MyBatis Generator 通过xml生成，有日志但是没有生成文件成功的问题，
+//原因：mac下是找不到 ./src 路径的，需要全路径，如下配置。windows则为src/main/resources/generator.xml
+mybatisGenerator {
+	verbose = true
+	configFile = 'src/main/resources/mybatis/generator.xml'
+}

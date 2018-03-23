@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style type="text/css">
+    * {
+      margin: 0px;
+      padding: 0px;
+    }
+
+    html,
+    body {
+      height: 100%;
+      background-color: #060e1b;
+		  overflow: hidden;
+    }
+
+    body {
+      margin: 0 auto;
+      width: 90%;
+      color: white;
+    }
+    .main{
+      width: 60%;
+      margin: 0 auto;
+    }
+    #data_show {
+      float: left;
+      width: 50%;
+    }
+    #job_analysis {
+      float: right;
+      width: 50%;
+    }
+
+  /*  .main img {
+      width: 100%;
+      opacity:0.7;
+    }
+  */
+  #data_show img{
+    width: 100%;
+    opacity:1;
+  }
+  #job_analysis img{
+    width: 92%;
+    opacity:0.7;
+  }
+
+    .container{
+      clear: both;
+    }
+  </style>
+  <title>Job Analysis System</title>
+</head>
+<body>
+  <div class="header">
+    ddddddd
+  </div>
+  <div class="main">
+    <div class="index-data" id="data_show" title="点击进入大数据展示">
+      <a href="data-show.html">
+        <img src="images/data-show.png" alt="">
+      </a>
+    </div>
+    <div class="index-chartRegionSalary" id="job_analysis" title="点击进入职位测评">
+    <a href="job-analysis.html">
+      <img src="images/job-analysis.jpg" alt="">
+    </a>
+    </div>
+  </div>
+  <div class="container">
+    ddddddd
+  </div>
+  
+  <footer>
+    <h2>By 挖石油创业</h2>
+  </footer>
+
+  <script src="js/jquery/jquery.min.js"></script>
+
+  <script type="text/javascript">
+  $(window).resize(function () {
+    if($(window).width() < 650){
+      $("#job_analysis").css('float', 'none');
+    }else{
+      $("#job_analysis").css('float', 'right');
+    }
+    $("body").css('text-algin', 'value');
+  });
+
+  $("#data_show img").mouseover(function(){
+    $(this).css("opacity","0.7");
+    $(this).css("width","100%");
+  });
+  $(" #data_show img").mouseout(function(){
+    $(this).css("opacity","1");
+    $(this).css("width","100%");
+  });
+  $("#job_analysis img").mouseover(function(){
+    $(this).css("opacity","1");
+    $(this).css("width","92%");
+  });
+  $("#job_analysis img").mouseout(function(){
+    $(this).css("opacity","0.7");
+    $(this).css("width","92%");
+  });
+  </script>
+</body>
+
+</html>
