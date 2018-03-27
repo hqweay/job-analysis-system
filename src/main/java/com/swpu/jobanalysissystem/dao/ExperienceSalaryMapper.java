@@ -1,7 +1,6 @@
 package com.swpu.jobanalysissystem.dao;
 
 import com.swpu.jobanalysissystem.entity.ExperienceSalary;
-import com.swpu.jobanalysissystem.entity.PlaceSalary;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

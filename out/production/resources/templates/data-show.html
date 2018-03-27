@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh" xmlns:th="http://www.springframework.org/schema/mvc">
+<html lang="zh-CN" xmlns:th="http://www.springframework.org/schema/mvc">
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
 	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
+	<script src="bootstrap/css/bootstrap.min.css"></script>
 	<style type="text/css">
 		* {
 			margin: 0px;
@@ -76,18 +77,10 @@
 			<div id="company" style="width: 500px;height: 400px;"></div>
 		</div>
 	</div>
+	<div class="chart">
 	<h2 id="qiye">岗位能力的需求图谱</h2>
-	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, vitae, dolor. Nam ut vero sapiente officiis quam rerum, odit illo dolore tempora quaerat vitae. Doloremque numquam, cupiditate molestias corrupti magnam!</div>
-	<div>Deserunt, corporis eum, rem, pariatur dignissimos quasi aperiam ipsam voluptates in neque ab animi odit itaque perferendis aspernatur architecto? Laboriosam officia enim dolore quibusdam provident maxime illum, aut corporis voluptatum.</div>
-	<div>Aut, dolore, quod. Deserunt molestias illo, beatae neque, cupiditate ex placeat nisi, repellendus vel commodi temporibus nemo illum, iste dolores eius aperiam officiis. Beatae at atque, dolorum dicta nihil doloribus?</div>
-	<div>Consectetur placeat doloremque labore. Distinctio, adipisci quo neque quisquam hic, ut laboriosam? Numquam molestias accusamus laborum ipsum, perspiciatis velit. Laudantium minima laboriosam rem pariatur, ipsam hic nemo! Voluptatibus deserunt, veniam.</div>
-	<div>Nemo explicabo ea, facere alias iste, quaerat dolores iusto vero fugiat nobis beatae velit. Facere dolorem, amet velit iste doloribus magnam, odio eligendi voluptas illum distinctio non vitae sint enim?</div>
-	<div>Voluptas quasi debitis, praesentium doloribus rerum? Magnam mollitia fuga quas quasi tempora debitis rerum placeat porro soluta explicabo id, consectetur voluptates aspernatur fugiat totam provident corporis distinctio quisquam perferendis incidunt.</div>
-	<div>Est rem laboriosam quidem ipsum repudiandae soluta accusantium temporibus, id sequi perferendis unde, nisi necessitatibus minus facilis amet veritatis velit beatae consectetur, corporis tempora nobis libero. Corporis dolores, ut consequuntur.</div>
-	<div>Dolorum quo, officiis rem aliquid voluptatum cumque ratione dolores sequi pariatur saepe voluptatibus nobis est quas laborum, delectus itaque, maiores sed cupiditate laudantium, ipsam amet doloremque! Voluptates, consectetur. Labore, inventore?</div>
-	<div>Saepe nemo sint adipisci deserunt consequuntur obcaecati possimus animi dolorum sunt. Distinctio corrupti cumque possimus aut consequatur iure, minus quidem! Et autem laborum eos expedita amet voluptatibus, dolorem soluta accusamus.</div>
-
+		<div id="ability" style="width: 500px;height: 400px;"></div>
+	</div>
 	<h2 id="huaxiang">岗位招聘的企业画像</h2>
 	<div>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
@@ -118,6 +111,8 @@
 
 <script src="js/echarts.js"></script>
 <script src="js/chart/type_salary.js"></script>
+<script src="js/echarts-wordcloud.min.js"></script>
+<script src="js/chart/type_ability.js"></script>
 
 <script type="text/javascript">
     $(window).scroll(function(event){
@@ -141,17 +136,19 @@
     var xueliSalary = [[${xueliSalary}]];
     var experienceSalary = [[${experienceSalary}]];
     var companySalary = [[${companySalary}]];
+    var jobImages = [[${jobImage}]];
 
     var placelist = JSON.parse(placeSalary);
     var xuelilist = JSON.parse(xueliSalary);
     var experiencelist = JSON.parse(experienceSalary);
     var companylist = JSON.parse(companySalary);
+	var joblist = JSON.parse(jobImages);
 
-
-    drawChart("place", placelist, "place");
-    drawChart("xueli", xuelilist, "xueli");
-    drawChart("experience", experiencelist, "experience");
-    drawChart("company", companylist, "company");
+    drawSalaryChart("place", placelist, "place");
+    drawSalaryChart("xueli", xuelilist, "xueli");
+    drawSalaryChart("experience", experiencelist, "experience");
+    drawSalaryChart("company", companylist, "company");
+    drawAbilityChart("ability", joblist)
 
 
     /*]]>*/

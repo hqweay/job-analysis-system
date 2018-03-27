@@ -1,17 +1,10 @@
 package com.swpu.jobanalysissystem.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.swpu.jobanalysissystem.dao.CompanySalaryMapper;
-import com.swpu.jobanalysissystem.dao.ExperienceSalaryMapper;
-import com.swpu.jobanalysissystem.dao.PlaceSalaryMapper;
+import com.swpu.jobanalysissystem.dao.*;
 
-import com.swpu.jobanalysissystem.dao.XueliSalaryMapper;
-import com.swpu.jobanalysissystem.entity.CompanySalary;
-import com.swpu.jobanalysissystem.entity.ExperienceSalary;
+import com.swpu.jobanalysissystem.entity.*;
 
-import com.swpu.jobanalysissystem.entity.PlaceSalary;
-
-import com.swpu.jobanalysissystem.entity.XueliSalary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +30,9 @@ public class DataShowController {
     @Autowired
     private CompanySalaryMapper companySalaryMapper;
 
+    @Autowired
+    private JobImageMapper jobImageMapper;
+
     //访问data-show页面
     @RequestMapping(value = {
             "/data-show.html"
@@ -48,21 +44,23 @@ public class DataShowController {
         List<XueliSalary> xueliSalaries = xueliSalaryMapper.getAllXueliSalary();//XUeli_Salary
         List<ExperienceSalary> experienceSalaries = experienceSalaryMapper.getAllExperienceSalary();//Experience_Salary
         List<CompanySalary> companySalaries = companySalaryMapper.getAllCompanySalary();//Companyprop_Salary
-
+        List<JobImage> jobImages = jobImageMapper.getAllJobImage();//job_image
 
         //转json
         String strPlaceSalaries = JSON.toJSONString(placeSalaries);
         String strXueliSalaries = JSON.toJSONString(xueliSalaries);
         String strExperienceSalaries = JSON.toJSONString(experienceSalaries);
         String strCompanySalaries = JSON.toJSONString(companySalaries);
+        String strJobImages = JSON.toJSONString(jobImages);
 
-        System.out.println(placeSalaries.get(0).getTop_salary());
-
+        System.out.println(jobImages);
+        System.out.println(strJobImages);
         //返回
         model.addAttribute("placeSalary", strPlaceSalaries);
         model.addAttribute("xueliSalary", strXueliSalaries);
         model.addAttribute("experienceSalary", strExperienceSalaries);
         model.addAttribute("companySalary", strCompanySalaries);
+        model.addAttribute("jobImage", strJobImages);
 
 
 

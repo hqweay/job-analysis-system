@@ -1,4 +1,4 @@
-function drawChart(id, list, type){
+function drawSalaryChart(id, list, type){
 
     var types=new Array();
 
@@ -23,7 +23,7 @@ function drawChart(id, list, type){
             default:
                 break;
         }
-        console.log(types);
+
         //places.push(list[i].job_place);
 
         min_salaries.push(parseInt(list[i].min_salary));
@@ -34,7 +34,6 @@ function drawChart(id, list, type){
          //max_salaries.push(9000);
     }
 
-    console.log(types);
 
     var myChart = echarts.init(document.getElementById(id));
     myChart.setOption({

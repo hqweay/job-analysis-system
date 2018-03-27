@@ -59,6 +59,12 @@ dependencies {
 	//mybatis-geerator
 	// https://mvnrepository.com/artifact/org.mybatis.generator/mybatis-generator-core
 	compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.3.6'
+	// https://mvnrepository.com/artifact/org.apache.hive/hive-common
+	//hive
+	compile group: 'org.apache.hive', name: 'hive-common', version: '2.3.2'
+	// https://mvnrepository.com/artifact/org.apache.mahout/mahout-core
+	//mahout
+	compile group: 'org.apache.mahout', name: 'mahout-core', version: '0.9'
 
 
 }

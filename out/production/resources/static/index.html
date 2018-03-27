@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="ch">
+<html lang="zh-CN">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
   <style type="text/css">
     * {
       margin: 0px;
@@ -15,99 +16,143 @@
     body {
       height: 100%;
       background-color: #060e1b;
-		  overflow: hidden;
+
     }
 
     body {
       margin: 0 auto;
-      width: 90%;
+      width: 70%;
       color: white;
     }
-    .main{
-      width: 60%;
-      margin: 0 auto;
-    }
-    #data_show {
-      float: left;
-      width: 50%;
-    }
-    #job_analysis {
-      float: right;
-      width: 50%;
-    }
 
-  /*  .main img {
+    .main {
       width: 100%;
-      opacity:0.7;
     }
-  */
-  #data_show img{
-    width: 100%;
-    opacity:1;
-  }
-  #job_analysis img{
-    width: 92%;
-    opacity:0.7;
-  }
 
-    .container{
+    #data_show img {
+      width: 100%;
+      opacity: 1;
+    }
+
+    #job_analysis img {
+      width: 92%;
+      opacity: 0.7;
+    }
+
+    .main {
       clear: both;
+      margin-top: 2%;
+    }
+
+    .nav-head {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .high-content {
+      height: 175px;
+      background-image: url("images/nav-bilibili.png");
+    }
+
+
+    .search {
+      margin-top: 2%;
+    }
+
+    .cc {
+      margin-top: 10px;
+      display: block;
+      width: 80%;
+      height: 500px;
+      background-color: aqua;
     }
   </style>
   <title>Job Analysis System</title>
 </head>
+
 <body>
-  <div class="header">
-    ddddddd
-  </div>
-  <div class="main">
-    <div class="index-data" id="data_show" title="点击进入大数据展示">
-      <a href="data-show.html">
-        <img src="images/data-show.png" alt="">
-      </a>
+  <header>
+    <div>
+      <ul class="nav nav-pills nav-head">
+        <li role="presentation" class="active">
+          <a href="#">先留着</a>
+        </li>
+        <li role="presentation">
+          <a href="#">放啥呢</a>
+        </li>
+        <li role="presentation">
+          <a href="#">随便放</a>
+        </li>
+      </ul>
+      <div class="search" class="col-md-6">
+        <form action="" class="search-form form-horizontal col-md-offset-7">
+          <div class="input-group col-md-9">
+            <input type="text" class="form-control" placeholder="请输入字段名" />
+            <span class="input-group-btn">
+
+              <button class="btn btn-info btn-search">添加</button>
+            </span>
+          </div>
+
+        </form>
+      </div>
     </div>
-    <div class="index-chartRegionSalary" id="job_analysis" title="点击进入职位测评">
-    <a href="job-analysis.html">
-      <img src="images/job-analysis.jpg" alt="">
-    </a>
+  </header>
+  <div class="main container">
+    <div class="nav-left col-md-4">
+      <ul>
+        <li>哈哈哈哈</li>
+        <li>哈哈哈哈</li>
+        <li>哈哈哈哈</li>
+      </ul>
     </div>
+    <div class="nav-image">
+      <div class="index-data col-md-3" id="data_show" title="点击进入大数据展示">
+        <a href="data-show.html">
+          <img src="images/data-show.png">
+        </a>
+      </div>
+      <div class="index-chartRegionSalary col-md-3" id="job_analysis" title="点击进入职位测评">
+        <a href="job-analysis.html">
+          <img src="images/job-analysis.jpg">
+        </a>
+      </div>
+    </div>
+
+
+
   </div>
-  <div class="container">
-    ddddddd
+  <div class="container ">
+    <span class="cc">
+
+    </span>
   </div>
-  
+
   <footer>
     <h2>By 挖石油创业</h2>
   </footer>
 
   <script src="js/jquery/jquery.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
 
   <script type="text/javascript">
-  $(window).resize(function () {
-    if($(window).width() < 650){
-      $("#job_analysis").css('float', 'none');
-    }else{
-      $("#job_analysis").css('float', 'right');
-    }
-    $("body").css('text-algin', 'value');
-  });
 
-  $("#data_show img").mouseover(function(){
-    $(this).css("opacity","0.7");
-    $(this).css("width","100%");
-  });
-  $(" #data_show img").mouseout(function(){
-    $(this).css("opacity","1");
-    $(this).css("width","100%");
-  });
-  $("#job_analysis img").mouseover(function(){
-    $(this).css("opacity","1");
-    $(this).css("width","92%");
-  });
-  $("#job_analysis img").mouseout(function(){
-    $(this).css("opacity","0.7");
-    $(this).css("width","92%");
-  });
+
+    $("#data_show img").mouseover(function () {
+      $(this).css("opacity", "0.7");
+      $(this).css("width", "100%");
+    });
+    $(" #data_show img").mouseout(function () {
+      $(this).css("opacity", "1");
+      $(this).css("width", "100%");
+    });
+    $("#job_analysis img").mouseover(function () {
+      $(this).css("opacity", "1");
+      $(this).css("width", "92%");
+    });
+    $("#job_analysis img").mouseout(function () {
+      $(this).css("opacity", "0.7");
+      $(this).css("width", "92%");
+    });
   </script>
 </body>
 

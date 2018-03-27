@@ -76,6 +76,13 @@
             <!-- 生成的bean不采用驼峰-->
             <property name="useActualColumnNames" value="true"/>
         </table>
+        <table schema="test" tableName="job_image"
+               domainObjectName="JobImage" enableCountByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               enableUpdateByExample="false">
+            <!-- 生成的bean不采用驼峰-->
+            <property name="useActualColumnNames" value="true"/>
+        </table>
 
     </context>
 </generatorConfiguration>
