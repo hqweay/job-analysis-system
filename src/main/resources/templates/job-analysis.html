@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -48,22 +48,22 @@
     </label>
   </header>
 
-    <form role="form">
+    <form role="form" method="post">
       <div class="form-group">
-        <label for="name">学历</label>
-        <input type="text" class="form-control" id="xueli" placeholder="请输入名称">
-        <label for="name">专业</label>
-        <input type="text" class="form-control" id="zhuanye" placeholder="请输入名称">
-        <label for="name">学校</label>
-        <input type="text" class="form-control" id="xuexiao" placeholder="请输入名称">
-        <label for="name">求职地</label>
-        <input type="text" class="form-control" id="qiuzhidi" placeholder="请输入名称">
-        <label for="name">工作年限</label>
-        <input type="text" class="form-control" id="gongzuonianxian" placeholder="请输入名称">
-        <label for="name">技能</label>
-        <input type="text" class="form-control" id="jineng" placeholder="请输入名称">
-        <label for="name">工作经历</label>
-        <input type="text" class="form-control" id="jingli" placeholder="请输入名称">
+        <label for="xueli">学历</label>
+        <input type="text" class="form-control" id="xueli" name="xueli" placeholder="请输入名称">
+        <label for="zhuanye">专业</label>
+        <input type="text" class="form-control" id="zhuanye" name="zhuanye" placeholder="请输入名称">
+        <label for="xuexiao">学校</label>
+        <input type="text" class="form-control" id="xuexiao" name="xuexiao" placeholder="请输入名称">
+        <label for="qiuzhidi">求职地</label>
+        <input type="text" class="form-control" id="qiuzhidi" name="qiuzhidi" placeholder="请输入名称">
+        <label for="gongzuonianxian">工作年限</label>
+        <input type="text" class="form-control" id="gongzuonianxian" name="gongzuonianxian" placeholder="请输入名称">
+        <label for="jineng">技能</label>
+        <input type="text" class="form-control" id="jineng" name="jineng" placeholder="请输入名称">
+        <label for="jingli">工作经历</label>
+        <input type="text" class="form-control" id="jingli" name="jingli" placeholder="请输入名称">
       </div>
       <button type="submit" class="btn btn-default">
         提交
@@ -76,5 +76,8 @@
   <script src="js/background-star.js"></script>
   <script src="js/jquery/jquery.min.js"></script>
 	<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+
 </body>
 </html>

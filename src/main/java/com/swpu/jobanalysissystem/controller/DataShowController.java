@@ -5,11 +5,13 @@ import com.swpu.jobanalysissystem.dao.*;
 
 import com.swpu.jobanalysissystem.entity.*;
 
+import com.swpu.jobanalysissystem.until.ContendRecommedStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -33,6 +35,12 @@ public class DataShowController {
     @Autowired
     private JobImageMapper jobImageMapper;
 
+    @Autowired
+    public RecommendJobImageMapper recommendJobImageMapper;
+
+    @Autowired
+    public ContendRecommedStrategy contendRecommedStrategy;
+
     //访问data-show页面
     @RequestMapping(value = {
             "/data-show.html"
@@ -53,8 +61,8 @@ public class DataShowController {
         String strCompanySalaries = JSON.toJSONString(companySalaries);
         String strJobImages = JSON.toJSONString(jobImages);
 
-        System.out.println(jobImages);
-        System.out.println(strJobImages);
+        //System.out.println(jobImages);
+        //System.out.println(strJobImages);
         //返回
         model.addAttribute("placeSalary", strPlaceSalaries);
         model.addAttribute("xueliSalary", strXueliSalaries);
@@ -64,6 +72,20 @@ public class DataShowController {
 
 
 
+
+
+
+            List<RecommedJobImage> s = recommendJobImageMapper.getRecommenedJobImages();
+        //System.out.println(s);
+        HashMap<String,Double> user = new HashMap<>();
+        user.put("本科",1.0);
+        user.put("软件工程",1.0);
+        user.put("西南石油大学",1.0);
+        user.put("成都",1.0);
+        user.put("1",1.0);
+        user.put("hadoop",1.0);
+        user.put("参加过大数据比赛",1.0);
+        contendRecommedStrategy.glgorithm(user);
 
         return "data-show";
     }

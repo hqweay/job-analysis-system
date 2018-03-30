@@ -10,4 +10,5 @@ import java.util.List;
 public interface XueliSalaryMapper {
   @Select("select * from xueli_salary order by avg_salary+0 desc")
   List<XueliSalary> getAllXueliSalary();
+
 }

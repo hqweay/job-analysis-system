@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" xmlns:th="http://www.springframework.org/schema/mvc">
 
 <head>
   <meta charset="UTF-8">
@@ -74,43 +74,24 @@
   <h1>根据您的信息，我们发现以下职位非常适合您！！</h1>
   <div id="job-list">
 
-    <ul class="list-group">
+    <ul class="list-group" th:each="job : ${jobs}">
       <div>
         <li class="list-group-item">
-          <a href="#">鉴黄师</a>
-          <a href="#">挖石油创业公司</a>
-          <a href="#">四川新都</a>
-          <a href="#">3k~5k</a>
+          <a href="#" th:text="${job.job_name}"> </a>
+          <a href="#" th:text="${job.job_place}"></a>
+          <a href="#" th:text="${job.company_name}"></a>
+          起薪：<a href="#" th:text="${job.min_salary}"></a>元
+          <a href="#" th:text="${job.experience}"></a>
+          <a href="#" th:text="${job.min_xueli}"></a>
+          招聘人数：<a href="#" th:text="${job.job_num}"></a>
+
         </li>
         <div id="information" style="display:none;">
-                  详细资料详细资料详细资料详细资料
-                  详细资料详细资料详细资料详细资料
-                  详细资料详细资料详细资料详细资料
+                  label
+          label
         </div>
       </div>
-      <div>
-        <li class="list-group-item">
-          <a href="#">幼儿园教师</a>
-        </li>
-      </div>
-      <div>
-        <li class="list-group-item">
-          <a href="">牛逼</a>
-        </li>
-      </div>
-      <div>
-        <li class="list-group-item">
-          <a href="">不错</a>
-        </li>
-      </div>
-      <div>
-        <li class="list-group-item">
-          <a href="">阔以</a>
-        </li>
-      </div>
     </ul>
-
-  </div>
 </div>
 
 <footer>
@@ -119,7 +100,11 @@
   <script src="js/background-star.js"></script>
   <script src="js/jquery/jquery.min.js"></script>
   <script src="bootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript">
+  <script th:inline="javascript">
+      /*<![CDATA[*/
+
+
+      var placeSalary = [[${jobs}]];
     $(".list-group-item").mouseover(function(){
       $(this).next().css('display', 'block');
       $(this).css('background-color', 'beige');
@@ -128,7 +113,10 @@
       $(this).next().css('display', 'none');
       $(this).css('background-color', 'white');
     });
+      /*]]>*/
   </script>
+
+
 </body>
 
 </html>

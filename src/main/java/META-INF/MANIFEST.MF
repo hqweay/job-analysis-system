@@ -1,0 +1,41 @@
+Manifest-Version: 1.0
+Class-Path: commons-beanutils-1.7.0.jar tomcat-embed-core-8.5.28.jar j
+ axb-api-2.3.0.jar stax-api-1.0.1.jar slf4j-api-1.7.25.jar spring-boot
+ -starter-json-2.0.0.RELEASE.jar mybatis-generator-core-1.3.6.jar jers
+ ey-json-1.8.jar spring-boot-starter-web-2.0.0.RELEASE.jar jackson-map
+ per-asl-1.9.12.jar commons-cli-2.0-mahout.jar spring-web-5.0.4.RELEAS
+ E.jar classmate-1.3.4.jar commons-math3-3.2.jar spring-boot-starter-j
+ dbc-2.0.0.RELEASE.jar commons-logging-1.1.1.jar spring-jdbc-5.0.4.REL
+ EASE.jar commons-el-1.0.jar xstream-1.4.4.jar jul-to-slf4j-1.7.25.jar
+  log4j-api-2.10.0.jar commons-collections-3.2.1.jar attoparser-2.0.4.
+ RELEASE.jar HikariCP-2.7.8.jar unbescape-1.1.5.RELEASE.jar mahout-mat
+ h-0.9.jar xpp3_min-1.1.4c.jar commons-beanutils-core-1.8.0.jar common
+ s-codec-1.11.jar jackson-annotations-2.9.0.jar spring-boot-autoconfig
+ ure-2.0.0.RELEASE.jar jackson-core-asl-1.9.12.jar tomcat-embed-websoc
+ ket-8.5.28.jar asm-3.1.jar jersey-server-1.8.jar xmlpull-1.1.3.1.jar 
+ commons-lang-2.4.jar logback-core-1.2.3.jar jersey-core-1.8.jar jacks
+ on-xc-1.7.1.jar commons-configuration-1.6.jar spring-jcl-5.0.4.RELEAS
+ E.jar jackson-jaxrs-1.7.1.jar mybatis-3.4.5.jar jaxb-impl-2.2.3-1.jar
+  hadoop-core-1.2.1.jar guava-16.0.jar ansj_seg-5.1.6.jar spring-expre
+ ssion-5.0.4.RELEASE.jar mysql-connector-java-5.1.45.jar commons-lang3
+ -3.7.jar hibernate-validator-6.0.7.Final.jar spring-boot-starter-logg
+ ing-2.0.0.RELEASE.jar spring-webmvc-5.0.4.RELEASE.jar mybatis-spring-
+ boot-autoconfigure-1.3.1.jar thymeleaf-extras-java8time-3.0.1.RELEASE
+ .jar jackson-datatype-jdk8-2.9.4.jar jboss-logging-3.3.2.Final.jar ma
+ hout-core-0.9.jar fastjson-1.2.47.jar spring-core-5.0.4.RELEASE.jar s
+ pring-boot-2.0.0.RELEASE.jar spring-boot-starter-tomcat-2.0.0.RELEASE
+ .jar lucene-analyzers-common-4.6.1.jar commons-net-1.4.1.jar spring-b
+ oot-starter-thymeleaf-2.0.0.RELEASE.jar lucene-core-4.6.1.jar snakeya
+ ml-1.19.jar tomcat-embed-el-8.5.28.jar jackson-datatype-jsr310-2.9.4.
+ jar jackson-databind-2.9.4.jar thymeleaf-3.0.9.RELEASE.jar mybatis-sp
+ ring-boot-starter-1.3.1.jar spring-aop-5.0.4.RELEASE.jar logback-clas
+ sic-1.2.3.jar commons-digester-1.8.jar javax.annotation-api-1.3.2.jar
+  nlp-lang-1.7.7.jar log4j-to-slf4j-2.10.0.jar jackson-core-2.9.4.jar 
+ spring-context-5.0.4.RELEASE.jar spring-beans-5.0.4.RELEASE.jar thyme
+ leaf-spring5-3.0.9.RELEASE.jar validation-api-2.0.1.Final.jar jettiso
+ n-1.1.jar commons-cli-1.2.jar mybatis-spring-1.3.1.jar jackson-module
+ -parameter-names-2.9.4.jar spring-boot-starter-2.0.0.RELEASE.jar comm
+ ons-httpclient-3.0.1.jar spring-tx-5.0.4.RELEASE.jar commons-io-2.1.j
+ ar solr-commons-csv-3.5.0.jar commons-math-2.1.jar
+Main-Class: com.swpu.jobanalysissystem.JobAnalysisSystemApplication
+

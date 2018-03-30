@@ -27,6 +27,7 @@ allprojects {
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'war'
 apply plugin: 'war'
 //引入 mybatis-generator 插件mybatis-generetor
 apply plugin: "com.arenagod.gradle.MybatisGenerator"
@@ -61,11 +62,13 @@ dependencies {
 	compile group: 'org.mybatis.generator', name: 'mybatis-generator-core', version: '1.3.6'
 	// https://mvnrepository.com/artifact/org.apache.hive/hive-common
 	//hive
-	compile group: 'org.apache.hive', name: 'hive-common', version: '2.3.2'
+	//compile group: 'org.apache.hive', name: 'hive-common', version: '2.3.2'
 	// https://mvnrepository.com/artifact/org.apache.mahout/mahout-core
 	//mahout
 	compile group: 'org.apache.mahout', name: 'mahout-core', version: '0.9'
 
+	// https://mvnrepository.com/artifact/org.ansj/ansj_seg
+	compile group: 'org.ansj', name: 'ansj_seg', version: '5.1.6'
 
 }
 

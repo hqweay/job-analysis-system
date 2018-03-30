@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.JobInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.JobInfo">
+    <id column="job_name" jdbcType="VARCHAR" property="job_name" />
+    <id column="company_name" jdbcType="VARCHAR" property="company_name" />
+    <id column="job_place" jdbcType="VARCHAR" property="job_place" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="min_salary" jdbcType="VARCHAR" property="min_salary" />
+    <result column="top_salary" jdbcType="VARCHAR" property="top_salary" />
+    <result column="min_xueli" jdbcType="VARCHAR" property="min_xueli" />
+    <result column="job_url" jdbcType="VARCHAR" property="job_url" />
+    <result column="experience" jdbcType="VARCHAR" property="experience" />
+    <result column="job_num" jdbcType="VARCHAR" property="job_num" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    job_name, company_name, job_place, id, min_salary, top_salary, min_xueli, job_url, 
+    experience, job_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.example.entity.JobInfoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from job_info
+    where job_name = #{job_name,jdbcType=VARCHAR}
+      and company_name = #{company_name,jdbcType=VARCHAR}
+      and job_place = #{job_place,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.entity.JobInfoKey">
+    delete from job_info
+    where job_name = #{job_name,jdbcType=VARCHAR}
+      and company_name = #{company_name,jdbcType=VARCHAR}
+      and job_place = #{job_place,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.JobInfo">
+    insert into job_info (job_name, company_name, job_place, 
+      id, min_salary, top_salary, 
+      min_xueli, job_url, experience, 
+      job_num)
+    values (#{job_name,jdbcType=VARCHAR}, #{company_name,jdbcType=VARCHAR}, #{job_place,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{min_salary,jdbcType=VARCHAR}, #{top_salary,jdbcType=VARCHAR}, 
+      #{min_xueli,jdbcType=VARCHAR}, #{job_url,jdbcType=VARCHAR}, #{experience,jdbcType=VARCHAR}, 
+      #{job_num,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.JobInfo">
+    insert into job_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="job_name != null">
+        job_name,
+      </if>
+      <if test="company_name != null">
+        company_name,
+      </if>
+      <if test="job_place != null">
+        job_place,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="min_salary != null">
+        min_salary,
+      </if>
+      <if test="top_salary != null">
+        top_salary,
+      </if>
+      <if test="min_xueli != null">
+        min_xueli,
+      </if>
+      <if test="job_url != null">
+        job_url,
+      </if>
+      <if test="experience != null">
+        experience,
+      </if>
+      <if test="job_num != null">
+        job_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="job_name != null">
+        #{job_name,jdbcType=VARCHAR},
+      </if>
+      <if test="company_name != null">
+        #{company_name,jdbcType=VARCHAR},
+      </if>
+      <if test="job_place != null">
+        #{job_place,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="min_salary != null">
+        #{min_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="top_salary != null">
+        #{top_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="min_xueli != null">
+        #{min_xueli,jdbcType=VARCHAR},
+      </if>
+      <if test="job_url != null">
+        #{job_url,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="job_num != null">
+        #{job_num,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.JobInfo">
+    update job_info
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="min_salary != null">
+        min_salary = #{min_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="top_salary != null">
+        top_salary = #{top_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="min_xueli != null">
+        min_xueli = #{min_xueli,jdbcType=VARCHAR},
+      </if>
+      <if test="job_url != null">
+        job_url = #{job_url,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        experience = #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="job_num != null">
+        job_num = #{job_num,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where job_name = #{job_name,jdbcType=VARCHAR}
+      and company_name = #{company_name,jdbcType=VARCHAR}
+      and job_place = #{job_place,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.JobInfo">
+    update job_info
+    set id = #{id,jdbcType=INTEGER},
+      min_salary = #{min_salary,jdbcType=VARCHAR},
+      top_salary = #{top_salary,jdbcType=VARCHAR},
+      min_xueli = #{min_xueli,jdbcType=VARCHAR},
+      job_url = #{job_url,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=VARCHAR},
+      job_num = #{job_num,jdbcType=VARCHAR}
+    where job_name = #{job_name,jdbcType=VARCHAR}
+      and company_name = #{company_name,jdbcType=VARCHAR}
+      and job_place = #{job_place,jdbcType=VARCHAR}
+  </update>
+  <resultMap id="BaseResultMap" type="com.swpu.jobanalysissystem.entity.JobInfo">
+    <id column="job_name" jdbcType="VARCHAR" property="job_name" />
+    <id column="company_name" jdbcType="VARCHAR" property="company_name" />
+    <id column="job_place" jdbcType="VARCHAR" property="job_place" />
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="min_salary" jdbcType="VARCHAR" property="min_salary" />
+    <result column="top_salary" jdbcType="VARCHAR" property="top_salary" />
+    <result column="min_xueli" jdbcType="VARCHAR" property="min_xueli" />
+    <result column="job_url" jdbcType="VARCHAR" property="job_url" />
+    <result column="experience" jdbcType="VARCHAR" property="experience" />
+    <result column="job_num" jdbcType="VARCHAR" property="job_num" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    job_name, company_name, job_place, id, min_salary, top_salary, min_xueli, job_url, 
+    experience, job_num
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="com.example.entity.JobInfoKey" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from job_info
+    where job_name = #{job_name,jdbcType=VARCHAR}
+      and company_name = #{company_name,jdbcType=VARCHAR}
+      and job_place = #{job_place,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="com.example.entity.JobInfoKey">
+    delete from job_info
+    where job_name = #{job_name,jdbcType=VARCHAR}
+      and company_name = #{company_name,jdbcType=VARCHAR}
+      and job_place = #{job_place,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.swpu.jobanalysissystem.entity.JobInfo">
+    insert into job_info (job_name, company_name, job_place, 
+      id, min_salary, top_salary, 
+      min_xueli, job_url, experience, 
+      job_num)
+    values (#{job_name,jdbcType=VARCHAR}, #{company_name,jdbcType=VARCHAR}, #{job_place,jdbcType=VARCHAR}, 
+      #{id,jdbcType=INTEGER}, #{min_salary,jdbcType=VARCHAR}, #{top_salary,jdbcType=VARCHAR}, 
+      #{min_xueli,jdbcType=VARCHAR}, #{job_url,jdbcType=VARCHAR}, #{experience,jdbcType=VARCHAR}, 
+      #{job_num,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.swpu.jobanalysissystem.entity.JobInfo">
+    insert into job_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="job_name != null">
+        job_name,
+      </if>
+      <if test="company_name != null">
+        company_name,
+      </if>
+      <if test="job_place != null">
+        job_place,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+      <if test="min_salary != null">
+        min_salary,
+      </if>
+      <if test="top_salary != null">
+        top_salary,
+      </if>
+      <if test="min_xueli != null">
+        min_xueli,
+      </if>
+      <if test="job_url != null">
+        job_url,
+      </if>
+      <if test="experience != null">
+        experience,
+      </if>
+      <if test="job_num != null">
+        job_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="job_name != null">
+        #{job_name,jdbcType=VARCHAR},
+      </if>
+      <if test="company_name != null">
+        #{company_name,jdbcType=VARCHAR},
+      </if>
+      <if test="job_place != null">
+        #{job_place,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="min_salary != null">
+        #{min_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="top_salary != null">
+        #{top_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="min_xueli != null">
+        #{min_xueli,jdbcType=VARCHAR},
+      </if>
+      <if test="job_url != null">
+        #{job_url,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="job_num != null">
+        #{job_num,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.swpu.jobanalysissystem.entity.JobInfo">
+    update job_info
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="min_salary != null">
+        min_salary = #{min_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="top_salary != null">
+        top_salary = #{top_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="min_xueli != null">
+        min_xueli = #{min_xueli,jdbcType=VARCHAR},
+      </if>
+      <if test="job_url != null">
+        job_url = #{job_url,jdbcType=VARCHAR},
+      </if>
+      <if test="experience != null">
+        experience = #{experience,jdbcType=VARCHAR},
+      </if>
+      <if test="job_num != null">
+        job_num = #{job_num,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where job_name = #{job_name,jdbcType=VARCHAR}
+      and company_name = #{company_name,jdbcType=VARCHAR}
+      and job_place = #{job_place,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.swpu.jobanalysissystem.entity.JobInfo">
+    update job_info
+    set id = #{id,jdbcType=INTEGER},
+      min_salary = #{min_salary,jdbcType=VARCHAR},
+      top_salary = #{top_salary,jdbcType=VARCHAR},
+      min_xueli = #{min_xueli,jdbcType=VARCHAR},
+      job_url = #{job_url,jdbcType=VARCHAR},
+      experience = #{experience,jdbcType=VARCHAR},
+      job_num = #{job_num,jdbcType=VARCHAR}
+    where job_name = #{job_name,jdbcType=VARCHAR}
+      and company_name = #{company_name,jdbcType=VARCHAR}
+      and job_place = #{job_place,jdbcType=VARCHAR}
+  </update>
+</mapper>
