@@ -46,12 +46,15 @@
     }
     .list-group div{
       text-align: left;
-      color: red;
+      color: #5cb85c;
     }
     .list-group a{
       text-decoration: none;
-      margin-left: 15px;
+      margin-right: 1.8em;
 
+    }
+    #information{
+      color: white;
     }
 
   </style>
@@ -75,20 +78,23 @@
   <div id="job-list">
 
     <ul class="list-group" th:each="job : ${jobs}">
-      <div>
+      <div th:id="${job.id}">
         <li class="list-group-item">
-          <a href="#" th:text="${job.job_name}"> </a>
-          <a href="#" th:text="${job.job_place}"></a>
-          <a href="#" th:text="${job.company_name}"></a>
-          起薪：<a href="#" th:text="${job.min_salary}"></a>元
-          <a href="#" th:text="${job.experience}"></a>
-          <a href="#" th:text="${job.min_xueli}"></a>
-          招聘人数：<a href="#" th:text="${job.job_num}"></a>
 
+          工作名称：<a href="javascript:void(0)" th:text="${job.job_name}"> </a>
+          工作地点：<a href="javascript:void(0)" th:text="${job.job_place}"></a>
+          公司名：<a href="javascript:void(0)" th:text="${job.company_name}"></a>
+          起薪：<a href="javascript:void(0)" th:text="${job.min_salary}"></a>元
+
+          工作经历：<a href="javascript:void(0)" th:text="${job.experience}"></a>
+
+          最低学历<a href="javascript:void(0)" th:text="${job.min_xueli}"></a>
+          招聘人数：<a href="javascript:void(0)" th:text="${job.job_num}"></a>
+          转到原网页查看：<a th:href="${job.job_url}" style="color: #2f3238;">点击这里呀</a>
         </li>
-        <div id="information" style="display:none;">
-                  label
-          label
+
+        <div th:text="${job.job_desc}" id="information" style="display:none;">
+
         </div>
       </div>
     </ul>

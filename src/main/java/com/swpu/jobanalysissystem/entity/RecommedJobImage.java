@@ -1,5 +1,8 @@
 package com.swpu.jobanalysissystem.entity;
 
+/**
+ * bean of content based strategy for counting
+ * */
 public class RecommedJobImage {
     private String id;
     private String label;
@@ -8,6 +11,10 @@ public class RecommedJobImage {
     private String min_xueli;
     private String experience;
     private String job_place;
+//    private String company_name;
+//    private String job_url;
+//    private String job_num;
+//    private String job_desc;
 
     public String getId() {
         return id;

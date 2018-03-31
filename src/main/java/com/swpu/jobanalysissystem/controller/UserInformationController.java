@@ -12,6 +12,6 @@ public class UserInformationController {
             "/user-information.html"
     })
     public String jobAnalysis(){
-        return "user-information";
+        return "user-job-information";
     }
 }

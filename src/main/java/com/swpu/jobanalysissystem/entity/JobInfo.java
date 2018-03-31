@@ -7,21 +7,24 @@ import java.io.Serializable;
 public class JobInfo implements Serializable  {
     private Integer id;
     private String job_name;
-
     private String min_salary;
-
     private String top_salary;
-
     private String min_xueli;
     private String job_place;
     private String company_name;
     private String job_url;
-
     private String experience;
-
     private String job_num;
+    private String job_desc;
 
     private static final long serialVersionUID = 1L;
+    public String getJob_desc() {
+        return job_desc;
+    }
+
+    public void setJob_desc(String job_desc) {
+        this.job_desc = job_desc;
+    }
 
     public Integer getId() {
         return id;

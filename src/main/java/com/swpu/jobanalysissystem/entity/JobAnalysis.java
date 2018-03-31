@@ -1,67 +1,78 @@
 package com.swpu.jobanalysissystem.entity;
 
+/***
+ * This is a bean for web search when u want to give some jobs wanted.
+ * 搜索表单内容 封装bean
+ * @return null
+ * */
 public class JobAnalysis {
-    private String xueli;
-    private String zhuanye;
-    private String xuexiao;
-    private String job_place;
-    private String experience;
-    private String job_skill;
-    private String xiangmu_jinli;
+  private String xueli;
+  private String qiuzhidi;
+  private String gongzuonianxian;
+  private String jineng;
+  private String min_salary;
+  private String job_name;
 
-    public String getXueli() {
-        return xueli;
-    }
+  public String getJob_name() {
+    return job_name;
+  }
 
-    public void setXueli(String xueli) {
-        this.xueli = xueli;
-    }
+  public void setJob_name(String job_name) {
+    this.job_name = job_name;
+  }
 
-    public String getZhuanye() {
-        return zhuanye;
-    }
+  public String getMin_salary() {
+    return min_salary;
+  }
 
-    public void setZhuanye(String zhuanye) {
-        this.zhuanye = zhuanye;
-    }
+  public void setMin_salary(String min_salary) {
+    this.min_salary = min_salary;
+  }
 
-    public String getXuexiao() {
-        return xuexiao;
-    }
+  public String getXueli() {
+    return xueli;
+  }
 
-    public void setXuexiao(String xuexiao) {
-        this.xuexiao = xuexiao;
-    }
+  public void setXueli(String xueli) {
+    this.xueli = xueli;
+  }
 
-    public String getJob_place() {
-        return job_place;
-    }
 
-    public void setJob_place(String job_place) {
-        this.job_place = job_place;
-    }
 
-    public String getExperience() {
-        return experience;
-    }
 
-    public void setExperience(String experience) {
-        this.experience = experience;
-    }
+  public String getQiuzhidi() {
+    return qiuzhidi;
+  }
 
-    public String getJob_skill() {
-        return job_skill;
-    }
+  public void setQiuzhidi(String qiuzhidi) {
+    this.qiuzhidi = qiuzhidi;
+  }
 
-    public void setJob_skill(String job_skill) {
-        this.job_skill = job_skill;
-    }
+  public String getGongzuonianxian() {
+    return gongzuonianxian;
+  }
 
-    public String getXiangmu_jinli() {
-        return xiangmu_jinli;
-    }
+  public void setGongzuonianxian(String gongzuonianxian) {
+    this.gongzuonianxian = gongzuonianxian;
+  }
 
-    public void setXiangmu_jinli(String xiangmu_jinli) {
-        this.xiangmu_jinli = xiangmu_jinli;
-    }
+  public String getJineng() {
+    return jineng;
+  }
+
+  public void setJineng(String jineng) {
+    this.jineng = jineng;
+  }
+
+
+
+  @Override
+  public String toString() {
+    return "JobAnalysis{" +
+            "xueli='" + xueli + '\'' +
+            ", qiuzhidi='" + qiuzhidi + '\'' +
+            ", gongzuonianxian='" + gongzuonianxian + '\'' +
+            ", jineng='" + jineng + '\'' +
+            '}';
+  }
 }
