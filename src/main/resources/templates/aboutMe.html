@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>gerenxinxi</title>
+    <link rel="stylesheet" th:href="@{~/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link th:href="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.css}" rel="stylesheet"/>
+    <style>
+
+        #aboutMe{
+            margin: 0 auto;
+            margin-top: 12%;
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+<div id="aboutMe">
+    <form name="f" id="aboutMeForm" class="form-horizontal"  >
+        <div class="form-group ">
+            <label for="name" class="col-sm-2 control-label">用户名</label>
+            <div class="col-sm-10">
+                <input type="text" name="name" class="form-control" id="name" placeholder="spiderName">
+                <span class="nameMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email" class="col-sm-2 control-label">电子邮件</label>
+            <div class="col-sm-10">
+                <input type="text" name="email" class="form-control" id="email" placeholder="email">
+                <span class="emailMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-2 control-label">密码</label>
+            <div class="col-sm-10">
+                <input type="text" name="password" class="form-control" id="password" placeholder="password">
+                <span class="passwordMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="info_education" class="col-sm-2 control-label">教育程度</label>
+            <div class="col-sm-10">
+                <input type="text" name="info_education" class="form-control" id="info_education" placeholder="info_education">
+                <span class="info_educationMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="info_major" class="col-sm-2 control-label">专业</label>
+            <div class="col-sm-10">
+                <input type="text" name="info_major" class="form-control" id="info_major" placeholder="info_major">
+                <span class="info_majorMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="info_place" class="col-sm-2 control-label">所在地</label>
+            <div class="col-sm-10">
+                <input type="text" name="info_place" class="form-control" id="info_place" placeholder="info_place">
+                <span class="info_placeMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="info_ability" class="col-sm-2 control-label">技能</label>
+            <div class="col-sm-10">
+                <input type="text" name="info_ability" class="form-control" id="info_ability" placeholder="info_ability">
+                <span class="info_abilityMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="info_experience" class="col-sm-2 control-label">工作经历（单位：年）</label>
+            <div class="col-sm-10">
+                <input type="text" name="info_experience" class="form-control" id="info_experience" placeholder="info_experience">
+                <span class="info_experienceMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="likes" class="col-sm-2 control-label">喜好标签</label>
+            <div class="col-sm-10">
+                <input type="text" name="likes" class="form-control" id="likes" placeholder="Java Hadoop">
+                <span class="likesMessage" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/js/formValidation.min.js}"></script>
+<script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.js}"></script>
+<script src="js/jquery/jquery.min.js"></script>
+<script src="js/formValidation.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var userJson = [[${user}]];
+    var user = JSON.parse(userJson);
+    $("#name").val(user.name);
+    $("#email").val(user.email);
+    $("#password").val(user.password);
+    $("#info_education").val(user.info_education);
+    $("#info_major").val(user.info_major);
+    $("#info_place").val(user.info_place);
+    $("#info_ability").val(user.info_ability);
+    $("#info_experience").val(user.info_experience);
+    $("#likes").val(user.likes);
+
+
+    $("#editSpiderButton").click(function () {
+        $.confirm({
+            type: 'dark',
+            animationSpeed: 300,
+            title: '确认修改？',
+            content:"<p>点击修改后不可恢复哦？。</p> ",
+            buttons: {
+                confirm: {
+                    text: '确认',
+                    btnClass: 'waves-effect waves-button',
+                    action: function () {
+                        $.ajax({
+                            url:"/editUser",
+                            method:"post",
+                            traditional: true,//属性在这里设置 有啥用？没得这个好像传不了数据诶
+                            data:$("#aboutMeForm").serializeArray(),
+                            dataType:"json",
+                            success:function(data){
+                                if(data.state=="success"){
+                                    $.alert('修改成功！');
+                                }
+                            },
+                            error:function(){
+                                $.alert('修改失败，请按格式修改！');
+                            }
+                        });
+                    },
+                },
+                cancel: {
+                    text: '取消',
+                    btnClass: 'waves-effect waves-button'
+                }
+            }
+        });
+    });
+
+
+
+
+</script>
+</body>
+</html>

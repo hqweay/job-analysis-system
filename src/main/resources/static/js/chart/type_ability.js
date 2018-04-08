@@ -3,9 +3,6 @@ function drawAbilityChart(id, list) {
     var newList=[];
     for(var i = 0; i < list.length; i++){
         var jobImg = new Object();
-        //jobImg.set('name', list[i].label);
-        //jobImg.set('value', list[i].job_id);
-        //jobImg.set('value', i + 1);
         jobImg.name = list[i].label;
         jobImg.value = i+201 + 1000;
         console.log(jobImg);

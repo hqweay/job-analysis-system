@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="info_education" jdbcType="VARCHAR" property="info_education" />
+    <result column="info_major" jdbcType="VARCHAR" property="info_major" />
+    <result column="info_place" jdbcType="VARCHAR" property="info_place" />
+    <result column="info_ability" jdbcType="VARCHAR" property="info_ability" />
+    <result column="info_experience" jdbcType="VARCHAR" property="info_experience" />
+    <result column="likes" jdbcType="VARCHAR" property="likes" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, email, info_education, info_major, info_place, info_ability, info_experience, 
+    likes, password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.User">
+    insert into user (id, name, email, 
+      info_education, info_major, info_place, 
+      info_ability, info_experience, likes, 
+      password)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{info_education,jdbcType=VARCHAR}, #{info_major,jdbcType=VARCHAR}, #{info_place,jdbcType=VARCHAR}, 
+      #{info_ability,jdbcType=VARCHAR}, #{info_experience,jdbcType=VARCHAR}, #{likes,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="info_education != null">
+        info_education,
+      </if>
+      <if test="info_major != null">
+        info_major,
+      </if>
+      <if test="info_place != null">
+        info_place,
+      </if>
+      <if test="info_ability != null">
+        info_ability,
+      </if>
+      <if test="info_experience != null">
+        info_experience,
+      </if>
+      <if test="likes != null">
+        likes,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="info_education != null">
+        #{info_education,jdbcType=VARCHAR},
+      </if>
+      <if test="info_major != null">
+        #{info_major,jdbcType=VARCHAR},
+      </if>
+      <if test="info_place != null">
+        #{info_place,jdbcType=VARCHAR},
+      </if>
+      <if test="info_ability != null">
+        #{info_ability,jdbcType=VARCHAR},
+      </if>
+      <if test="info_experience != null">
+        #{info_experience,jdbcType=VARCHAR},
+      </if>
+      <if test="likes != null">
+        #{likes,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.User">
+    update user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="info_education != null">
+        info_education = #{info_education,jdbcType=VARCHAR},
+      </if>
+      <if test="info_major != null">
+        info_major = #{info_major,jdbcType=VARCHAR},
+      </if>
+      <if test="info_place != null">
+        info_place = #{info_place,jdbcType=VARCHAR},
+      </if>
+      <if test="info_ability != null">
+        info_ability = #{info_ability,jdbcType=VARCHAR},
+      </if>
+      <if test="info_experience != null">
+        info_experience = #{info_experience,jdbcType=VARCHAR},
+      </if>
+      <if test="likes != null">
+        likes = #{likes,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.User">
+    update user
+    set name = #{name,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      info_education = #{info_education,jdbcType=VARCHAR},
+      info_major = #{info_major,jdbcType=VARCHAR},
+      info_place = #{info_place,jdbcType=VARCHAR},
+      info_ability = #{info_ability,jdbcType=VARCHAR},
+      info_experience = #{info_experience,jdbcType=VARCHAR},
+      likes = #{likes,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.swpu.jobanalysissystem.entity.User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="info_education" jdbcType="VARCHAR" property="info_education" />
+    <result column="info_major" jdbcType="VARCHAR" property="info_major" />
+    <result column="info_place" jdbcType="VARCHAR" property="info_place" />
+    <result column="info_ability" jdbcType="VARCHAR" property="info_ability" />
+    <result column="info_experience" jdbcType="VARCHAR" property="info_experience" />
+    <result column="likes" jdbcType="VARCHAR" property="likes" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, email, info_education, info_major, info_place, info_ability, info_experience, 
+    likes, password
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.swpu.jobanalysissystem.entity.User">
+    insert into user (id, name, email, 
+      info_education, info_major, info_place, 
+      info_ability, info_experience, likes, 
+      password)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{info_education,jdbcType=VARCHAR}, #{info_major,jdbcType=VARCHAR}, #{info_place,jdbcType=VARCHAR}, 
+      #{info_ability,jdbcType=VARCHAR}, #{info_experience,jdbcType=VARCHAR}, #{likes,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.swpu.jobanalysissystem.entity.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="info_education != null">
+        info_education,
+      </if>
+      <if test="info_major != null">
+        info_major,
+      </if>
+      <if test="info_place != null">
+        info_place,
+      </if>
+      <if test="info_ability != null">
+        info_ability,
+      </if>
+      <if test="info_experience != null">
+        info_experience,
+      </if>
+      <if test="likes != null">
+        likes,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="info_education != null">
+        #{info_education,jdbcType=VARCHAR},
+      </if>
+      <if test="info_major != null">
+        #{info_major,jdbcType=VARCHAR},
+      </if>
+      <if test="info_place != null">
+        #{info_place,jdbcType=VARCHAR},
+      </if>
+      <if test="info_ability != null">
+        #{info_ability,jdbcType=VARCHAR},
+      </if>
+      <if test="info_experience != null">
+        #{info_experience,jdbcType=VARCHAR},
+      </if>
+      <if test="likes != null">
+        #{likes,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.swpu.jobanalysissystem.entity.User">
+    update user
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="info_education != null">
+        info_education = #{info_education,jdbcType=VARCHAR},
+      </if>
+      <if test="info_major != null">
+        info_major = #{info_major,jdbcType=VARCHAR},
+      </if>
+      <if test="info_place != null">
+        info_place = #{info_place,jdbcType=VARCHAR},
+      </if>
+      <if test="info_ability != null">
+        info_ability = #{info_ability,jdbcType=VARCHAR},
+      </if>
+      <if test="info_experience != null">
+        info_experience = #{info_experience,jdbcType=VARCHAR},
+      </if>
+      <if test="likes != null">
+        likes = #{likes,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.swpu.jobanalysissystem.entity.User">
+    update user
+    set name = #{name,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      info_education = #{info_education,jdbcType=VARCHAR},
+      info_major = #{info_major,jdbcType=VARCHAR},
+      info_place = #{info_place,jdbcType=VARCHAR},
+      info_ability = #{info_ability,jdbcType=VARCHAR},
+      info_experience = #{info_experience,jdbcType=VARCHAR},
+      likes = #{likes,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -87,4 +87,90 @@
       </if>
     </trim>
   </insert>
+  <resultMap id="BaseResultMap" type="com.example.entity.CompanySalary">
+    <result column="company_prop" jdbcType="VARCHAR" property="company_prop" />
+    <result column="min_salary" jdbcType="VARCHAR" property="min_salary" />
+    <result column="top_salary" jdbcType="VARCHAR" property="top_salary" />
+    <result column="avg_salary" jdbcType="VARCHAR" property="avg_salary" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.entity.CompanySalary">
+    insert into companyprop_salary (company_prop, min_salary, top_salary, 
+      avg_salary)
+    values (#{company_prop,jdbcType=VARCHAR}, #{min_salary,jdbcType=VARCHAR}, #{top_salary,jdbcType=VARCHAR}, 
+      #{avg_salary,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.CompanySalary">
+    insert into companyprop_salary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="company_prop != null">
+        company_prop,
+      </if>
+      <if test="min_salary != null">
+        min_salary,
+      </if>
+      <if test="top_salary != null">
+        top_salary,
+      </if>
+      <if test="avg_salary != null">
+        avg_salary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="company_prop != null">
+        #{company_prop,jdbcType=VARCHAR},
+      </if>
+      <if test="min_salary != null">
+        #{min_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="top_salary != null">
+        #{top_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="avg_salary != null">
+        #{avg_salary,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.entity.CompanySalary">
+    <result column="company_prop" jdbcType="VARCHAR" property="company_prop" />
+    <result column="min_salary" jdbcType="VARCHAR" property="min_salary" />
+    <result column="top_salary" jdbcType="VARCHAR" property="top_salary" />
+    <result column="avg_salary" jdbcType="VARCHAR" property="avg_salary" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.entity.CompanySalary">
+    insert into companyprop_salary (company_prop, min_salary, top_salary, 
+      avg_salary)
+    values (#{company_prop,jdbcType=VARCHAR}, #{min_salary,jdbcType=VARCHAR}, #{top_salary,jdbcType=VARCHAR}, 
+      #{avg_salary,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.CompanySalary">
+    insert into companyprop_salary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="company_prop != null">
+        company_prop,
+      </if>
+      <if test="min_salary != null">
+        min_salary,
+      </if>
+      <if test="top_salary != null">
+        top_salary,
+      </if>
+      <if test="avg_salary != null">
+        avg_salary,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="company_prop != null">
+        #{company_prop,jdbcType=VARCHAR},
+      </if>
+      <if test="min_salary != null">
+        #{min_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="top_salary != null">
+        #{top_salary,jdbcType=VARCHAR},
+      </if>
+      <if test="avg_salary != null">
+        #{avg_salary,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
 </mapper>

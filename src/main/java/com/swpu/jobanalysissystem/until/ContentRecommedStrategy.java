@@ -1,7 +1,7 @@
 package com.swpu.jobanalysissystem.until;
 
 import com.swpu.jobanalysissystem.dao.RecommendJobImageMapper;
-import com.swpu.jobanalysissystem.entity.RecommedJobImage;
+import com.swpu.jobanalysissystem.pojo.RecommedJobImage;
 import org.ansj.app.keyword.KeyWordComputer;
 import org.ansj.app.keyword.Keyword;
 import org.springframework.beans.factory.annotation.Autowired;

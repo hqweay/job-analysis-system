@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>爬虫设置</title>
+    <link rel="stylesheet" th:href="@{~/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link th:href="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.css}" rel="stylesheet"/>
+    <style>
+
+        #editSpider{
+            margin: 0 auto;
+            margin-top: 12%;
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+<div id="editSpider">
+    <form name="f" id="editSpiderForm" class="form-horizontal"  >
+        <div class="form-group ">
+            <label for="spiderName" class="col-sm-2 control-label">执行的爬虫名（five，zhilian）</label>
+            <div class="col-sm-10">
+                <input type="text" name="spiderName" class="form-control" value="five" id="spiderName" placeholder="spiderName">
+                <span class="spiderNameMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="savePath" class="col-sm-2 control-label">储存路径</label>
+            <div class="col-sm-10">
+                <input type="text" name="savePath" class="form-control" value="D:\" id="savePath" placeholder="savePath">
+                <span class="savePathMessage" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="initialDelay" class="col-sm-2 control-label">多久后开始执行</label>
+            <div class="col-sm-10">
+                <input type="text" name="initialDelay" class="form-control" value="0" id="initialDelay" placeholder="0">
+                <span class="initialDelayMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="period" class="col-sm-2 control-label">执行周期</label>
+            <div class="col-sm-10">
+                <input type="text" name="period" class="form-control" value="1" id="period" placeholder="1">
+                <span class="periodMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="timeUnit" class="col-sm-2 control-label">时间间隔单位（DAYS，HOURS，SECONDS）</label>
+            <div class="col-sm-10">
+                <input type="text" name="timeUnit" class="form-control" value="DAYS" id="timeUnit" placeholder="DAYS">
+                <span class="timeUnitMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" id="editSpiderButton" class="btn btn-default">设置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/js/formValidation.min.js}"></script>
+<script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.js}"></script>
+<script src="js/jquery/jquery.min.js"></script>
+<script src="js/formValidation.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+    $("#editSpiderButton").click(function () {
+        $.confirm({
+            type: 'dark',
+            animationSpeed: 300,
+            title: '确认以此配置开始爬虫工作？',
+            content:"<p>如果您非专业人士，请使用默认配置。</p> ",
+            buttons: {
+                confirm: {
+                    text: '确认',
+                    btnClass: 'waves-effect waves-button',
+                    action: function () {
+                        $.ajax({
+                            url:"/admin/editSpider",
+                            method:"post",
+                            traditional: true,//属性在这里设置 有啥用？没得这个好像传不了数据诶
+                            data:$("#editSpiderForm").serializeArray(),
+                            dataType:"json",
+                            success:function(data){
+                                if(data.state=="success"){
+                                    $.alert('爬虫已经在后台开始工作！');
+                                }
+                            },
+                            error:function(){
+                                $.alert('爬虫运行失败！');
+                            }
+                        });
+                    },
+                },
+                cancel: {
+                    text: '取消',
+                    btnClass: 'waves-effect waves-button'
+                }
+            }
+        });
+    });
+
+
+
+
+</script>
+</body>
+</html>

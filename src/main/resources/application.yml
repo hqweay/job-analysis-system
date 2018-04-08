@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8083
 
 
 spring:
@@ -12,6 +12,9 @@ spring:
     password: zb104207
     driver-class-name: com.mysql.jdbc.Driver
 
+  #security:
+    #basic:
+      #enabled: false
 
 #mybatis:
 #    mapperLocations : classpath:com/swpu/jobanalysissystem/*.xml
@@ -20,3 +23,12 @@ mybatis:
   type-aliases-package: learning.model2
   #mapper.xml所在位置
   mapper-locations: classpath:mappers/*.xml
+
+
+#这个配置可以用
+pagehelper:
+    helperDialect: mysql
+    reasonable: true
+    supportMethodsArguments: true
+    params: count=countSql
+

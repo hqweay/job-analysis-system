@@ -1,0 +1,108 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>后台管理登录页</title>
+
+	<link th:href="@{~/resources/plugins/bootstrap-3.3.0/css/bootstrap.min.css}" rel="stylesheet"/>
+	<link th:href="@{~/resources/plugins/material-design-iconic-font-2.2.0/css/material-design-iconic-font.min.css}" rel="stylesheet"/>
+	<link th:href="@{~/resources/plugins/waves-0.7.5/waves.min.css}" rel="stylesheet"/>
+	<link th:href="@{~/resources/plugins/checkbix/css/checkbix.min.css}" rel="stylesheet"/>
+	<link th:href="@{~/resources/css/login.css}" rel="stylesheet"/>
+
+    <link rel="stylesheet" th:href="@{~/bootstrap/css/bootstrap.min.css}">
+
+</head>
+<body>
+<div id="login-window">
+    <form name="f" id="loginForm" class="form-horizontal " method="post" th:action="@{login}" >
+
+		<div class="form-group">
+			<label for="usernameLogin" class="col-sm-2 control-label">Username</label>
+			<div class="col-sm-10">
+				<input type="text" name="username" class="form-control" id="usernameLogin" placeholder="username">
+				<span class="usernameMessage" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="passwordLogin" class="col-sm-2 control-label">Password</label>
+			<div class="col-sm-10">
+				<input type="password" name="password" class="form-control" id="passwordLogin" placeholder="Password">
+				<span class="passwordMessage" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="checkbox">
+					<div class="checkbox">
+						<input id="rememberMe" type="checkbox" class="checkbix" data-text="自动登录" name="rememberMe">
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-defaultclass waves-effect waves-button waves-float" id="login-bt" >
+				<i class="zmdi zmdi-arrow-forward"></i>
+			</button>
+		</div>
+		<div th:if="${param.error}">
+			<div class="alert alert-danger">
+				密码错误。
+			</div>
+		</div>
+	</form>
+
+
+
+
+
+</div>
+<script th:src="@{~/resources/plugins/jquery.1.12.4.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-3.3.0/js/bootstrap.min.js}"></script>
+<script th:src="@{~/resources/plugins/waves-0.7.5/waves.min.js}"></script>
+<script th:src="@{~/resources/plugins/checkbix/js/checkbix.min.js}"></script>
+
+<script th:src="@{~/resources/js/login.js}"></script>
+
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/js/formValidation.min.js}"></script>
+<script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+
+<script type="text/javascript">
+   // Checkbix.init();
+   $(document).ready(function () {
+       $('#loginForm').formValidation({
+           message: 'This value is not valid',
+           icon: {
+               valid: 'glyphicon glyphicon-ok',
+               invalid: 'glyphicon glyphicon-remove',
+               validating: 'glyphicon glyphicon-refresh'
+           },
+           fields: {
+
+               username: {
+                   err: '.usernameMessage',
+                   validators: {
+                       notEmpty: {
+                           message: '用户名不能为空'
+                       }
+                   }
+               },
+               password: {
+                   message: 'The username is not valid',
+                   validators: {
+                       notEmpty: {
+                           message: '密码不能为空'
+                       }
+                   }
+               }
+           }
+       });
+   });
+</script>
+</body>
+</html>

@@ -67,8 +67,27 @@ dependencies {
 	//mahout
 	compile group: 'org.apache.mahout', name: 'mahout-core', version: '0.9'
 
+	//基于内容的推荐使用
 	// https://mvnrepository.com/artifact/org.ansj/ansj_seg
 	compile group: 'org.ansj', name: 'ansj_seg', version: '5.1.6'
+
+    //springsecurity 整不动了先试试下面的shiro
+	compile("org.springframework.boot:spring-boot-starter-security")
+
+
+	//Mybatis 分页插件
+	// https://mvnrepository.com/artifact/com.github.pagehelper/pagehelper-spring-boot-starter
+	compile group: 'com.github.pagehelper', name: 'pagehelper-spring-boot-starter', version: '1.2.3'
+
+
+	// https://mvnrepository.com/artifact/org.apache.shiro/shiro-spring
+    //compile group: 'org.apache.shiro', name: 'shiro-spring', version: '1.4.0'
+
+	//爬虫用
+	// https://mvnrepository.com/artifact/org.jsoup/jsoup
+	compile group: 'org.jsoup', name: 'jsoup', version: '1.11.2'
+
+
 
 }
 

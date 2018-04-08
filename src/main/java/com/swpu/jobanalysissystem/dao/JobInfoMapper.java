@@ -2,9 +2,7 @@ package com.swpu.jobanalysissystem.dao;
 
 import com.swpu.jobanalysissystem.entity.JobAnalysis;
 import com.swpu.jobanalysissystem.entity.JobInfo;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
-import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -27,4 +25,23 @@ public interface JobInfoMapper {
 
   @Select("select id,job_name,min_salary,top_salary,min_xueli,job_place,company_name,experience,job_url,job_num,job_desc from (select job_id,(GROUP_CONCAT(label SEPARATOR ' ' ) )as label from job_image group by job_id )A join job_info on job_info.id=A.job_id where (label like '%' #{jineng} '%' or job_name like '%' #{jineng} '%') and min_xueli like '%' #{xueli} '%' and experience like '%' #{gongzuonianxian} '%' and job_place like '%' #{qiuzhidi} '%' and min_salary >= #{min_salary} and job_name like '%' #{job_name} '%' limit 10;")
   List<JobInfo> getRecommenedJobsBySqlQuery(JobAnalysis jobAnalysis);
+
+  //妈的 坑啊 不要加分号 用分页插件的时候是在后面补上
+  @Select("select * from job_info")
+  List<JobInfo> selectJobInfo();
+
+  @Select("select count(id) from job_info")
+  int getCount();
+
+  @Insert("INSERT INTO job_info (id, job_name,min_salary,top_salary,min_xueli,job_place,company_name,job_url,experience,job_num,job_desc) VALUES ( #{id},#{job_name}," +
+          "#{min_salary},#{top_salary},#{min_xueli},#{job_place},#{company_name},#{job_url},#{experience},#{job_num},#{job_desc} )   ")
+  int addJob(JobInfo jobInfo);
+
+
+
+  @Update("UPDATE job_info SET job_name = #{job_name}, min_salary = #{min_salary}, top_salary = #{top_salary}, min_xueli = #{min_xueli}, job_place = #{job_place}, company_name = #{company_name}, job_url = #{job_url}, experience = #{experience}, job_num = #{job_num}, job_desc = #{job_desc} WHERE id = #{id}")
+  int editJob(JobInfo jobInfo);
+
+  @Delete("DELETE FROM job_info WHERE id = ${id}")
+  int deleteJob(@Param(value="id") String id);
 }

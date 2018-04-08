@@ -4,17 +4,16 @@ import com.swpu.jobanalysissystem.dao.JobInfoMapper;
 import com.swpu.jobanalysissystem.dao.RecommendJobImageMapper;
 import com.swpu.jobanalysissystem.entity.JobInfo;
 import com.swpu.jobanalysissystem.entity.JobAnalysis;
-import com.swpu.jobanalysissystem.entity.RecommedJobImage;
 import com.swpu.jobanalysissystem.until.ContentRecommedStrategy;
 import com.swpu.jobanalysissystem.until.SqlQueryRecommedStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
@@ -27,25 +26,23 @@ import static org.springframework.web.bind.annotation.RequestMethod.POST;
 public class JobAnalysisController {
     @Autowired
     public RecommendJobImageMapper recommendJobImageMapper;
-
     @Autowired
     public ContentRecommedStrategy contentRecommedStrategy;
-
     @Autowired
     public JobInfoMapper jobInfoMapper;
-
     @Autowired
     public SqlQueryRecommedStrategy sqlQueryRecommedStrategy;
-
     @RequestMapping(value = {
             "/job-analysis.html"
     })
-    public String jobAnalysis(){
+ //   @PreAuthorize("hasRole('ROLE_USER')")
+    public String showJobAnalysis(){
         return "job-analysis";
     }
 
     @RequestMapping(value = "/job-analysis.html", method = POST)
     public String getUserInformation(@ModelAttribute("jobAnalysis") JobAnalysis jobAnalysis, Model model){
+        //基于内容的推荐
 //        ArrayList<Integer> jobIds = new ArrayList<Integer>();
 //        //得到list
 //        List<RecommedJobImage> recommedJobImages = recommendJobImageMapper.getRecommenedJobImages();
@@ -56,22 +53,17 @@ public class JobAnalysisController {
 //        user.put(jobAnalysis.getQiuzhidi(),5.0);
 //        user.put(jobAnalysis.getGongzuonianxian(),1.0);
 //        user.put(jobAnalysis.getJineng(),1.0);
-//
 //        //获得job的id集合并格式化
 //        jobIds = contentRecommedStrategy.getRecommendJobIds(user);
 //        //格式化一下
 //        String ids = jobIds.toString().replace("[", "").replace("]","");
 //        //通过格式化的id集合找到job集合
 //        List<JobInfo> jobs = jobInfoMapper.getRecommenedJobs(ids);
-
+//jobs = recommendJobImageMapper.getRecommenedJobsBySqlQuery(jobAnalysis);
         List<JobInfo> jobs;
         jobs = sqlQueryRecommedStrategy.getRecommendJobIds(jobAnalysis);
-        //jobs = recommendJobImageMapper.getRecommenedJobsBySqlQuery(jobAnalysis);
-
         System.out.println(jobs.get(0).getJob_desc());
-
         model.addAttribute("jobs", jobs);
         return "user-job-information";
-
     }
 }

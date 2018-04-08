@@ -1,10 +1,7 @@
 package com.swpu.jobanalysissystem.dao;
 
-import com.swpu.jobanalysissystem.entity.JobAnalysis;
-import com.swpu.jobanalysissystem.entity.JobInfo;
-import com.swpu.jobanalysissystem.entity.RecommedJobImage;
+import com.swpu.jobanalysissystem.pojo.RecommedJobImage;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
