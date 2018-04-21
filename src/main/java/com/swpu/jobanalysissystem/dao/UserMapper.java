@@ -20,6 +20,12 @@ public interface UserMapper {
     @Select("select * from user where #{email} = email or #{name} = name")
     Integer isRegistered(Login login);
 
+    //如果查询为空，会返回null
+    @Select("select * from user where name = #{name}")
+    Integer isRegisteredByName(String name);
+    //如果查询为空，会返回null
+    @Select("select * from user where email = #{email}")
+    Integer isRegisteredByEmail(String email);
 
     //如果查询为空，会返回null
     @Select("select * from user where #{email} = email and #{password} = password")
@@ -47,9 +53,11 @@ public interface UserMapper {
             "likes, password) values (#{name},#{email},#{info_education},#{info_major},#{info_place},#{info_ability},#{info_experience},#{likes},#{password})")
     int addUser(User user);
 
-    @Update("update user set name =  #{name}, email = #{email}, password = #{password}, info_education=  #{info_education},info_major =  #{info_major},info_place =  #{info_place}," +
-            "info_ability =  #{info_ability},info_experience = #{info_experience},likes =  #{likes} where id =  #{id}")
+    @Update("UPDATE user set id = #{id}, name = #{name}, email = #{email}, password = #{password}, info_education = #{info_education},info_major = #{info_major},info_place = #{info_place}, info_ability = #{info_ability},info_experience = #{info_experience},likes = #{likes} where id = #{id}")
     int editUser(User user);
+
+    @Update("UPDATE user set name = #{name}, email = #{email} where id = #{id}")
+    int editUserTest(User user);
 
     @Delete("DELETE FROM user WHERE id = ${id}")
     int deleteUser(@Param(value="id") String id);

@@ -1,0 +1,79 @@
+﻿<!DOCTYPE HTML>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>登录页</title>
+
+	<link href="resources/plugins/bootstrap-3.3.0/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="resources/plugins/material-design-iconic-font-2.2.0/css/material-design-iconic-font.min.css" rel="stylesheet"/>
+	<link href="resources/plugins/waves-0.7.5/waves.min.css" rel="stylesheet"/>
+	<link href="resources/plugins/checkbix/css/checkbix.min.css" rel="stylesheet"/>
+	<link href="resources/css/login.css" rel="stylesheet"/>
+</head>
+<body>
+<div id="login-window">
+	<form id="loginForm" class="form-horizontal " method="POST" action="login.ojbk">
+
+		<div class="form-group">
+			<label for="emailRegister" class="col-sm-2 control-label">Username</label>
+			<div class="col-sm-10">
+				<input type="text" name="username" class="form-control" id="usernameLogin" placeholder="username">
+				<span class="emailMessage" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="passwordRegister" class="col-sm-2 control-label">Password</label>
+			<div class="col-sm-10">
+				<input type="password" name="password" class="form-control" id="passwordLogin" placeholder="Password">
+				<span class="passwordMessage" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="checkbox">
+					<div class="checkbox">
+						<input id="rememberMe" type="checkbox" class="checkbix" data-text="自动登录" name="rememberMe">
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+		
+					
+					
+							
+									<button type="submit" class="btn btn-defaultclass waves-effect waves-button waves-float" id="login-bt" >
+											<i class="zmdi zmdi-arrow-forward"></i>
+							</button>		
+									
+					
+		
+				
+			
+
+		</div>
+		<div>
+			<h2> 还没注册呀？
+				<a href="javascript:void(0)" id="turnRegister">加入我们</a>
+			</h2>
+		</div>
+	</form>
+
+
+
+	
+	
+</div>
+<script src="resources/plugins/jquery.1.12.4.min.js"></script>
+<script src="resources/plugins/bootstrap-3.3.0/js/bootstrap.min.js"></script>
+<script src="resources/plugins/waves-0.7.5/waves.min.js"></script>
+<script src="resources/plugins/checkbix/js/checkbix.min.js"></script>
+
+<script src="resources/js/login.js"></script>
+<script type="text/javascript">
+	Checkbix.init();
+</script>
+</body>
+</html>

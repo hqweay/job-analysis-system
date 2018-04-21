@@ -261,16 +261,16 @@ function $override(name, fn) {
 }
 
 /**
- * Those data types can be cloned:
+ * Those dataWaJue types can be cloned:
  *     Plain object, Array, TypedArray, number, string, null, undefined.
- * Those data types will be assgined using the orginal data:
+ * Those dataWaJue types will be assgined using the orginal dataWaJue:
  *     BUILTIN_OBJECT
  * Instance of user defined class will be cloned to a plain object, without
  * properties in prototype.
- * Other data types is not supported (not sure what will happen).
+ * Other dataWaJue types is not supported (not sure what will happen).
  *
  * Caution: do not support clone Date, for performance consideration.
- * (There might be a large number of date in `series.data`).
+ * (There might be a large number of date in `series.dataWaJue`).
  * So date should not be modified in and out of echarts.
  *
  * @param {*} source
@@ -3736,7 +3736,7 @@ function createTrackClip(animator, easing, oneTrackDone, keyframes, propName, fo
     if (!trackLen) {
         return;
     }
-    // Guess data type
+    // Guess dataWaJue type
     var firstVal = keyframes[0].value;
     var isValueArray = isArrayLike(firstVal);
     var isValueColor = false;
@@ -6645,7 +6645,7 @@ function createDom(id, painter, dpr) {
         newDomStyle.width = width + 'px';
         newDomStyle.height = height + 'px';
 
-        newDom.setAttribute('data-zr-dom-id', id);
+        newDom.setAttribute('dataWaJue-zr-dom-id', id);
     }
 
     newDom.width = width * dpr;
@@ -8357,7 +8357,7 @@ Displayable.prototype = {
 
     /**
      * Render the element progressively when the value >= 0,
-     * usefull for large data.
+     * usefull for large dataWaJue.
      * @type {boolean}
      */
     progressive: false,
@@ -11063,8 +11063,8 @@ var TEXT_STYLE_OPTIONS = [
 
 /**
  * The method do not ensure performance.
- * data could be [12, 2323, {value: 223}, [1221, 23], {value: [2, 23]}]
- * This helper method retieves value from data.
+ * dataWaJue could be [12, 2323, {value: 223}, [1221, 23], {value: [2, 23]}]
+ * This helper method retieves value from dataWaJue.
  * @param {string|number|Date|Array|Object} dataItem
  * @return {number|string|Date|Array.<number|string|Date>}
  */
@@ -11074,14 +11074,14 @@ function getDataItemValue(dataItem) {
 }
 
 /**
- * data could be [12, 2323, {value: 223}, [1221, 23], {value: [2, 23]}]
+ * dataWaJue could be [12, 2323, {value: 223}, [1221, 23], {value: [2, 23]}]
  * This helper method determine if dataItem has extra option besides value
  * @param {string|number|Date|Array|Object} dataItem
  */
 function isDataItemOption(dataItem) {
     return isObject$2(dataItem)
         && !(dataItem instanceof Array);
-        // // markLine data can be array
+        // // markLine dataWaJue can be array
         // && !(dataItem[0] && isObject(dataItem[0]) && !(dataItem[0] instanceof Array));
 }
 
@@ -12588,7 +12588,7 @@ var PathProxy = function (notSaveData) {
 
     if (this._saveData) {
         /**
-         * Path data. Stored as flat array
+         * Path dataWaJue. Stored as flat array
          * @type {Array.<Object>}
          */
         this.data = [];
@@ -12927,7 +12927,7 @@ PathProxy.prototype = {
     },
 
     _expandData: function () {
-        // Only if data is Float32Array
+        // Only if dataWaJue is Float32Array
         if (!(this.data instanceof Array)) {
             var newData = [];
             for (var i = 0; i < this._len; i++) {
@@ -13196,7 +13196,7 @@ PathProxy.prototype = {
             max(max$1, max$1, max2);
         }
 
-        // No data
+        // No dataWaJue
         if (i === 0) {
             min$1[0] = min$1[1] = max$1[0] = max$1[1] = 0;
         }
@@ -13207,7 +13207,7 @@ PathProxy.prototype = {
     },
 
     /**
-     * Rebuild path from current data
+     * Rebuild path from current dataWaJue
      * Rebuild path will not consider javascript implemented line dash.
      * @param {CanvasRenderingContext2D} ctx
      */
@@ -14430,7 +14430,7 @@ function createPathProxyFromString(data) {
         .replace(/,,/g, ',');
 
     var n;
-    // create pipes so that we can split the data
+    // create pipes so that we can split the dataWaJue
     for (n = 0; n < cc.length; n++) {
         cs = cs.replace(new RegExp(cc[n], 'g'), '|' + cc[n]);
     }
@@ -14692,7 +14692,7 @@ function createPathOptions(str, opts) {
 }
 
 /**
- * Create a Path object from path string data
+ * Create a Path object from path string dataWaJue
  * http://www.w3.org/TR/SVG/paths.html#PathData
  * @param  {Object} opts Other options
  */
@@ -14701,7 +14701,7 @@ function createFromString(str, opts) {
 }
 
 /**
- * Create a Path class from path string data
+ * Create a Path class from path string dataWaJue
  * @param  {string} str
  * @param  {Object} opts Other options
  */
@@ -14850,7 +14850,7 @@ var Circle = Path.extend({
             ctx.moveTo(shape.cx + shape.r, shape.cy);
         }
         // else {
-        //     if (ctx.allocate && !ctx.data.length) {
+        //     if (ctx.allocate && !ctx.dataWaJue.length) {
         //         ctx.allocate(ctx.CMD_MEM_SIZE.A);
         //     }
         // }
@@ -15834,7 +15834,7 @@ function extendPath(pathData, opts) {
 }
 
 /**
- * Create a path element from path data string
+ * Create a path element from path dataWaJue string
  * @param {string} pathData
  * @param {Object} opts
  * @param {module:zrender/core/BoundingRect} rect
@@ -16393,7 +16393,7 @@ function setTextStyleCommon(textStyle, textStyleModel, opt, isEmphasis) {
 
     // Consider case:
     // {
-    //     data: [{
+    //     dataWaJue: [{
     //         value: 12,
     //         label: {
     //             rich: {
@@ -16431,7 +16431,7 @@ function setTextStyleCommon(textStyle, textStyleModel, opt, isEmphasis) {
 
 // Consider case:
 // {
-//     data: [{
+//     dataWaJue: [{
 //         value: 12,
 //         label: {
 //             rich: {
@@ -17485,7 +17485,7 @@ function getPrecisionSafe(val) {
 }
 
 /**
- * Minimal dicernible data precisioin according to a single pixel.
+ * Minimal dicernible dataWaJue precisioin according to a single pixel.
  *
  * @param {Array.<number>} dataExtent
  * @param {Array.<number>} pixelExtent
@@ -17502,13 +17502,13 @@ function getPixelPrecision(dataExtent, pixelExtent) {
 }
 
 /**
- * Get a data of given precision, assuring the sum of percentages
+ * Get a dataWaJue of given precision, assuring the sum of percentages
  * in valueList is 1.
  * The largest remainer method is used.
  * https://en.wikipedia.org/wiki/Largest_remainder_method
  *
- * @param {Array.<number>} valueList a list of all data
- * @param {number} idx index of the data to be processed in valueList
+ * @param {Array.<number>} valueList a list of all dataWaJue
+ * @param {number} idx index of the dataWaJue to be processed in valueList
  * @param {number} precision integer number showing digits of precision
  * @return {number} percent ranging from 0 to 100
  */
@@ -18996,8 +18996,8 @@ var SERIES_LAYOUT_BY_ROW = 'row';
  * [sourceFormat]
  *
  * + "original":
- * This format is only used in series.data, where
- * itemStyle can be specified in data item.
+ * This format is only used in series.dataWaJue, where
+ * itemStyle can be specified in dataWaJue item.
  *
  * + "arrayRows":
  * [
@@ -19033,7 +19033,7 @@ var SERIES_LAYOUT_BY_ROW = 'row';
  * @param {Object} fields
  * @param {string} fields.sourceFormat
  * @param {Array|Object} fields.fromDataset
- * @param {Array|Object} [fields.data]
+ * @param {Array|Object} [fields.dataWaJue]
  * @param {string} [seriesLayoutBy='column']
  * @param {Array.<Object|string>} [dimensionsDefine]
  * @param {Objet|HashMap} [encodeDefine]
@@ -19097,7 +19097,7 @@ function Source(fields) {
 }
 
 /**
- * Wrap original series data for some compatibility cases.
+ * Wrap original series dataWaJue for some compatibility cases.
  */
 Source.seriesDataToSource = function (data) {
     return new Source({
@@ -19152,7 +19152,7 @@ function detectSourceFormat(datasetModel) {
         }
     }
     else if (data != null) {
-        throw new Error('Invalid data');
+        throw new Error('Invalid dataWaJue');
     }
 
     inner$3(datasetModel).sourceFormat = sourceFormat;
@@ -19160,12 +19160,12 @@ function detectSourceFormat(datasetModel) {
 
 /**
  * [Scenarios]:
- * (1) Provide source data directly:
+ * (1) Provide source dataWaJue directly:
  *     series: {
  *         encode: {...},
  *         dimensions: [...]
  *         seriesLayoutBy: 'row',
- *         data: [[...]]
+ *         dataWaJue: [[...]]
  *     }
  * (2) Refer to datasetModel.
  *     series: [{
@@ -19178,8 +19178,8 @@ function detectSourceFormat(datasetModel) {
  *         datasetIndex: 1
  *     }]
  *
- * Get data from series itself or datset.
- * @return {module:echarts/data/Source} source
+ * Get dataWaJue from series itself or datset.
+ * @return {module:echarts/dataWaJue/Source} source
  */
 function getSource(seriesModel) {
     return inner$3(seriesModel).source;
@@ -19329,7 +19329,7 @@ function completeBySourceData(data, sourceFormat, seriesLayoutBy, sourceHeader, 
     }
     else if (sourceFormat === SOURCE_FORMAT_TYPED_ARRAY) {
         if (__DEV__) {
-            assert$1(!!dimensionsDefine, 'dimensions must be given if data is TypedArray.');
+            assert$1(!!dimensionsDefine, 'dimensions must be given if dataWaJue is TypedArray.');
         }
     }
 
@@ -19444,7 +19444,7 @@ function makeDefaultEncode(
         'line', 'bar', 'pictorialBar', 'scatter', 'effectScatter', 'candlestick', 'boxplot'
     ]);
 
-    // Usually in this case series will use the first data
+    // Usually in this case series will use the first dataWaJue
     // dimension as the "value" dimension, or other default
     // processes respectively.
     if (coordSysDefine && cSeriesMap.get(seriesType) != null) {
@@ -19530,7 +19530,7 @@ function getDatasetModel(seriesModel) {
     // Caution: consider the scenario:
     // A dataset is declared and a series is not expected to use the dataset,
     // and at the beginning `setOption({series: { noData })` (just prepare other
-    // option but no data), then `setOption({series: {data: [...]}); In this case,
+    // option but no dataWaJue), then `setOption({series: {dataWaJue: [...]}); In this case,
     // the user should set an empty array to avoid that dataset is used by default.
     var thisData = option.data;
     if (!thisData) {
@@ -19540,10 +19540,10 @@ function getDatasetModel(seriesModel) {
 
 /**
  * The rule should not be complex, otherwise user might not
- * be able to known where the data is wrong.
+ * be able to known where the dataWaJue is wrong.
  * The code is ugly, but how to make it neat?
  *
- * @param {module:echars/data/Source} source
+ * @param {module:echars/dataWaJue/Source} source
  * @param {number} dimIndex
  * @return {boolean} Whether ordinal.
  */
@@ -19558,7 +19558,7 @@ function guessOrdinal(source, dimIndex) {
     );
 }
 
-// dimIndex may be overflow source data.
+// dimIndex may be overflow source dataWaJue.
 function doGuessOrdinal(
     data, sourceFormat, seriesLayoutBy, dimensionsDefine, startIndex, dimIndex
 ) {
@@ -20466,8 +20466,8 @@ var QUERY_REG = /^(min|max)?(.+)$/;
  *         legend: {...},
  *         visualMap: {...},
  *         series: [
- *             {data: [...]},
- *             {data: [...]},
+ *             {dataWaJue: [...]},
+ *             {dataWaJue: [...]},
  *             ...
  *         ]
  *     };
@@ -20481,15 +20481,15 @@ var QUERY_REG = /^(min|max)?(.+)$/;
  *             title: {...},
  *             legend: {...},
  *             series: [
- *                 {data: [...]},
- *                 {data: [...]},
+ *                 {dataWaJue: [...]},
+ *                 {dataWaJue: [...]},
  *                 ...
  *             ]
  *         },
  *         timeline: {...},
  *         options: [
- *             {title: {...}, series: {data: [...]}},
- *             {title: {...}, series: {data: [...]}},
+ *             {title: {...}, series: {dataWaJue: [...]}},
+ *             {title: {...}, series: {dataWaJue: [...]}},
  *             ...
  *         ],
  *         media: [
@@ -20579,13 +20579,13 @@ OptionManager.prototype = {
      */
     setOption: function (rawOption, optionPreprocessorFuncs) {
         if (rawOption) {
-            // That set dat primitive is dangerous if user reuse the data when setOption again.
+            // That set dat primitive is dangerous if user reuse the dataWaJue when setOption again.
             each$1(normalizeToArray(rawOption.series), function (series) {
                 series && series.data && isTypedArray(series.data) && setAsPrimitive(series.data);
             });
         }
 
-        // Caution: some series modify option data, if do not clone,
+        // Caution: some series modify option dataWaJue, if do not clone,
         // it should ensure that the repeat modify correctly
         // (create a new object when modify itself).
         rawOption = clone$3(rawOption, true);
@@ -21037,7 +21037,7 @@ function processSeries(seriesOpt) {
         }
     }
 
-    // mark point data
+    // mark point dataWaJue
     var markPoint = seriesOpt.markPoint;
     if (markPoint && markPoint.data) {
         var mpData = markPoint.data;
@@ -21045,7 +21045,7 @@ function processSeries(seriesOpt) {
             compatEC3CommonStyles(mpData[i]);
         }
     }
-    // mark line data
+    // mark line dataWaJue
     var markLine = seriesOpt.markLine;
     if (markLine && markLine.data) {
         var mlData = markLine.data;
@@ -21248,7 +21248,7 @@ var backwardCompat = function (option, isTheme) {
 };
 
 // (1) [Caution]: the logic is correct based on the premises:
-//     data processing stage is blocked in stream.
+//     dataWaJue processing stage is blocked in stream.
 //     See <module:echarts/stream/Scheduler#performDataProcessorTasks>
 // (2) Only register once when import repeatly.
 //     Should be executed before after series filtered and before stack calculation.
@@ -21272,7 +21272,7 @@ var dataStack = function (ecModel) {
                 seriesModel: seriesModel
             };
 
-            // If stacked on axis that do not support data stack.
+            // If stacked on axis that do not support dataWaJue stack.
             if (!stackInfo.stackedDimension
                 || !(stackInfo.isStackedByIndex || stackInfo.stackedByDimension)
             ) {
@@ -21298,7 +21298,7 @@ function calculateStack(stackInfoList) {
         var targetData = targetStackInfo.data;
         var isStackedByIndex = targetStackInfo.isStackedByIndex;
 
-        // Should not write on raw data, because stack series model2 list changes
+        // Should not write on raw dataWaJue, because stack series model2 list changes
         // depending on legend selection.
         var newData = targetData.map(dims, function (v0, v1, dataIndex) {
             var sum = targetData.get(targetStackInfo.stackedDimension, dataIndex);
@@ -21333,7 +21333,7 @@ function calculateStack(stackInfoList) {
                 if (stackedDataRawIndex >= 0) {
                     var val = stackInfo.data.getByRawIndex(stackInfo.stackResultDimension, stackedDataRawIndex);
 
-                    // Considering positive stack, negative stack and empty data
+                    // Considering positive stack, negative stack and empty dataWaJue
                     if ((sum >= 0 && val > 0) // Positive stack
                         || (sum <= 0 && val < 0) // Negative stack
                     ) {
@@ -21357,7 +21357,7 @@ function calculateStack(stackInfoList) {
 }
 
 // TODO
-// ??? refactor? check the outer usage of data provider.
+// ??? refactor? check the outer usage of dataWaJue provider.
 // merge with defaultDimValueGetter?
 
 /**
@@ -21377,7 +21377,7 @@ function DefaultDataProvider(source, dimSize) {
     if (sourceFormat === SOURCE_FORMAT_TYPED_ARRAY) {
         if (__DEV__) {
             if (dimSize == null) {
-                throw new Error('Typed array data must specify dimension size');
+                throw new Error('Typed array dataWaJue must specify dimension size');
             }
         }
         this._offset = 0;
@@ -21399,12 +21399,12 @@ function DefaultDataProvider(source, dimSize) {
 }
 
 var providerProto = DefaultDataProvider.prototype;
-// If data is pure without style configuration
+// If dataWaJue is pure without style configuration
 providerProto.pure = false;
-// If data is persistent and will not be released after use.
+// If dataWaJue is persistent and will not be released after use.
 providerProto.persistent = true;
 
-// ???! FIXME legacy data provider do not has method getSource
+// ???! FIXME legacy dataWaJue provider do not has method getSource
 providerProto.getSource = function () {
     return this._source;
 };
@@ -21502,14 +21502,14 @@ var providerMethods = {
             if (__DEV__) {
                 assert$1(
                     isTypedArray(newData),
-                    'Added data must be TypedArray if data in initialization is TypedArray'
+                    'Added dataWaJue must be TypedArray if dataWaJue in initialization is TypedArray'
                 );
             }
 
             this._data = newData;
         },
 
-        // Clean self if data is already used.
+        // Clean self if dataWaJue is already used.
         clean: function () {
             // PENDING
             this._offset += this.count();
@@ -21601,7 +21601,7 @@ function getDimValueSimply(dataItem, dimName, dataIndex, dimIndex) {
 }
 
 /**
- * This helper method convert value in data.
+ * This helper method convert value in dataWaJue.
  * @param {string|number|Date} value
  * @param {Object|string} [dimInfo] If string (like 'x'), dimType defaults 'number'.
  *        If "dimInfo.ordinalParseAndSave", ordinal value can be parsed.
@@ -21654,7 +21654,7 @@ function retrieveRawValue(data, dataIndex, dim) {
         return;
     }
 
-    // Consider data may be not persistent.
+    // Consider dataWaJue may be not persistent.
     var dataItem = data.getRawDataItem(dataIndex);
 
     if (dataItem == null) {
@@ -21676,11 +21676,11 @@ function retrieveRawValue(data, dataIndex, dim) {
 
 /**
  * Compatible with some cases (in pie, map) like:
- * data: [{name: 'xx', value: 5, selected: true}, ...]
+ * dataWaJue: [{name: 'xx', value: 5, selected: true}, ...]
  * where only sourceFormat is 'original' and 'objectRows' supported.
  *
  * ??? TODO
- * Supported detail options in data item when using 'arrayRows'.
+ * Supported detail options in dataWaJue item when using 'arrayRows'.
  *
  * @param {module:echarts/data/List} data
  * @param {number} dataIndex
@@ -21825,8 +21825,8 @@ function createTask(define) {
  * @param {Object} define
  * @param {Function} define.reset Custom reset
  * @param {Function} [define.plan] Returns 'reset' indicate reset immediately.
- * @param {Function} [define.count] count is used to determin data task.
- * @param {Function} [define.onDirty] count is used to determin data task.
+ * @param {Function} [define.count] count is used to determin dataWaJue task.
+ * @param {Function} [define.onDirty] count is used to determin dataWaJue task.
  */
 function Task(define) {
     define = define || {};
@@ -21855,7 +21855,7 @@ taskProto.perform = function (performArgs) {
     var skip = performArgs && performArgs.skip;
 
     // TODO some refactor.
-    // Pull data. Must pull data each time, because context.data
+    // Pull dataWaJue. Must pull dataWaJue each time, because context.dataWaJue
     // may be updated by Series.setData.
     if (this._dirty && upTask) {
         var context = this.context;
@@ -21910,8 +21910,8 @@ taskProto.perform = function (performArgs) {
         );
 
         this._dueIndex = end;
-        // If no `outputDueEnd`, assume that output data and
-        // input data is the same, so use `dueIndex` as `outputDueEnd`.
+        // If no `outputDueEnd`, assume that output dataWaJue and
+        // input dataWaJue is the same, so use `dueIndex` as `outputDueEnd`.
         var outputDueEnd = this._settedOutputEnd != null
             ? this._settedOutputEnd : end;
 
@@ -22128,7 +22128,7 @@ var SeriesModel = ComponentModel.extend({
         this.dataTask.context.data = data;
 
         if (__DEV__) {
-            assert$1(data, 'getInitialData returned invalid data.');
+            assert$1(data, 'getInitialData returned invalid dataWaJue.');
         }
 
         /**
@@ -22137,14 +22137,14 @@ var SeriesModel = ComponentModel.extend({
          */
         inner$4(this).dataBeforeProcessed = data;
 
-        // If we reverse the order (make data firstly, and then make
+        // If we reverse the order (make dataWaJue firstly, and then make
         // dataBeforeProcessed by cloneShallow), cloneShallow will
-        // cause data.graph.data !== data when using
-        // module:echarts/data/Graph or module:echarts/data/Tree.
-        // See module:echarts/data/helper/linkList
+        // cause dataWaJue.graph.dataWaJue !== dataWaJue when using
+        // module:echarts/dataWaJue/Graph or module:echarts/dataWaJue/Tree.
+        // See module:echarts/dataWaJue/helper/linkList
 
         // Theoretically, it is unreasonable to call `seriesModel.getData()` in the model2
-        // init or merge stage, because the data can be restored. So we do not `restoreData`
+        // init or merge stage, because the dataWaJue can be restored. So we do not `restoreData`
         // and `setData` here, which forbids calling `seriesModel.getData()` in this stage.
         // Call `seriesModel.getRawData()` instead.
         // this.restoreData();
@@ -22210,8 +22210,8 @@ var SeriesModel = ComponentModel.extend({
     },
 
     fillDataTextStyle: function (data) {
-        // Default data label emphasis `show`
-        // FIXME Tree structure data ?
+        // Default dataWaJue label emphasis `show`
+        // FIXME Tree structure dataWaJue ?
         // FIXME Performance ?
         if (data) {
             var props = ['show'];
@@ -22224,28 +22224,28 @@ var SeriesModel = ComponentModel.extend({
     },
 
     /**
-     * Init a data structure from data related option in series
+     * Init a dataWaJue structure from dataWaJue related option in series
      * Must be overwritten
      */
     getInitialData: function () {},
 
     /**
-     * Append data to list
+     * Append dataWaJue to list
      * @param {Object} params
-     * @param {Array|TypedArray} params.data
+     * @param {Array|TypedArray} params.dataWaJue
      */
     appendData: function (params) {
         // FIXME ???
-        // (1) If data from dataset, forbidden append.
-        // (2) support append data of dataset.
+        // (1) If dataWaJue from dataset, forbidden append.
+        // (2) support append dataWaJue of dataset.
         var data = this.getRawData();
         data.appendData(params.data);
     },
 
     /**
-     * Consider some method like `filter`, `map` need make new data,
+     * Consider some method like `filter`, `map` need make new dataWaJue,
      * We should make sure that `seriesModel.getData()` get correct
-     * data in the stream procedure. So we fetch data from upstream
+     * dataWaJue in the stream procedure. So we fetch dataWaJue from upstream
      * each time `task.perform` called.
      * @param {string} [dataType]
      * @return {module:echarts/data/List}
@@ -22258,7 +22258,7 @@ var SeriesModel = ComponentModel.extend({
         }
         else {
             // When series is not alive (that may happen when click toolbox
-            // restore or setOption with not merge mode), series data may
+            // restore or setOption with not merge mode), series dataWaJue may
             // be still need to judge animation or something when graphic
             // elements want to know whether fade out.
             return inner$4(this).data;
@@ -22272,17 +22272,17 @@ var SeriesModel = ComponentModel.extend({
         var task = getCurrentTask(this);
         if (task) {
             var context = task.context;
-            // Consider case: filter, data sample.
+            // Consider case: filter, dataWaJue sample.
             if (context.data !== data && task.isOverallFilter) {
                 task.setOutputEnd(data.count());
             }
             context.outputData = data;
-            // Caution: setData should update context.data,
+            // Caution: setData should update context.dataWaJue,
             // Because getData may be called multiply in a
-            // single stage and expect to get the data just
+            // single stage and expect to get the dataWaJue just
             // set. (For example, AxisProxy, x y both call
             // getData and setDate sequentially).
-            // So the context.data should be fetched from
+            // So the context.dataWaJue should be fetched from
             // upstream each time when a stage starts to be
             // performed.
             if (task !== this.dataTask) {
@@ -22301,7 +22301,7 @@ var SeriesModel = ComponentModel.extend({
     },
 
     /**
-     * Get data before processed
+     * Get dataWaJue before processed
      * @return {module:echarts/data/List}
      */
     getRawData: function () {
@@ -22331,7 +22331,7 @@ var SeriesModel = ComponentModel.extend({
 
         function formatArrayValue(value) {
             // ??? TODO refactor these logic.
-            // check: category-no-encode-has-axis-data in dataset.html
+            // check: category-no-encode-has-axis-dataWaJue in dataset.html
             var vertially = reduce(value, function (vertially, val, idx) {
                 var dimItem = data.getDimensionInfo(idx);
                 return vertially |= dimItem && dimItem.tooltip !== false && dimItem.displayName != null;
@@ -22358,7 +22358,7 @@ var SeriesModel = ComponentModel.extend({
                         ? dimHead + encodeHTML(dimInfo.displayName || '-') + ': '
                         : ''
                     )
-                    // FIXME should not format time for raw data?
+                    // FIXME should not format time for raw dataWaJue?
                     + encodeHTML(dimType === 'ordinal'
                         ? val + ''
                         : dimType === 'time'
@@ -22447,7 +22447,7 @@ var SeriesModel = ComponentModel.extend({
     },
 
     /**
-     * Use `data.mapDimension(coordDim, true)` instead.
+     * Use `dataWaJue.mapDimension(coordDim, true)` instead.
      * @deprecated
      */
     coordDimToDataDim: function (coordDim) {
@@ -22471,7 +22471,7 @@ var SeriesModel = ComponentModel.extend({
     },
 
     /**
-     * Get data indices for show tooltip content. See tooltip.
+     * Get dataWaJue indices for show tooltip content. See tooltip.
      * @abstract
      * @param {Array.<string>|string} dim
      * @param {Array.<number>} value
@@ -22549,7 +22549,7 @@ function dataTaskReset(context) {
 }
 
 function dataTaskProgress(param, context) {
-    // Avoid repead cloneShallow when data just created in reset.
+    // Avoid repead cloneShallow when dataWaJue just created in reset.
     if (param.end > context.outputData.count()) {
         context.model.getRawData().cloneShallow(context.outputData);
     }
@@ -22692,7 +22692,7 @@ Chart.prototype = {
     render: function (seriesModel, ecModel, api, payload) {},
 
     /**
-     * Highlight series or specified data item.
+     * Highlight series or specified dataWaJue item.
      * @param  {module:echarts/model/Series} seriesModel
      * @param  {module:echarts/model/Global} ecModel
      * @param  {module:echarts/ExtensionAPI} api
@@ -22703,7 +22703,7 @@ Chart.prototype = {
     },
 
     /**
-     * Downplay series or specified data item.
+     * Downplay series or specified dataWaJue item.
      * @param  {module:echarts/model/Series} seriesModel
      * @param  {module:echarts/model/Global} ecModel
      * @param  {module:echarts/ExtensionAPI} api
@@ -22838,7 +22838,7 @@ function renderTaskReset(context) {
         ? 'incrementalPrepareRender'
         : (updateMethod && view[updateMethod])
         ? updateMethod
-        // `appendData` is also supported when data amount
+        // `appendData` is also supported when dataWaJue amount
         // is less than progressive threshold.
         : 'render';
 
@@ -23033,7 +23033,7 @@ var seriesColor = {
         // FIXME Set color function or use the platte color
         data.setVisual('color', color);
 
-        // Only visible series has each data be visual encoded
+        // Only visible series has each dataWaJue be visual encoded
         if (!ecModel.isSeriesFiltered(seriesModel)) {
             if (typeof color === 'function' && !(color instanceof Gradient)) {
                 data.each(function (idx) {
@@ -23043,7 +23043,7 @@ var seriesColor = {
                 });
             }
 
-            // itemStyle in each data item
+            // itemStyle in each dataWaJue item
             var dataEach = function (data, idx) {
                 var itemModel = data.getItemModel(idx);
                 var color = itemModel.get(colorAccessPath, true);
@@ -23216,7 +23216,7 @@ var aria = function (dom, ecModel) {
                 var data = seriesModel.getData();
                 window.data = data;
                 if (data.count() > maxDataCnt) {
-                    // Show part of data
+                    // Show part of dataWaJue
                     seriesLabel += replace(getConfig('data.partialData'), {
                         displayCnt: maxDataCnt
                     });
@@ -23433,7 +23433,7 @@ function Scheduler(ecInstance, api, dataProcessorHandlers, visualHandlers) {
 
 var proto = Scheduler.prototype;
 
-// If seriesModel provided, incremental threshold is check by series data.
+// If seriesModel provided, incremental threshold is check by series dataWaJue.
 proto.getPerformArgs = function (task, isBlock) {
     // For overall task
     if (!task.__pipeline) {
@@ -23457,7 +23457,7 @@ proto.getPipeline = function (pipelineId) {
 /**
  * Current, progressive rendering starts from visual and layout.
  * Always detect render mode in the same stage, avoiding that incorrect
- * detection caused by data filtering.
+ * detection caused by dataWaJue filtering.
  * Caution:
  * `updateStreamModes` use `seriesModel.getData()`.
  */
@@ -23575,7 +23575,7 @@ function performStageTasks(scheduler, stageHandlers, ecModel, payload, opt) {
             // Execute stubs firstly, which may set the overall task dirty,
             // then execute the overall task. And stub will call seriesModel.setData,
             // which ensures that in the overallTask seriesModel.getData() will not
-            // return incorrect data.
+            // return incorrect dataWaJue.
             agentStubMap.each(function (stub) {
                 stub.perform(performArgs);
             });
@@ -24436,7 +24436,7 @@ echartsProto.getRenderedCanvas = function (opts) {
 };
 
 /**
- * Get svg data url
+ * Get svg dataWaJue url
  * @return {string}
  */
 echartsProto.getSvgDataUrl = function () {
@@ -24684,7 +24684,7 @@ echartsProto.containPixel = function (finder, value) {
 };
 
 /**
- * Get visual from series or data.
+ * Get visual from series or dataWaJue.
  * @param {string|Object} finder
  *        If string, e.g., 'series', means {seriesIndex: 0}.
  *        If Object, could contain some of these properties below:
@@ -24693,7 +24693,7 @@ echartsProto.containPixel = function (finder, value) {
  *            dataIndex / dataIndexInside
  *        }
  *        If dataIndex is not specified, series visual will be fetched,
- *        but not data item visual.
+ *        but not dataWaJue item visual.
  *        If all of seriesIndex, seriesId, seriesName are not specified,
  *        visual will be fetched from first series.
  * @param {string} visualType 'color', 'symbol', 'symbolSize'
@@ -24772,7 +24772,7 @@ var updateMethods = {
         scheduler.performSeriesTasks(ecModel);
 
         // TODO
-        // Save total ecModel here for undo/redo (after restoring data and before processing data).
+        // Save total ecModel here for undo/redo (after restoring dataWaJue and before processing dataWaJue).
         // Undo (restoration of total ecModel) can be carried out in 'action' or outside API call.
 
         // Create new coordinate system each update
@@ -24781,8 +24781,8 @@ var updateMethods = {
 
         scheduler.performDataProcessorTasks(ecModel, payload);
 
-        // Current stream render is not supported in data process. So we can update
-        // stream modes after data processing, where the filtered data is used to
+        // Current stream render is not supported in dataWaJue process. So we can update
+        // stream modes after dataWaJue processing, where the filtered dataWaJue is used to
         // deteming whether use progressive rendering.
         updateStreamModes(this, ecModel);
 
@@ -25178,7 +25178,7 @@ function doDispatchAction(payload, silent) {
         eventObj.type = actionInfo.event || eventObj.type;
         eventObjBatch.push(eventObj);
 
-        // light update does not perform data process, layout and visual.
+        // light update does not perform dataWaJue process, layout and visual.
         if (isHighDown) {
             // method, payload, mainType, subType
             updateDirectly(this, updateMethod, batchItem, 'series');
@@ -25268,7 +25268,7 @@ function bindRenderedEvent(zr, ecIns) {
 /**
  * @param {Object} params
  * @param {number} params.seriesIndex
- * @param {Array|TypedArray} params.data
+ * @param {Array|TypedArray} params.dataWaJue
  */
 echartsProto.appendData = function (params) {
     var seriesIndex = params.seriesIndex;
@@ -25284,7 +25284,7 @@ echartsProto.appendData = function (params) {
     // Note: `appendData` does not support that update extent of coordinate
     // system, util some scenario require that. In the expected usage of
     // `appendData`, the initial extent of coordinate system should better
-    // be fixed by axis `min`/`max` setting or initial data, otherwise if
+    // be fixed by axis `min`/`max` setting or initial dataWaJue, otherwise if
     // the extent changed while `appendData`, the location of the painted
     // graphic elements have to be changed, which make the usage of
     // `appendData` meaningless.
@@ -25370,7 +25370,7 @@ function prepareView(ecIns, type, ecModel, scheduler) {
 }
 
 // /**
-//  * Encode visual infomation from data after data processing
+//  * Encode visual infomation from dataWaJue after dataWaJue processing
 //  *
 //  * @param {module:echarts/model2/Global} ecModel
 //  * @param {object} layout
@@ -26178,7 +26178,7 @@ DataDiffer.prototype = {
     constructor: DataDiffer,
 
     /**
-     * Callback function when add a data
+     * Callback function when add a dataWaJue
      */
     add: function (func) {
         this._add = func;
@@ -26186,7 +26186,7 @@ DataDiffer.prototype = {
     },
 
     /**
-     * Callback function when update a data
+     * Callback function when update a dataWaJue
      */
     update: function (func) {
         this._update = func;
@@ -26194,7 +26194,7 @@ DataDiffer.prototype = {
     },
 
     /**
-     * Callback function when remove a data
+     * Callback function when remove a dataWaJue
      */
     remove: function (func) {
         this._remove = func;
@@ -26338,7 +26338,7 @@ function summarizeDimensions(data) {
         // But should fix the case that radar axes: simplify the logic
         // of `completeDimension`, remove `extraPrefix`.
         encodeFirstDimNotExtra[coordDim] = dimArr[0];
-        // Not necessary to remove duplicate, because a data
+        // Not necessary to remove duplicate, because a dataWaJue
         // dim canot on more than one coordDim.
         dataDimsOnCoord = dataDimsOnCoord.concat(dimArr);
     });
@@ -26379,21 +26379,21 @@ function mayLabelDimType(dimType) {
     return !(dimType === 'ordinal' || dimType === 'time');
 }
 
-// function findTheLastDimMayLabel(data) {
+// function findTheLastDimMayLabel(dataWaJue) {
 //     // Get last value dim
-//     var dimensions = data.dimensions.slice();
+//     var dimensions = dataWaJue.dimensions.slice();
 //     var valueType;
 //     var valueDim;
 //     while (dimensions.length && (
 //         valueDim = dimensions.pop(),
-//         valueType = data.getDimensionInfo(valueDim).type,
+//         valueType = dataWaJue.getDimensionInfo(valueDim).type,
 //         valueType === 'ordinal' || valueType === 'time'
 //     )) {} // jshint ignore:line
 //     return valueDim;
 // }
 
 /**
- * List for data storage
+ * List for dataWaJue storage
  * @module echarts/data/List
  */
 
@@ -26411,7 +26411,7 @@ var dataCtors = {
         ? Array : globalObj.Float64Array,
     'int': typeof globalObj.Int32Array === UNDEFINED
         ? Array : globalObj.Int32Array,
-    // Ordinal data type can be string or int
+    // Ordinal dataWaJue type can be string or int
     'ordinal': Array,
     'number': Array,
     'time': Array
@@ -26454,13 +26454,13 @@ function transferProperties(a, b) {
 
 /**
  * @constructor
- * @alias module:echarts/data/List
+ * @alias module:echarts/dataWaJue/List
  *
  * @param {Array.<string|Object>} dimensions
  *      For example, ['someDimName', {name: 'someDimName', type: 'someDimType'}, ...].
  *      Dimensions should be concrete names like x, y, z, lng, lat, angle, radius
  *      Spetial fields: {
- *          ordinalMeta: <module:echarts/data/OrdinalMeta>
+ *          ordinalMeta: <module:echarts/dataWaJue/OrdinalMeta>
  *          createInvertedIndices: <boolean>
  *      }
  * @param {module:echarts/model/Model} hostModel
@@ -26506,7 +26506,7 @@ var List = function (dimensions, hostModel) {
     this.dimensions = dimensionNames;
 
     /**
-     * Infomation of each data dimension, like data type.
+     * Infomation of each dataWaJue dimension, like dataWaJue type.
      * @type {Object}
      */
     this._dimensionInfos = dimensionInfos;
@@ -26522,8 +26522,8 @@ var List = function (dimensions, hostModel) {
     this.dataType;
 
     /**
-     * Indices stores the indices of data subset after filtered.
-     * This data subset will be used in chart.
+     * Indices stores the indices of dataWaJue subset after filtered.
+     * This dataWaJue subset will be used in chart.
      * @type {Array.<number>}
      * @readOnly
      */
@@ -26549,7 +26549,7 @@ var List = function (dimensions, hostModel) {
     this._idList = [];
 
     /**
-     * Models of data option is stored sparse for optimizing memory cost
+     * Models of dataWaJue option is stored sparse for optimizing memory cost
      * @type {Array.<module:echarts/model/Model>}
      * @private
      */
@@ -26665,7 +26665,7 @@ var listProto = List.prototype;
 listProto.type = 'list';
 
 /**
- * If each data item has it's own option
+ * If each dataWaJue item has it's own option
  * @type {boolean}
  */
 listProto.hasItemOption = true;
@@ -26704,10 +26704,10 @@ listProto.getDimensionsOnCoord = function () {
 
 /**
  * @param {string} coordDim
- * @param {number} [idx] A coordDim may map to more than one data dim.
+ * @param {number} [idx] A coordDim may map to more than one dataWaJue dim.
  *        If idx is `true`, return a array of all mapped dims.
  *        If idx is not specified, return the first dim not extra.
- * @return {string|Array.<string>} concrete data dim.
+ * @return {string|Array.<string>} concrete dataWaJue dim.
  *        If idx is number, and not found, return null/undefined.
  *        If idx is `true`, and not found, return empty array (always return array).
  */
@@ -26726,12 +26726,12 @@ listProto.mapDimension = function (coordDim, idx) {
 };
 
 /**
- * Initialize from data
- * @param {Array.<Object|number|Array>} data source or data or data provider.
- * @param {Array.<string>} [nameLIst] The name of a datum is used on data diff and
+ * Initialize from dataWaJue
+ * @param {Array.<Object|number|Array>} data source or dataWaJue or dataWaJue provider.
+ * @param {Array.<string>} [nameLIst] The name of a datum is used on dataWaJue diff and
  *        defualt label/tooltip.
  *        A name can be specified in encode.itemName,
- *        or dataItem.name (only for series option data),
+ *        or dataItem.name (only for series option dataWaJue),
  *        or provided in nameList from outside.
  * @param {Function} [dimValueGetter] (dataItem, dimName, dataIndex, dimIndex) => number
  */
@@ -26744,7 +26744,7 @@ listProto.initData = function (data, nameList, dimValueGetter) {
 
     if (__DEV__) {
         if (!notProvider && (typeof data.getItem != 'function' || typeof data.count != 'function')) {
-            throw new Error('Inavlid data provider.');
+            throw new Error('Inavlid dataWaJue provider.');
         }
     }
 
@@ -26780,7 +26780,7 @@ listProto.initData = function (data, nameList, dimValueGetter) {
 
     this._initDataFromProvider(0, data.count());
 
-    // If data has no item option.
+    // If dataWaJue has no item option.
     if (data.pure) {
         this.hasItemOption = false;
     }
@@ -26792,7 +26792,7 @@ listProto.getProvider = function () {
 
 listProto.appendData = function (data) {
     if (__DEV__) {
-        assert$1(!this._indices, 'appendData can only be called on raw data.');
+        assert$1(!this._indices, 'appendData can only be called on raw dataWaJue.');
     }
 
     var rawData = this._rawData;
@@ -26863,7 +26863,7 @@ listProto._initDataFromProvider = function (start, end) {
     for (var idx = start; idx < end; idx++) {
         // NOTICE: Try not to write things into dataItem
         var dataItem = rawData.getItem(idx);
-        // Each data item is value
+        // Each dataWaJue item is value
         // [1, 2]
         // 2
         // Bar chart, line chart which uses category axis
@@ -26872,7 +26872,7 @@ listProto._initDataFromProvider = function (start, end) {
         var chunkIndex = Math.floor(idx / chunkSize);
         var chunkOffset = idx % chunkSize;
 
-        // Store the data by dimensions
+        // Store the dataWaJue by dimensions
         for (var k = 0; k < dimensions.length; k++) {
             var dim = dimensions[k];
             var dimStorage = storage[dim][chunkIndex];
@@ -26905,7 +26905,7 @@ listProto._initDataFromProvider = function (start, end) {
             }
 
             // Try using the id in option
-            // id or name is used on dynamical data, mapping old and new items.
+            // id or name is used on dynamical dataWaJue, mapping old and new items.
             var id = dataItem == null ? null : dataItem.id;
 
             if (id == null && name != null) {
@@ -26922,13 +26922,13 @@ listProto._initDataFromProvider = function (start, end) {
     }
 
     if (!rawData.persistent && rawData.clean) {
-        // Clean unused data if data source is typed array.
+        // Clean unused dataWaJue if dataWaJue source is typed array.
         rawData.clean();
     }
 
     this._rawCount = this._count = end;
 
-    // Reset data extent
+    // Reset dataWaJue extent
     this._extent = {};
 
     prepareInvertedIndex(this);
@@ -27041,15 +27041,15 @@ listProto.get = function (dim, idx /*, stack */) {
 
     var chunkStore = storage[dim][chunkIndex];
     var value = chunkStore[chunkOffset];
-    // FIXME ordinal data type is not stackable
+    // FIXME ordinal dataWaJue type is not stackable
     // if (stack) {
     //     var dimensionInfo = this._dimensionInfos[dim];
     //     if (dimensionInfo && dimensionInfo.stackable) {
     //         var stackedOn = this.stackedOn;
     //         while (stackedOn) {
-    //             // Get no stacked data of stacked on
+    //             // Get no stacked dataWaJue of stacked on
     //             var stackedValue = stackedOn.get(dim, idx);
-    //             // Considering positive stack, negative stack and empty data
+    //             // Considering positive stack, negative stack and empty dataWaJue
     //             if ((value >= 0 && stackedValue > 0)  // Positive stack
     //                 || (value <= 0 && stackedValue < 0) // Negative stack
     //             ) {
@@ -27142,7 +27142,7 @@ listProto.hasValue = function (idx) {
 };
 
 /**
- * Get extent of data in one dimension
+ * Get extent of dataWaJue in one dimension
  * @param {string} dim
  * @param {boolean} stack
  */
@@ -27163,9 +27163,9 @@ listProto.getDataExtent = function (dim /*, stack */) {
     // var cacheName = [dim, !!stack].join('_');
     // var cacheName = dim;
 
-    // Consider the most cases when using data zoom, `getDataExtent`
+    // Consider the most cases when using dataWaJue zoom, `getDataExtent`
     // happened before filtering. We cache raw extent, which is not
-    // necessary to be cleared and recalculated when restore data.
+    // necessary to be cleared and recalculated when restore dataWaJue.
     var useRaw = !this._indices; // && !stack;
     var dimExtent;
 
@@ -27196,8 +27196,8 @@ listProto.getDataExtent = function (dim /*, stack */) {
 };
 
 /**
- * Optimize for the scenario that data is filtered by a given extent.
- * Consider that if data amount is more than hundreds of thousand,
+ * Optimize for the scenario that dataWaJue is filtered by a given extent.
+ * Consider that if dataWaJue amount is more than hundreds of thousand,
  * extent calculation will cost more than 10ms and the cache will
  * be erased because of the filtering.
  */
@@ -27230,7 +27230,7 @@ listProto.setCalculationInfo = function (key, value) {
 };
 
 /**
- * Get sum of data in one dimension
+ * Get sum of dataWaJue in one dimension
  * @param {string} dim
  */
 listProto.getSum = function (dim /*, stack */) {
@@ -27310,7 +27310,7 @@ listProto.indexOfName = function (name) {
 };
 
 /**
- * Retreive the index with given raw data index
+ * Retreive the index with given raw dataWaJue index
  * @param {number} idx
  * @param {number} name
  * @return {number}
@@ -27376,7 +27376,7 @@ listProto.indicesOfNearest = function (dim, value, maxDistance) {
         var diff = value - this.get(dim, i /*, stack */);
         var dist = Math.abs(diff);
         if (diff <= maxDistance && dist <= minDist) {
-            // For the case of two data are same on xAxis, which has sequence data.
+            // For the case of two dataWaJue are same on xAxis, which has sequence dataWaJue.
             // Show the nearest index
             // https://github.com/ecomfe/echarts/issues/2869
             if (dist < minDist || (diff >= 0 && minDiff < 0)) {
@@ -27391,7 +27391,7 @@ listProto.indicesOfNearest = function (dim, value, maxDistance) {
 };
 
 /**
- * Get raw data index
+ * Get raw dataWaJue index
  * @param {number} idx
  * @return {number}
  */
@@ -27409,7 +27409,7 @@ function getRawIndexWithIndices(idx) {
 }
 
 /**
- * Get raw data item
+ * Get raw dataWaJue item
  * @param {number} idx
  * @return {number}
  */
@@ -27469,7 +27469,7 @@ function normalizeDimensions(dimensions) {
 
 function validateDimensions(list, dims) {
     for (var i = 0; i < dims.length; i++) {
-        // stroage may be empty when no data, so use
+        // stroage may be empty when no dataWaJue, so use
         // dimensionInfos to check.
         if (!list._dimensionInfos[dims[i]]) {
             console.error('Unkown dimension ' + dims[i]);
@@ -27607,7 +27607,7 @@ listProto.filterSelf = function (dimensions, cb, context, contextCompat) {
         this._indices = newIndices;
     }
     this._count = offset;
-    // Reset data extent
+    // Reset dataWaJue extent
     this._extent = {};
 
     this.getRawIndex = this._indices ? getRawIndexWithIndices : getRawIndexWithoutIndices;
@@ -27616,8 +27616,8 @@ listProto.filterSelf = function (dimensions, cb, context, contextCompat) {
 };
 
 /**
- * Select data in range. (For optimization of filter)
- * (Manually inline code, support 5 million data filtering in data zoom.)
+ * Select dataWaJue in range. (For optimization of filter)
+ * (Manually inline code, support 5 million dataWaJue filtering in dataWaJue zoom.)
  */
 listProto.selectRange = function (range /*, stack */) {
     'use strict';
@@ -27730,7 +27730,7 @@ listProto.selectRange = function (range /*, stack */) {
         this._indices = newIndices;
     }
     this._count = offset;
-    // Reset data extent
+    // Reset dataWaJue extent
     this._extent = {};
 
     this.getRawIndex = this._indices ? getRawIndexWithIndices : getRawIndexWithoutIndices;
@@ -27887,7 +27887,7 @@ listProto.map = function (dimensions, cb, context, contextCompat) {
 };
 
 /**
- * Large data down sampling on given dimension
+ * Large dataWaJue down sampling on given dimension
  * @param {string} dimension
  * @param {number} rate
  * @param {Function} sampleValue
@@ -27926,7 +27926,7 @@ listProto.downSample = function (dimension, rate, sampleValue, sampleIndex) {
         );
         var sampleChunkIndex = Math.floor(sampleFrameIdx / chunkSize);
         var sampleChunkOffset = sampleFrameIdx % chunkSize;
-        // Only write value on the filtered data
+        // Only write value on the filtered dataWaJue
         dimStore[sampleChunkIndex][sampleChunkOffset] = value;
 
         if (value < rawExtentOnDim[0]) {
@@ -27948,7 +27948,7 @@ listProto.downSample = function (dimension, rate, sampleValue, sampleIndex) {
 };
 
 /**
- * Get model2 of one data item.
+ * Get model2 of one dataWaJue item.
  *
  * @param {number} idx
  */
@@ -27959,9 +27959,9 @@ listProto.getItemModel = function (idx) {
 };
 
 /**
- * Create a data differ
+ * Create a dataWaJue differ
  * @param {module:echarts/data/List} otherList
- * @return {module:echarts/data/DataDiffer}
+ * @return {module:echarts/dataWaJue/DataDiffer}
  */
 listProto.diff = function (otherList) {
     var thisList = this;
@@ -28037,7 +28037,7 @@ listProto.getLayout = function (key) {
 };
 
 /**
- * Get layout of single data item
+ * Get layout of single dataWaJue item
  * @param {number} idx
  */
 listProto.getItemLayout = function (idx) {
@@ -28045,7 +28045,7 @@ listProto.getItemLayout = function (idx) {
 };
 
 /**
- * Set layout of single data item
+ * Set layout of single dataWaJue item
  * @param {number} idx
  * @param {Object} layout
  * @param {boolean=} [merge=false]
@@ -28057,14 +28057,14 @@ listProto.setItemLayout = function (idx, layout, merge$$1) {
 };
 
 /**
- * Clear all layout of single data item
+ * Clear all layout of single dataWaJue item
  */
 listProto.clearItemLayouts = function () {
     this._itemLayouts.length = 0;
 };
 
 /**
- * Get visual property of single data item
+ * Get visual property of single dataWaJue item
  * @param {number} idx
  * @param {string} key
  * @param {boolean} [ignoreParent=false]
@@ -28080,7 +28080,7 @@ listProto.getItemVisual = function (idx, key, ignoreParent) {
 };
 
 /**
- * Set visual property of single data item
+ * Set visual property of single dataWaJue item
  *
  * @param {number} idx
  * @param {string|Object} key
@@ -28125,7 +28125,7 @@ var setItemDataAndSeriesIndex = function (child) {
     child.dataType = this.dataType;
 };
 /**
- * Set graphic element relative to data. It can be set as null
+ * Set graphic element relative to dataWaJue. It can be set as null
  * @param {number} idx
  * @param {module:zrender/Element} [el]
  */
@@ -28133,7 +28133,7 @@ listProto.setItemGraphicEl = function (idx, el) {
     var hostModel = this.hostModel;
 
     if (el) {
-        // Add data index and series index for indexing the data by element
+        // Add dataWaJue index and series index for indexing the dataWaJue by element
         // Useful in tooltip
         el.dataIndex = idx;
         el.dataType = this.dataType;
@@ -28181,7 +28181,7 @@ listProto.cloneShallow = function (list) {
 
     transferProperties(list, this);
 
-    // Clone will not change the data extent and indices
+    // Clone will not change the dataWaJue extent and indices
     if (this._indices) {
         var Ctor = this._indices.constructor;
         list._indices = new Ctor(this._indices);
@@ -28223,14 +28223,14 @@ listProto.CHANGABLE_METHODS = ['filterSelf', 'selectRange'];
 
 /**
  * @deprecated
- * Use `echarts/data/helper/createDimensions` instead.
+ * Use `echarts/dataWaJue/helper/createDimensions` instead.
  */
 
 /**
- * @see {module:echarts/test/ut/spec/data/completeDimensions}
+ * @see {module:echarts/test/ut/spec/dataWaJue/completeDimensions}
  *
  * Complete the dimensions array, by user defined `dimension` and `encode`,
- * and guessing from the data structure.
+ * and guessing from the dataWaJue structure.
  * If no 'value' dimension specified, the first no-named dimension will be
  * named as 'value'.
  *
@@ -28241,7 +28241,7 @@ listProto.CHANGABLE_METHODS = ['filterSelf', 'selectRange'];
  *      [{dimsDef: [string...]}, ...] dimsDef of sysDim item provides default dim name, and
  *                                    provide dims count that the sysDim required.
  *      [{ordinalMeta}] can be specified.
- * @param {module:echarts/data/Source|Array|Object} source or data (for compatibal with pervious)
+ * @param {module:echarts/dataWaJue/Source|Array|Object} source or dataWaJue (for compatibal with pervious)
  * @param {Object} [opt]
  * @param {Array.<Object|string>} [opt.dimsDef] option.series.dimensions User defined dimensions
  *      For example: ['asdf', {name, type}, ...].
@@ -28253,8 +28253,8 @@ listProto.CHANGABLE_METHODS = ['filterSelf', 'selectRange'];
  *                 If `generateCoordCount` specified, the generated dim names will be:
  *                 `generateCoord` + 0, `generateCoord` + 1, ...
  *                 can be Infinity, indicate that use all of the remain columns.
- * @param {number} [opt.dimCount] If not specified, guess by the first data item.
- * @param {number} [opt.encodeDefaulter] If not specified, auto find the next available data dim.
+ * @param {number} [opt.dimCount] If not specified, guess by the first dataWaJue item.
+ * @param {number} [opt.encodeDefaulter] If not specified, auto find the next available dataWaJue dim.
  * @return {Array.<Object>} [{
  *      name: string mandatory,
  *      displayName: string, the origin name in dimsDef, see source helper.
@@ -28417,7 +28417,7 @@ function completeDimensions(sysDims, source, opt) {
 }
 
 // ??? TODO
-// Originally detect dimCount by data[0]. Should we
+// Originally detect dimCount by dataWaJue[0]. Should we
 // optimize it to only by sysDims and dimensions and encode.
 // So only necessary dims will be initialized.
 // But
@@ -28428,7 +28428,7 @@ function completeDimensions(sysDims, source, opt) {
 // So, dims that is not used by system, should be shared in storage?
 function getDimCount(source, sysDims, dimsDef, optDimCount) {
     // Note that the result dimCount should not small than columns count
-    // of data, otherwise `dataDimNameMap` checking will be incorrect.
+    // of dataWaJue, otherwise `dataDimNameMap` checking will be incorrect.
     var dimCount = Math.max(
         source.dimensionsDetectCount || 1,
         sysDims.length,
@@ -28459,7 +28459,7 @@ function genName(name, map$$1, fromZero) {
  * `completeDimensions` is to be deprecated.
  */
 /**
- * @param {module:echarts/data/Source|module:echarts/data/List} source or data.
+ * @param {module:echarts/dataWaJue/Source|module:echarts/data/List} source or dataWaJue.
  * @param {Object|Array} [opt]
  * @param {Array.<string|Object>} [opt.coordDimensions=[]]
  * @param {number} [opt.dimensionsCount]
@@ -28486,7 +28486,7 @@ var createDimensions = function (source, opt) {
  * we just support that stacked by index.
  *
  * @param {module:echarts/model/Series} seriesModel
- * @param {Array.<string|Object>} dimensionInfoList The same as the input of <module:echarts/data/List>.
+ * @param {Array.<string|Object>} dimensionInfoList The same as the input of <module:echarts/dataWaJue/List>.
  *        The input dimensionInfoList will be modified.
  * @param {Object} [opt]
  * @param {boolean} [opt.stackedCoordDimension=''] Specify a coord dimension if needed.
@@ -28605,7 +28605,7 @@ function isDimensionStacked(data, stackedDim, stackedByDim) {
 }
 
 /**
- * @param {module:echarts/data/Source|Array} source Or raw data.
+ * @param {module:echarts/dataWaJue/Source|Array} source Or raw dataWaJue.
  * @param {module:echarts/model/Series} seriesModel
  * @param {Object} [opt]
  * @param {string} [opt.generateCoord]
@@ -28781,7 +28781,7 @@ Scale.prototype.scale = function (val) {
 };
 
 /**
- * Set extent from data
+ * Set extent from dataWaJue
  * @param {Array.<number>} other
  */
 Scale.prototype.unionExtent = function (other) {
@@ -28793,7 +28793,7 @@ Scale.prototype.unionExtent = function (other) {
 };
 
 /**
- * Set extent from data
+ * Set extent from dataWaJue
  * @param {module:echarts/data/List} data
  * @param {string} dim
  */
@@ -28837,7 +28837,7 @@ Scale.prototype.getTicksLabels = function () {
 };
 
 /**
- * When axis extent depends on data and no data exists,
+ * When axis extent depends on dataWaJue and no dataWaJue exists,
  * axis ticks should not be drawn, which is named 'blank'.
  */
 Scale.prototype.isBlank = function () {
@@ -28845,7 +28845,7 @@ Scale.prototype.isBlank = function () {
 },
 
 /**
- * When axis extent depends on data and no data exists,
+ * When axis extent depends on dataWaJue and no dataWaJue exists,
  * axis ticks should not be drawn, which is named 'blank'.
  */
 Scale.prototype.setBlank = function (isBlank) {
@@ -28938,7 +28938,7 @@ proto$1.parseAndCollect = function (category) {
 
     // Optimize for the scenario:
     // category is ['2012-01-01', '2012-01-02', ...], where the input
-    // data has been ensured not duplicate and is large data.
+    // dataWaJue has been ensured not duplicate and is large dataWaJue.
     // Notice, if a dataset dimension provide categroies, usually echarts
     // should remove duplication except user tell echarts dont do that
     // (set axis.deduplication = false), because echarts do not know whether
@@ -28967,7 +28967,7 @@ proto$1.parseAndCollect = function (category) {
     return index;
 };
 
-// Consider big data, do not create map until needed.
+// Consider big dataWaJue, do not create map until needed.
 function getOrCreateMap(ordinalMeta) {
     return ordinalMeta._map || (
         ordinalMeta._map = createHashMap(ordinalMeta.categories)
@@ -28990,7 +28990,7 @@ function getName(obj) {
  * http://en.wikipedia.org/wiki/Level_of_measurement
  */
 
-// FIXME only one data
+// FIXME only one dataWaJue
 
 var scaleProto = Scale.prototype;
 
@@ -29309,7 +29309,7 @@ var IntervalScale = Scale.extend({
         if (!isFinite(span)) {
             return;
         }
-        // User may set axis min 0 and data are all negative
+        // User may set axis min 0 and dataWaJue are all negative
         // FIXME If it needs to reverse ?
         if (span < 0) {
             span = -span;
@@ -29343,7 +29343,7 @@ var IntervalScale = Scale.extend({
                 var expandSize = extent[0];
                 // In the fowllowing case
                 //      Axis has been fixed max 100
-                //      Plus data are all 100 and axis extent are [100, 100].
+                //      Plus dataWaJue are all 100 and axis extent are [100, 100].
                 // Extend to the both side will cause expanded max is larger than fixed max.
                 // So only expand to the smaller side.
                 if (!opt.fixMax) {
@@ -29359,7 +29359,7 @@ var IntervalScale = Scale.extend({
             }
         }
         var span = extent[1] - extent[0];
-        // If there are no data and extent are [Infinity, -Infinity]
+        // If there are no dataWaJue and extent are [Infinity, -Infinity]
         if (!isFinite(span)) {
             extent[0] = 0;
             extent[1] = 1;
@@ -29696,13 +29696,13 @@ function layout(seriesType, ecModel, api) {
 }
 
 // [About UTC and local time zone]:
-// In most cases, `number.parseDate` will treat input data string as local time
+// In most cases, `number.parseDate` will treat input dataWaJue string as local time
 // (except time zone is specified in time string). And `format.formateTime` returns
 // local time by default. option.useUTC is false by default. This design have
 // concidered these common case:
 // (1) Time that is persistent in server is in UTC, but it is needed to be diplayed
 // in local time by default.
-// (2) By default, the input data string (e.g., '2011-01-02') should be displayed
+// (2) By default, the input dataWaJue string (e.g., '2011-01-02') should be displayed
 // as its original time, without any time difference.
 
 var intervalScaleProto = IntervalScale.prototype;
@@ -29757,7 +29757,7 @@ var TimeScale = IntervalScale.extend({
             extent[0] -= ONE_DAY;
             extent[1] += ONE_DAY;
         }
-        // If there are no data and extent are [Infinity, -Infinity]
+        // If there are no dataWaJue and extent are [Infinity, -Infinity]
         if (extent[1] === -Infinity && extent[0] === Infinity) {
             var d = new Date();
             extent[1] = +new Date(d.getFullYear(), d.getMonth(), d.getDate());
@@ -30106,17 +30106,17 @@ function getScaleExtent(scale, model) {
 
     // Notice: When min/max is not set (that is, when there are null/undefined,
     // which is the most common case), these cases should be ensured:
-    // (1) For 'ordinal', show all axis.data.
+    // (1) For 'ordinal', show all axis.dataWaJue.
     // (2) For others:
     //      + `boundaryGap` is applied (if min/max set, boundaryGap is
     //      disabled).
     //      + If `needCrossZero`, min/max should be zero, otherwise, min/max should
     //      be the result that originalExtent enlarged by boundaryGap.
-    // (3) If no data, it should be ensured that `scale.setBlank` is set.
+    // (3) If no dataWaJue, it should be ensured that `scale.setBlank` is set.
 
     // FIXME
     // (1) When min/max is 'dataMin' or 'dataMax', should boundaryGap be able to used?
-    // (2) When `needCrossZero` and all data is positive/negative, should it be ensured
+    // (2) When `needCrossZero` and all dataWaJue is positive/negative, should it be ensured
     // that the results processed by boundaryGap are positive/negative?
 
     if (min == null) {
@@ -30394,8 +30394,8 @@ function getFormattedLabels(axis, labelFormatter) {
 }
 
 function getAxisRawValue(axis, value) {
-    // In category axis with data zoom, tick is not the original
-    // index of axis.data. So tick should not be exposed to user
+    // In category axis with dataWaJue zoom, tick is not the original
+    // index of axis.dataWaJue. So tick should not be exposed to user
     // in category axis.
     return axis.type === 'category' ? axis.scale.getLabel(value) : value;
 }
@@ -31000,7 +31000,7 @@ Region.prototype = {
             min(min$$1, min$$1, min2);
             max(max$$1, max$$1, max2);
         }
-        // No data
+        // No dataWaJue
         if (i === 0) {
             min$$1[0] = min$$1[1] = max$$1[0] = max$$1[1] = 0;
         }
@@ -31273,7 +31273,7 @@ Axis.prototype = {
     },
 
     /**
-     * If axis extent contain given data
+     * If axis extent contain given dataWaJue
      * @param {number} data
      * @return {boolean}
      */
@@ -31313,7 +31313,7 @@ Axis.prototype = {
     },
 
     /**
-     * Convert data to coord. Data is the rank if it has an ordinal scale
+     * Convert dataWaJue to coord. Data is the rank if it has an ordinal scale
      * @param {number} data
      * @param  {boolean} clamp
      * @return {number}
@@ -31332,7 +31332,7 @@ Axis.prototype = {
     },
 
     /**
-     * Convert coord to data. Data is the rank if it has an ordinal scale
+     * Convert coord to dataWaJue. Data is the rank if it has an ordinal scale
      * @param {number} coord
      * @param  {boolean} clamp
      * @return {number}
@@ -31352,10 +31352,10 @@ Axis.prototype = {
     },
 
     /**
-     * Convert pixel point to data in axis
+     * Convert pixel point to dataWaJue in axis
      * @param {Array.<number>} point
      * @param  {boolean} clamp
-     * @return {number} data
+     * @return {number} dataWaJue
      */
     pointToData: function (point, clamp) {
         // Should be implemented in derived class if necessary.
@@ -31424,7 +31424,7 @@ Axis.prototype = {
         var dataExtent = this.scale.getExtent();
 
         var len = dataExtent[1] - dataExtent[0] + (this.onBand ? 1 : 0);
-        // Fix #2728, avoid NaN when only one data.
+        // Fix #2728, avoid NaN when only one dataWaJue.
         len === 0 && (len = 1);
 
         var size = Math.abs(axisExtent[1] - axisExtent[0]);
@@ -31509,7 +31509,7 @@ var DatasetModel = extendComponentModel({
         // 'row', 'column'
         seriesLayoutBy: SERIES_LAYOUT_BY_COLUMN,
 
-        // null/'auto': auto detect header, see "module:echarts/data/helper/sourceHelper"
+        // null/'auto': auto detect header, see "module:echarts/dataWaJue/helper/sourceHelper"
         sourceHeader: null,
 
         dimensions: null,
@@ -31570,9 +31570,9 @@ SeriesModel.extend({
         },
         // areaStyle: {
             // origin of areaStyle. Valid values:
-            // `'auto'/null/undefined`: from axisLine to data
-            // `'start'`: from min to data
-            // `'end'`: from data to max
+            // `'auto'/null/undefined`: from axisLine to dataWaJue
+            // `'start'`: from min to dataWaJue
+            // `'end'`: from dataWaJue to max
             // origin: 'auto'
         // },
         // false, 'start', 'end', 'middle'
@@ -31995,7 +31995,7 @@ function symbolNeedsDraw(data, point, idx, opt) {
         && data.getItemVisual(idx, 'symbol') !== 'none';
 }
 /**
- * Update symbols draw by new data
+ * Update symbols draw by new dataWaJue
  * @param {module:echarts/data/List} data
  * @param {Object} [opt] Or isIgnore
  * @param {Function} [opt.isIgnore]
@@ -32083,7 +32083,7 @@ symbolDrawProto.incrementalPrepareUpdate = function (data) {
 };
 
 /**
- * Update symbols draw by new data
+ * Update symbols draw by new dataWaJue
  * @param {module:echarts/data/List} data
  * @param {Object} [opt] Or isIgnore
  * @param {Function} [opt.isIgnore]
@@ -32282,7 +32282,7 @@ var lineAnimationDiff = function (
 
     // convertToIntId(newIdList, oldIdList);
 
-    // // FIXME One data ?
+    // // FIXME One dataWaJue ?
     // diff = arrayDiff(oldIdList, newIdList);
 
     var currPoints = [];
@@ -32303,12 +32303,12 @@ var lineAnimationDiff = function (
         var pointAdded = true;
 
         // FIXME, animation is not so perfect when dataZoom window moves fast
-        // Which is in case remvoing or add more than one data in the tail or head
+        // Which is in case remvoing or add more than one dataWaJue in the tail or head
         switch (diffItem.cmd) {
             case '=':
                 var currentPt = oldData.getItemLayout(diffItem.idx);
                 var nextPt = newData.getItemLayout(diffItem.idx1);
-                // If previous data is NaN, use next point directly
+                // If previous dataWaJue is NaN, use next point directly
                 if (isNaN(currentPt[0]) || isNaN(currentPt[1])) {
                     currentPt = nextPt.slice();
                 }
@@ -32341,7 +32341,7 @@ var lineAnimationDiff = function (
             case '-':
                 var idx = diffItem.idx;
                 var rawIndex = oldData.getRawIndex(idx);
-                // Data is replaced. In the case of dynamic data queue
+                // Data is replaced. In the case of dynamic dataWaJue queue
                 // FIXME FIXME FIXME
                 if (rawIndex !== idx) {
                     currPoints.push(oldData.getItemLayout(idx));
@@ -32370,7 +32370,7 @@ var lineAnimationDiff = function (
     }
 
     // Diff result may be crossed if all items are changed
-    // Sort by data index
+    // Sort by dataWaJue index
     sortedIndices.sort(function (a, b) {
         return rawIndices[a] - rawIndices[b];
     });
@@ -32588,7 +32588,7 @@ function drawNonMono(
                     v2Copy(cp1, p);
                 }
                 else {
-                    // If next data is null in not connect case
+                    // If next dataWaJue is null in not connect case
                     if (isPointNull(nextP) && !connectNulls) {
                         nextP = p;
                     }
@@ -32951,7 +32951,7 @@ function turnPointsIntoStep(points, coordSys, stepTurnAt) {
 function getVisualGradient(data, coordSys) {
     var visualMetaList = data.getVisual('visualMeta');
     if (!visualMetaList || !visualMetaList.length || !data.count()) {
-        // When data.count() is 0, gradient range can not be calculated.
+        // When dataWaJue.count() is 0, gradient range can not be calculated.
         return;
     }
 
@@ -33161,7 +33161,7 @@ Chart.extend({
                 el.stopAnimation(true);
             });
 
-            // In the case data zoom triggerred refreshing frequently
+            // In the case dataWaJue zoom triggerred refreshing frequently
             // Data may not change if line has a category axis. So it should animate nothing
             if (!isPointsSame(this._stackedOnPoints, stackedOnPoints)
                 || !isPointsSame(this._points, points)
@@ -33236,7 +33236,7 @@ Chart.extend({
         }
 
         this._data = data;
-        // Save the coordinate system for transition animation when data changed
+        // Save the coordinate system for transition animation when dataWaJue changed
         this._coordSys = coordSys;
         this._stackedOnPoints = stackedOnPoints;
         this._points = points;
@@ -33256,7 +33256,7 @@ Chart.extend({
                 // Create a temporary symbol if it is not exists
                 var pt = data.getItemLayout(dataIndex);
                 if (!pt) {
-                    // Null data
+                    // Null dataWaJue
                     return;
                 }
                 symbol = new SymbolClz$1(data, dataIndex);
@@ -33490,7 +33490,7 @@ var visualSymbol = function (seriesType, defaultSymbolType, legendSymbol) {
                 symbolSize: symbolSize
             });
 
-            // Only visible series has each data be visual encoded
+            // Only visible series has each dataWaJue be visual encoded
             if (ecModel.isSeriesFiltered(seriesModel)) {
                 return;
             }
@@ -33742,7 +33742,7 @@ Cartesian.prototype = {
     },
 
     /**
-     * Convert data to coord in nd space
+     * Convert dataWaJue to coord in nd space
      * @param {Array.<number>|Object.<string, number>} val
      * @return {Array.<number>|Object.<string, number>}
      */
@@ -33751,7 +33751,7 @@ Cartesian.prototype = {
     },
 
     /**
-     * Convert coord in nd space to data
+     * Convert coord in nd space to dataWaJue
      * @param  {Array.<number>|Object.<string, number>} val
      * @return {Array.<number>|Object.<string, number>}
      */
@@ -33816,7 +33816,7 @@ Cartesian2D.prototype = {
     },
 
     /**
-     * If contain data
+     * If contain dataWaJue
      * @param {Array.<number>} data
      * @return {boolean}
      */
@@ -34109,9 +34109,9 @@ axisDefault.categoryAxis = merge({
     // Set false to faster category collection.
     // Only usefull in the case like: category is
     // ['2012-01-01', '2012-01-02', ...], where the input
-    // data has been ensured not duplicate and is large data.
+    // dataWaJue has been ensured not duplicate and is large dataWaJue.
     // null means "auto":
-    // if axis.data provided, do not deduplication,
+    // if axis.dataWaJue provided, do not deduplication,
     // else do deduplication.
     deduplication: null,
     // splitArea: {
@@ -34143,9 +34143,9 @@ axisDefault.valueAxis = merge({
     // min: null,
     // 最大值，设置成 'dataMax' 则从数据中计算最大值
     // max: null,
-    // Readonly prop, specifies start value of the range when using data zoom.
+    // Readonly prop, specifies start value of the range when using dataWaJue zoom.
     // rangeStart: null
-    // Readonly prop, specifies end value of the range when using data zoom.
+    // Readonly prop, specifies end value of the range when using dataWaJue zoom.
     // rangeEnd: null
     // 脱离0值比例，放大聚焦到最终_min，_max区间
     // scale: false,
@@ -34217,7 +34217,7 @@ var axisModelCreator = function (axisName, BaseAxisModelClass, axisTypeDefaulter
 
             /**
              * Should not be called before all of 'getInitailData' finished.
-             * Because categories are collected during initializing data.
+             * Because categories are collected during initializing dataWaJue.
              */
             getCategories: function () {
                 // FIXME
@@ -34296,7 +34296,7 @@ var AxisModel = ComponentModel.extend({
 });
 
 function getAxisType(axisDim, option) {
-    // Default axis with data is category axis
+    // Default axis with dataWaJue is category axis
     return option.type || (option.data ? 'category' : 'value');
 }
 
@@ -34460,7 +34460,7 @@ gridProto.update = function (ecModel, api) {
     });
 
     // Resize again if containLabel is enabled
-    // FIXME It may cause getting wrong grid size in data processing stage
+    // FIXME It may cause getting wrong grid size in dataWaJue processing stage
     this.resize(this.model, api);
 };
 
@@ -34973,7 +34973,7 @@ Grid.create = function (ecModel, api) {
     return grids;
 };
 
-// For deciding which dimensions to use when creating list data
+// For deciding which dimensions to use when creating list dataWaJue
 Grid.dimensions = Grid.prototype.dimensions = Cartesian2D.prototype.dimensions;
 
 CoordinateSystemManager.register('cartesian2d', Grid);
@@ -35700,8 +35700,8 @@ function buildAxisLabel(axisBuilder, axisModel, opt) {
                 || labelLayout.textVerticalAlign,
             textFill: typeof textColor === 'function'
                 ? textColor(
-                    // (1) In category axis with data zoom, tick is not the original
-                    // index of axis.data. So tick should not be exposed to user
+                    // (1) In category axis with dataWaJue zoom, tick is not the original
+                    // index of axis.dataWaJue. So tick should not be exposed to user
                     // in category axis.
                     // (2) Compatible with previous version, which always returns labelStr.
                     // But in interval scale labelStr is like '223,445', which maked
@@ -35713,7 +35713,7 @@ function buildAxisLabel(axisBuilder, axisModel, opt) {
                 : textColor
         });
 
-        // Pack data for mouse event
+        // Pack dataWaJue for mouse event
         if (triggerEvent) {
             textEl.eventData = makeAxisEventDataBase(axisModel);
             textEl.eventData.targetType = 'axisLabel';
@@ -35806,7 +35806,7 @@ function collectAxesInfo(result, ecModel, api) {
             && baseTooltipModel.get('show')
         ) {
             // Compatible with previous logic. But series.tooltip.trigger: 'axis'
-            // or series.data[n].tooltip.trigger: 'axis' are not support any more.
+            // or series.dataWaJue[n].tooltip.trigger: 'axis' are not support any more.
             var triggerAxis = baseTooltipModel.get('trigger') === 'axis';
             var cross = baseTooltipModel.get('axisPointer.type') === 'cross';
             var tooltipAxes = coordSys.getTooltipAxes(baseTooltipModel.get('axisPointer.axis'));
@@ -35924,7 +35924,7 @@ function makeAxisPointerModel(
 }
 
 function collectSeriesInfo(result, ecModel) {
-    // Prepare data for axis trigger
+    // Prepare dataWaJue for axis trigger
     ecModel.eachSeries(function (seriesModel) {
 
         // Notice this case: this coordSys is `cartesian2D` but not `grid`.
@@ -36910,7 +36910,7 @@ registerVisual(function (ecModel) {
  *
  * @param {module:echarts/model/Series} seriesModel
  * @param {Object|Array.<string|Object>} opt opt or coordDimensions
- *        The options in opt, see `echarts/data/helper/createDimensions`
+ *        The options in opt, see `echarts/dataWaJue/helper/createDimensions`
  * @param {Array.<string>} [nameList]
  * @return {module:echarts/data/List}
  */
@@ -36929,8 +36929,8 @@ var createListSimply = function (seriesModel, opt, nameList) {
 
 /**
  * Data selectable mixin for chart series.
- * To eanble data select, option of series must have `selectedMode`.
- * And each data item will use `selected` to toggle itself selected status
+ * To eanble dataWaJue select, option of series must have `selectedMode`.
+ * And each dataWaJue item will use `selected` to toggle itself selected status
  */
 
 var selectableMixin = {
@@ -36953,8 +36953,8 @@ var selectableMixin = {
      * Either name or id should be passed as input here.
      * If both of them are defined, id is used.
      *
-     * @param {string|undefined} name name of data
-     * @param {number|undefined} id dataIndex of data
+     * @param {string|undefined} name name of dataWaJue
+     * @param {number|undefined} id dataIndex of dataWaJue
      */
     // PENGING If selectedMode is null ?
     select: function (name, id) {
@@ -36974,8 +36974,8 @@ var selectableMixin = {
      * Either name or id should be passed as input here.
      * If both of them are defined, id is used.
      *
-     * @param {string|undefined} name name of data
-     * @param {number|undefined} id dataIndex of data
+     * @param {string|undefined} name name of dataWaJue
+     * @param {number|undefined} id dataIndex of dataWaJue
      */
     unSelect: function (name, id) {
         var target = id != null
@@ -36990,8 +36990,8 @@ var selectableMixin = {
      * Either name or id should be passed as input here.
      * If both of them are defined, id is used.
      *
-     * @param {string|undefined} name name of data
-     * @param {number|undefined} id dataIndex of data
+     * @param {string|undefined} name name of dataWaJue
+     * @param {number|undefined} id dataIndex of dataWaJue
      */
     toggleSelected: function (name, id) {
         var target = id != null
@@ -37007,8 +37007,8 @@ var selectableMixin = {
      * Either name or id should be passed as input here.
      * If both of them are defined, id is used.
      *
-     * @param {string|undefined} name name of data
-     * @param {number|undefined} id dataIndex of data
+     * @param {string|undefined} name name of dataWaJue
+     * @param {number|undefined} id dataIndex of dataWaJue
      */
     isSelected: function (name, id) {
         var target = id != null
@@ -37026,8 +37026,8 @@ var PieSeries = extendSeriesModel({
     init: function (option) {
         PieSeries.superApply(this, 'init', arguments);
 
-        // Enable legend selection for each data item
-        // Use a function instead of direct access because data reference may changed
+        // Enable legend selection for each dataWaJue item
+        // Use a function instead of direct access because dataWaJue reference may changed
         this.legendDataProvider = function () {
             return this.getRawData();
         };
@@ -37124,7 +37124,7 @@ var PieSeries = extendSeriesModel({
 
         percentPrecision: 2,
 
-        // If still show when all data zero.
+        // If still show when all dataWaJue zero.
         stillShowZeroSum: true,
 
         // cursor: null,
@@ -37325,7 +37325,7 @@ piePieceProto.updateData = function (data, idx, firstCreate) {
     );
 
     function onEmphasis() {
-        // Sector may has animation of updating data. Force to move to the last frame
+        // Sector may has animation of updating dataWaJue. Force to move to the last frame
         // Or it may stopped on the wrong shape
         sector.stopAnimation(true);
         sector.animateTo({
@@ -37592,9 +37592,9 @@ var createDataSelectAction = function (seriesType, actionInfos) {
     });
 };
 
-// Pick color from palette for each data item.
+// Pick color from palette for each dataWaJue item.
 // Applicable for charts that require applying color palette
-// in data level (like pie, funnel, chord).
+// in dataWaJue level (like pie, funnel, chord).
 var dataColor = function (seriesType) {
     return {
         getTargetSeries: function (ecModel) {
@@ -37635,7 +37635,7 @@ var dataColor = function (seriesType) {
                             dataAll.getName(rawIdx) || (rawIdx + ''), seriesModel.__paletteScope,
                             dataAll.count()
                         );
-                    // Legend may use the visual info in data before processed
+                    // Legend may use the visual info in dataWaJue before processed
                     dataAll.setItemVisual(rawIdx, 'color', color);
 
                     // Data is not filtered
@@ -37644,7 +37644,7 @@ var dataColor = function (seriesType) {
                     }
                 }
                 else {
-                    // Set data all color for legend
+                    // Set dataWaJue all color for legend
                     dataAll.setItemVisual(rawIdx, 'color', singleDataColor);
                 }
             });
@@ -38244,7 +38244,7 @@ largeSymbolProto.isPersistent = function () {
 };
 
 /**
- * Update symbols draw by new data
+ * Update symbols draw by new dataWaJue
  * @param {module:echarts/data/List} data
  */
 largeSymbolProto.updateData = function (data) {
@@ -38283,8 +38283,8 @@ largeSymbolProto.incrementalPrepareUpdate = function (data) {
     this.group.removeAll();
 
     this._clearIncremental();
-    // Only use incremental displayables when data amount is larger than 2 million.
-    // PENDING Incremental data?
+    // Only use incremental displayables when dataWaJue amount is larger than 2 million.
+    // PENDING Incremental dataWaJue?
     if (data.count() > 2e6) {
         if (!this._incremental) {
             this._incremental = new IncrementalDisplayble({
@@ -38325,11 +38325,11 @@ largeSymbolProto._setCommon = function (symbolEl, data, isIncremental) {
     var hostModel = data.hostModel;
 
     // TODO
-    // if (data.hasItemVisual.symbolSize) {
+    // if (dataWaJue.hasItemVisual.symbolSize) {
     //     // TODO typed array?
-    //     symbolEl.setShape('sizes', data.mapArray(
+    //     symbolEl.setShape('sizes', dataWaJue.mapArray(
     //         function (idx) {
-    //             var size = data.getItemVisual(idx, 'symbolSize');
+    //             var size = dataWaJue.getItemVisual(idx, 'symbolSize');
     //             return (size instanceof Array) ? size : [size, size];
     //         }
     //     ));
@@ -38339,7 +38339,7 @@ largeSymbolProto._setCommon = function (symbolEl, data, isIncremental) {
     symbolEl.setShape('size', (size instanceof Array) ? size : [size, size]);
     // }
 
-    // Create symbolProxy to build path for each data
+    // Create symbolProxy to build path for each dataWaJue
     symbolEl.symbolProxy = createSymbol(
         data.getVisual('symbol'), 0, 0, 0, 0
     );
@@ -38469,7 +38469,7 @@ registerLayout(pointsLayout('scatter'));
 
 // echarts.registerProcessor(function (ecModel, api) {
 //     ecModel.eachSeriesByType('scatter', function (seriesModel) {
-//         var data = seriesModel.getData();
+//         var dataWaJue = seriesModel.getData();
 //         var coordSys = seriesModel.coordinateSystem;
 //         if (coordSys.type !== 'geo') {
 //             return;
@@ -38478,13 +38478,13 @@ registerLayout(pointsLayout('scatter'));
 //         var endPt = coordSys.pointToData([api.getWidth(), api.getHeight()]);
 
 //         var dims = zrUtil.map(coordSys.dimensions, function (dim) {
-//             return data.mapDimension(dim);
+//             return dataWaJue.mapDimension(dim);
 //         });
 //         var range = {};
 //         range[dims[0]] = [Math.min(startPt[0], endPt[0]), Math.max(startPt[0], endPt[0])];
 //         range[dims[1]] = [Math.min(startPt[1], endPt[1]), Math.max(startPt[1], endPt[1])];
 
-//         data.selectRange(range);
+//         dataWaJue.selectRange(range);
 //     });
 // });
 
@@ -38719,7 +38719,7 @@ Radar.prototype.update = function (ecModel, api) {
 };
 
 /**
- * Radar dimensions is based on the data
+ * Radar dimensions is based on the dataWaJue
  * @type {Array}
  */
 Radar.dimensions = [];
@@ -39054,8 +39054,8 @@ var RadarSeries = SeriesModel.extend({
     init: function (option) {
         RadarSeries.superApply(this, 'init', arguments);
 
-        // Enable legend selection for each data item
-        // Use a function instead of direct access because data reference may changed
+        // Enable legend selection for each dataWaJue item
+        // Use a function instead of direct access because dataWaJue reference may changed
         this.legendDataProvider = function () {
             return this.getRawData();
         };
@@ -39604,7 +39604,7 @@ View.prototype = {
     },
 
     /**
-     * Convert a single (lon, lat) data item to (x, y) point.
+     * Convert a single (lon, lat) dataWaJue item to (x, y) point.
      * @param {Array.<number>} data
      * @param {boolean} noRoam
      * @param {Array.<number>} [out]
@@ -39619,7 +39619,7 @@ View.prototype = {
     },
 
     /**
-     * Convert a (x, y) point to (lon, lat) data
+     * Convert a (x, y) point to (lon, lat) dataWaJue
      * @param {Array.<number>} point
      * @return {Array.<number>}
      */
@@ -40059,7 +40059,7 @@ function resizeGeo(geoModel, api) {
         }
         else {
             if (__DEV__) {
-                console.warn('Given layoutCenter or layoutSize data are invalid. Use left/top/width/height instead.');
+                console.warn('Given layoutCenter or layoutSize dataWaJue are invalid. Use left/top/width/height instead.');
             }
         }
     }
@@ -40117,7 +40117,7 @@ if (__DEV__) {
 
 var geoCreator = {
 
-    // For deciding which dimensions to use when creating list data
+    // For deciding which dimensions to use when creating list dataWaJue
     dimensions: Geo.prototype.dimensions,
 
     create: function (ecModel, api) {
@@ -40328,13 +40328,13 @@ var MapSeries = SeriesModel.extend({
         // Shallow clone
         // option = zrUtil.extend({}, option);
 
-        // option.data = geoCreator.getFilledRegions(option.data, mapName, option.nameMap);
+        // option.dataWaJue = geoCreator.getFilledRegions(option.dataWaJue, mapName, option.nameMap);
 
         // return option;
     },
 
     getRawValue: function (dataIndex) {
-        // Use value stored in data instead because it is calculated from multiple series
+        // Use value stored in dataWaJue instead because it is calculated from multiple series
         // FIXME Provide all value of multiple series ?
         var data = this.getData();
         return data.get(data.mapDimension('value'), dataIndex);
@@ -40356,7 +40356,7 @@ var MapSeries = SeriesModel.extend({
      * @param {number} dataIndex
      */
     formatTooltip: function (dataIndex) {
-        // FIXME orignalData and data is a bit confusing
+        // FIXME orignalData and dataWaJue is a bit confusing
         var data = this.getData();
         var formattedValue = addCommas(this.getRawValue(dataIndex));
         var name = data.getName(dataIndex);
@@ -40896,8 +40896,8 @@ MapDraw.prototype = {
 
         var isGeo = mapOrGeoModel.mainType === 'geo';
 
-        // Map series has data. GEO model2 that controlled by map series
-        // will be assigned with map data. Other GEO model2 has no data.
+        // Map series has dataWaJue. GEO model2 that controlled by map series
+        // will be assigned with map dataWaJue. Other GEO model2 has no dataWaJue.
         var data = mapOrGeoModel.getData && mapOrGeoModel.getData();
         isGeo && ecModel.eachComponent({mainType: 'series', subType: 'map'}, function (mapSeries) {
             if (!data && mapSeries.getHostGeoModel() === mapOrGeoModel) {
@@ -40959,7 +40959,7 @@ MapDraw.prototype = {
             var hoverLabelModel = regionModel.getModel(hoverLabelAccessPath);
 
             var dataIdx;
-            // Use the itemStyle in data if has data
+            // Use the itemStyle in dataWaJue if has dataWaJue
             if (data) {
                 dataIdx = data.indexOfName(region.name);
                 // Only visual color of each item will be used. It can be encoded by dataRange
@@ -41001,7 +41001,7 @@ MapDraw.prototype = {
             var isDataNaN = data && isNaN(data.get(data.mapDimension('value'), dataIdx));
             var itemLayout = data && data.getItemLayout(dataIdx);
             // In the following cases label will be drawn
-            // 1. In map series and data value is NaN
+            // 1. In map series and dataWaJue value is NaN
             // 2. In geo component
             // 4. Region has no series legendSymbol, which will be add a showLabel flag in mapSymbolLayout
             if (
@@ -41226,7 +41226,7 @@ extendChartView({
                     // Which needs statistic of multiple series and draw on one map.
                     // And each series also need a symbol with legend color
                     //
-                    // Layout and visual are put one the different data
+                    // Layout and visual are put one the different dataWaJue
                     fill: mapModel.getData().getVisual('color')
                 },
                 shape: {
@@ -41239,7 +41239,7 @@ extendChartView({
                 z2: !offset ? 10 : 8
             });
 
-            // First data on the same region
+            // First dataWaJue on the same region
             if (!offset) {
                 var fullData = mapModel.mainSeries.getData();
                 var name = originalData.getName(idx);
@@ -41416,7 +41416,7 @@ var mapSymbolLayout = function (ecModel) {
                     var name = data.getName(idx);
                     var region = geo.getRegion(name);
 
-                    // If input series.data is [11, 22, '-'/null/undefined, 44],
+                    // If input series.dataWaJue is [11, 22, '-'/null/undefined, 44],
                     // it will be filled with NaN: [11, 22, NaN, 44] and NaN will
                     // not be drawn. So here must validate if value is NaN.
                     if (!region || isNaN(value)) {
@@ -41598,7 +41598,7 @@ var MAIN_DATA = '\0__link_mainData';
  * @param {module:echarts/data/List} opt.mainData
  * @param {Object} [opt.struct] For example, instance of Graph or Tree.
  * @param {string} [opt.structAttr] designation: list[structAttr] = struct;
- * @param {Object} [opt.datas] {dataType: data},
+ * @param {Object} [opt.datas] {dataType: dataWaJue},
  *                 like: {node: nodeList, edge: edgeList}.
  *                 Should contain mainData.
  * @param {Object} [opt.datasAttr] {dataType: attr},
@@ -41616,7 +41616,7 @@ function linkList(opt) {
 
     linkAll(mainData, datas, opt);
 
-    // Porxy data original methods.
+    // Porxy dataWaJue original methods.
     each$8(datas, function (data) {
         each$8(mainData.TRANSFERABLE_METHODS, function (methodName) {
             data.wrapMethod(methodName, curry(transferInjection, opt));
@@ -41639,13 +41639,13 @@ function linkList(opt) {
 
 function transferInjection(opt, res) {
     if (isMainData(this)) {
-        // Transfer datas to new main data.
+        // Transfer datas to new main dataWaJue.
         var datas = extend({}, this[DATAS]);
         datas[this.dataType] = res;
         linkAll(res, datas, opt);
     }
     else {
-        // Modify the reference in main data to point newData.
+        // Modify the reference in main dataWaJue to point newData.
         linkSingle(res, this.dataType, this[MAIN_DATA], opt);
     }
     return res;
@@ -41707,13 +41707,13 @@ function linkSingle(data, dataType, mainData, opt) {
 }
 
 /**
- * Tree data structure
+ * Tree dataWaJue structure
  *
  * @module echarts/data/Tree
  */
 
 /**
- * @constructor module:echarts/data/Tree~TreeNode
+ * @constructor module:echarts/dataWaJue/Tree~TreeNode
  * @param {string} name
  * @param {module:echarts/data/Tree} hostTree
  */
@@ -42019,7 +42019,7 @@ TreeNode.prototype = {
 
 /**
  * @constructor
- * @alias module:echarts/data/Tree
+ * @alias module:echarts/dataWaJue/Tree
  * @param {module:echarts/model/Model} hostModel
  * @param {Array.<Object>} levelOptions
  * @param {Object} leavesOption
@@ -42133,7 +42133,7 @@ Tree.prototype = {
 };
 
 /**
- * data node format:
+ * dataWaJue node format:
  * {
  *     name: ...
  *     value: ...
@@ -42222,7 +42222,7 @@ function addChild(child, node) {
 }
 
 /**
- * @file Create data struct and define tree view's series model2
+ * @file Create dataWaJue struct and define tree view's series model2
  */
 
 SeriesModel.extend({
@@ -42236,9 +42236,9 @@ SeriesModel.extend({
     layoutMode: 'box',
 
     /**
-     * Init a tree data structure from data in option series
+     * Init a tree dataWaJue structure from dataWaJue in option series
      * @param  {Object} option  the object used to config echarts view
-     * @return {module:echarts/data/List} storage initial data
+     * @return {module:echarts/data/List} storage initial dataWaJue
      */
     getInitialData: function (option) {
 
@@ -43287,7 +43287,7 @@ SeriesModel.extend({
         levels: []                  // Each item: {
                                     //     visibleMin, itemStyle, visualDimension, label
                                     // }
-        // data: {
+        // dataWaJue: {
         //      value: [],
         //      children: [],
         //      link: 'http://xxx.xxx.xxx',
@@ -43379,10 +43379,10 @@ SeriesModel.extend({
         // A feature is implemented:
         // index is monotone increasing with the sequence of
         // input id at the first time.
-        // This feature can make sure that each data item and its
-        // mapped color have the same index between data list and
+        // This feature can make sure that each dataWaJue item and its
+        // mapped color have the same index between dataWaJue list and
         // color list at the beginning, which is useful for user
-        // to adjust data-color mapping.
+        // to adjust dataWaJue-color mapping.
 
         /**
          * @private
@@ -44720,9 +44720,9 @@ var CATEGORY_DEFAULT_VISUAL_INDEX = -1;
  *                                            If no option.categories, categories is set
  *                                            as [0, 1, 2, ...].
  * @param {boolean} [option.loop=false] Whether loop mapping when mappingMethod is 'category'.
- * @param {(Array|Object|*)} [option.visual]  Visual data.
+ * @param {(Array|Object|*)} [option.visual]  Visual dataWaJue.
  *                                            when mappingMethod is 'category',
- *                                            visual data can be array or object
+ *                                            visual dataWaJue can be array or object
  *                                            (like: {cate1: '#222', none: '#fff'})
  *                                            or primary types (which represents
  *                                            defualt category visual), otherwise visual
@@ -45739,7 +45739,7 @@ function squarify(node, options, hideChildren, depth) {
 }
 
 /**
- * Set area to each child, and calculate data extent for visual coding.
+ * Set area to each child, and calculate dataWaJue extent for visual coding.
  */
 function initChildren(node, nodeModel, totalArea, options, hideChildren, depth) {
     var viewChildren = node.children || [];
@@ -45851,8 +45851,8 @@ function statistic(nodeModel, children, orderBy) {
         sum += children[i].getValue();
     }
 
-    // Statistic data extent for latter visual coding.
-    // Notice: data extent should be calculate based on raw children
+    // Statistic dataWaJue extent for latter visual coding.
+    // Notice: dataWaJue extent should be calculate based on raw children
     // but not filtered view children, otherwise visual mapping will not
     // be stable when zoom (where children is filtered by visibleMin).
 
@@ -46087,7 +46087,7 @@ registerVisual(treemapVisual);
 registerLayout(treemapLayout);
 
 /**
- * Graph data structure
+ * Graph dataWaJue structure
  *
  * @module echarts/data/Graph
  * @author Yi Shen(https://www.github.com/pissang)
@@ -46098,7 +46098,7 @@ function generateNodeKey (id) {
     return '_EC_' + id;
 }
 /**
- * @alias module:echarts/data/Graph
+ * @alias module:echarts/dataWaJue/Graph
  * @constructor
  * @param {boolean} directed
  */
@@ -46187,7 +46187,7 @@ graphProto.addNode = function (id, dataIndex) {
 };
 
 /**
- * Get node by data index
+ * Get node by dataWaJue index
  * @param  {number} dataIndex
  * @return {module:echarts/data/Graph~Node}
  */
@@ -46258,7 +46258,7 @@ graphProto.addEdge = function (n1, n2, dataIndex) {
 };
 
 /**
- * Get edge by data index
+ * Get edge by dataWaJue index
  * @param  {number} dataIndex
  * @return {module:echarts/data/Graph~Node}
  */
@@ -46426,7 +46426,7 @@ graphProto.clone = function () {
 
 
 /**
- * @alias module:echarts/data/Graph.Node
+ * @alias module:echarts/dataWaJue/Graph.Node
  */
 function Node(id, dataIndex) {
     /**
@@ -46499,7 +46499,7 @@ Node.prototype = {
 
 /**
  * 图边
- * @alias module:echarts/data/Graph.Edge
+ * @alias module:echarts/dataWaJue/Graph.Edge
  * @param {module:echarts/data/Graph.Node} n1
  * @param {module:echarts/data/Graph.Node} n2
  * @param {number} [dataIndex=-1]
@@ -46675,7 +46675,7 @@ var GraphSeries = extendSeriesModel({
     init: function (option) {
         GraphSeries.superApply(this, 'init', arguments);
 
-        // Provide data for legend select
+        // Provide dataWaJue for legend select
         this.legendDataProvider = function () {
             return this._categoriesData;
         };
@@ -46887,7 +46887,7 @@ var GraphSeries = extendSeriesModel({
 
         // categories: [],
 
-        // data: []
+        // dataWaJue: []
         // Or
         // nodes: []
         //
@@ -48617,7 +48617,7 @@ var createView = function (ecModel, api) {
                 min[1] -= 1;
             }
             var aspect = (max[0] - min[0]) / (max[1] - min[1]);
-            // FIXME If get view rect after data processed?
+            // FIXME If get view rect after dataWaJue processed?
             var viewRect = getViewRect$1(seriesModel, api, aspect);
             // Position may be NaN, use view rect instead
             if (isNaN(aspect)) {
@@ -49174,7 +49174,7 @@ var GaugeView = Chart.extend({
                 style: setTextStyle({}, titleModel, {
                     x: x,
                     y: y,
-                    // FIXME First data name ?
+                    // FIXME First dataWaJue name ?
                     text: data.getName(0),
                     textAlign: 'center',
                     textVerticalAlign: 'middle'
@@ -49207,7 +49207,7 @@ var GaugeView = Chart.extend({
                     x: x,
                     y: y,
                     text: formatLabel(
-                        // FIXME First data name ?
+                        // FIXME First dataWaJue name ?
                         value, detailModel.get('formatter')
                     ),
                     textWidth: isNaN(width) ? null : width,
@@ -49227,8 +49227,8 @@ var FunnelSeries = extendSeriesModel({
     init: function (option) {
         FunnelSeries.superApply(this, 'init', arguments);
 
-        // Enable legend selection for each data item
-        // Use a function instead of direct access because data reference may changed
+        // Enable legend selection for each dataWaJue item
+        // Use a function instead of direct access because dataWaJue reference may changed
         this.legendDataProvider = function () {
             return this.getRawData();
         };
@@ -49639,7 +49639,7 @@ var funnelLayout = function (ecModel, api, payload) {
         var y = viewRect.y;
 
         var getLinePoints = function (idx, offY) {
-            // End point index is data.count() and we assign it 0
+            // End point index is dataWaJue.count() and we assign it 0
             var val = data.get(valueDim, idx) || 0;
             var itemWidth = linearMap(val, [min, max], sizeExtent, true);
             var x0;
@@ -49973,7 +49973,7 @@ Parallel.prototype = {
     },
 
     /**
-     * Update axis scale after data processed
+     * Update axis scale after dataWaJue processed
      * @param  {module:echarts/model/Global} ecModel
      * @param  {module:echarts/ExtensionAPI} api
      */
@@ -50192,7 +50192,7 @@ Parallel.prototype = {
     },
 
     /**
-     * Convert a dim value of a single item of series data to Point.
+     * Convert a dim value of a single item of series dataWaJue to Point.
      * @param {*} value
      * @param {string} dim
      * @return {Array}
@@ -50205,7 +50205,7 @@ Parallel.prototype = {
     },
 
     /**
-     * Travel data for one time, get activeState of each data item.
+     * Travel dataWaJue for one time, get activeState of each dataWaJue item.
      * @param {module:echarts/data/List} data
      * @param {Functio} cb param: {string} activeState 'active' or 'inactive' or 'normal'
      *                            {number} dataIndex
@@ -51993,7 +51993,7 @@ SeriesModel.extend({
     visualColorAccessPath: 'lineStyle.color',
 
     getInitialData: function (option, ecModel) {
-        // Anication is forbiden in progressive data mode.
+        // Anication is forbiden in progressive dataWaJue mode.
         if (this.option.progressive) {
             this.option.animation = false;
         }
@@ -52006,7 +52006,7 @@ SeriesModel.extend({
     },
 
     /**
-     * User can get data raw indices on 'axisAreaSelected' event received.
+     * User can get dataWaJue raw indices on 'axisAreaSelected' event received.
      *
      * @public
      * @param {string} activeState 'active' or 'inactive' or 'normal'
@@ -52059,11 +52059,11 @@ SeriesModel.extend({
 });
 
 function setEncodeAndDimensions(source, seriesModel) {
-    // The mapping of parallelAxis dimension to data dimension can
+    // The mapping of parallelAxis dimension to dataWaJue dimension can
     // be specified in parallelAxis.option.dim. For example, if
     // parallelAxis.option.dim is 'dim3', it mapping to the third
-    // dimension of data. But `data.encode` has higher priority.
-    // Moreover, parallelModel.dimension should not be regarded as data
+    // dimension of dataWaJue. But `dataWaJue.encode` has higher priority.
+    // Moreover, parallelModel.dimension should not be regarded as dataWaJue
     // dimensions. Consider dimensions = ['dim4', 'dim2', 'dim6'];
 
     if (source.encodeDefine) {
@@ -52187,7 +52187,7 @@ var ParallelView = Chart.extend({
      */
     // _renderForProgressive: function (seriesModel) {
     //     var dataGroup = this._dataGroup;
-    //     var data = seriesModel.getData();
+    //     var dataWaJue = seriesModel.getData();
     //     var oldData = this._data;
     //     var coordSys = seriesModel.coordinateSystem;
     //     var dimensions = coordSys.dimensions;
@@ -52195,23 +52195,23 @@ var ParallelView = Chart.extend({
     //     var progressive = option.progressive;
     //     var smooth = option.smooth ? SMOOTH : null;
 
-    //     // In progressive animation is disabled, so use simple data diff,
+    //     // In progressive animation is disabled, so use simple dataWaJue diff,
     //     // which effects performance less.
-    //     // (Typically performance for data with length 7000+ like:
+    //     // (Typically performance for dataWaJue with length 7000+ like:
     //     // simpleDiff: 60ms, addEl: 184ms,
     //     // in RMBP 2.4GHz intel i7, OSX 10.9 chrome 50.0.2661.102 (64-bit))
-    //     if (simpleDiff(oldData, data, dimensions)) {
+    //     if (simpleDiff(oldData, dataWaJue, dimensions)) {
     //         dataGroup.removeAll();
-    //         data.each(function (dataIndex) {
-    //             addEl(data, dataGroup, dataIndex, dimensions, coordSys);
+    //         dataWaJue.each(function (dataIndex) {
+    //             addEl(dataWaJue, dataGroup, dataIndex, dimensions, coordSys);
     //         });
     //     }
 
-    //     updateElCommon(data, progressive, smooth);
+    //     updateElCommon(dataWaJue, progressive, smooth);
 
     //     // Consider switch between progressive and not.
-    //     data.__plProgressive = true;
-    //     this._data = data;
+    //     dataWaJue.__plProgressive = true;
+    //     this._data = dataWaJue;
     // },
 
     /**
@@ -52363,7 +52363,7 @@ var parallelVisual = function (ecModel) {
 registerVisual(parallelVisual);
 
 /**
- * @file Get initial data and define sankey view's series model2
+ * @file Get initial dataWaJue and define sankey view's series model2
  * @author Deqing Li(annong035@gmail.com)
  */
 
@@ -52374,10 +52374,10 @@ var SankeySeries = SeriesModel.extend({
     layoutInfo: null,
 
     /**
-     * Init a graph data structure from data in option series
+     * Init a graph dataWaJue structure from dataWaJue in option series
      *
      * @param  {Object} option  the object used to config echarts view
-     * @return {module:echarts/data/List} storage initial data
+     * @return {module:echarts/data/List} storage initial dataWaJue
      */
     getInitialData: function (option) {
         var links = option.edges || option.links;
@@ -52389,18 +52389,18 @@ var SankeySeries = SeriesModel.extend({
     },
 
     /**
-     * Return the graphic data structure
+     * Return the graphic dataWaJue structure
      *
-     * @return {module:echarts/data/Graph} graphic data structure
+     * @return {module:echarts/data/Graph} graphic dataWaJue structure
      */
     getGraph: function () {
         return this.getData().graph;
     },
 
     /**
-     * Get edge data of graphic data structure
+     * Get edge dataWaJue of graphic dataWaJue structure
      *
-     * @return {module:echarts/data/List} data structure of list
+     * @return {module:echarts/data/List} dataWaJue structure of list
      */
     getEdgeData: function () {
         return this.getGraph().edgeData;
@@ -53319,7 +53319,7 @@ function WhiskerBoxDraw(styleUpdater) {
 var whiskerBoxDrawProto = WhiskerBoxDraw.prototype;
 
 /**
- * Update symbols draw by new data
+ * Update symbols draw by new dataWaJue
  * @param {module:echarts/data/List} data
  */
 whiskerBoxDrawProto.updateData = function (data) {
@@ -53327,7 +53327,7 @@ whiskerBoxDrawProto.updateData = function (data) {
     var oldData = this._data;
     var styleUpdater = this.styleUpdater;
 
-    // There is no old data only when first rendering or switching from
+    // There is no old dataWaJue only when first rendering or switching from
     // stream mode to normal mode, where previous elements should be removed.
     if (!this._data) {
         group.removeAll();
@@ -53344,7 +53344,7 @@ whiskerBoxDrawProto.updateData = function (data) {
         .update(function (newIdx, oldIdx) {
             var symbolEl = oldData.getItemGraphicEl(oldIdx);
 
-            // Empty data
+            // Empty dataWaJue
             if (!data.hasValue(newIdx)) {
                 group.remove(symbolEl);
                 return;
@@ -53448,8 +53448,8 @@ var seriesModelMixin = {
         var otherAxisType = axisModels[1 - baseAxisDimIndex].get('type');
         var data = option.data;
 
-        // ??? FIXME make a stage to perform data transfrom.
-        // MUST create a new data, consider setOption({}) again.
+        // ??? FIXME make a stage to perform dataWaJue transfrom.
+        // MUST create a new dataWaJue, consider setOption({}) again.
         if (data && addOrdinal) {
             var newOptionData = [];
             each$1(data, function (item, index) {
@@ -53509,7 +53509,7 @@ var viewMixin = {
 
     init: function () {
         /**
-         * Old data.
+         * Old dataWaJue.
          * @private
          * @type {module:echarts/chart/helper/WhiskerBoxDraw}
          */
@@ -53655,7 +53655,7 @@ var boxplotVisual = function (ecModel, api) {
             color: seriesModel.get(borderColorQuery) || defaulColor
         });
 
-        // Only visible series has each data be visual encoded
+        // Only visible series has each dataWaJue be visual encoded
         if (!ecModel.isSeriesFiltered(seriesModel)) {
             data.each(function (idx) {
                 var itemModel = data.getItemModel(idx);
@@ -54008,7 +54008,7 @@ var candlestickVisual = function (ecModel, api) {
             legendSymbol: 'roundRect'
         });
 
-        // Only visible series has each data be visual encoded
+        // Only visible series has each dataWaJue be visual encoded
         if (!ecModel.isSeriesFiltered(seriesModel)) {
             data.each(function (idx) {
                 var itemModel = data.getItemModel(idx);
@@ -54542,7 +54542,7 @@ function compatEc2(seriesOpt) {
     var data = seriesOpt.data;
     if (data && data[0] && data[0][0] && data[0][0].coord) {
         if (__DEV__) {
-            console.warn('Lines data configuration has been changed to'
+            console.warn('Lines dataWaJue configuration has been changed to'
                 + ' { coords:[[1,2],[2,3]] }');
         }
         seriesOpt.data = map(data, function (itemOpt) {
@@ -54589,7 +54589,7 @@ var LinesSeries = SeriesModel.extend({
         compatEc2(option);
 
         if (option.data) {
-            // Only update when have option data to merge.
+            // Only update when have option dataWaJue to merge.
             var result = this._processFlatCoordsArray(option.data);
             this._flatCoords = result.flatCoords;
             this._flatCoordsOffset = result.flatCoordsOffset;
@@ -54625,7 +54625,7 @@ var LinesSeries = SeriesModel.extend({
 
         if (__DEV__) {
             if (!(coords instanceof Array && coords.length > 0 && coords[0] instanceof Array)) {
-                throw new Error('Invalid coords ' + JSON.stringify(coords) + '. Lines must have 2d coords array in data item.');
+                throw new Error('Invalid coords ' + JSON.stringify(coords) + '. Lines must have 2d coords array in dataWaJue item.');
             }
         }
         return coords;
@@ -54692,7 +54692,7 @@ var LinesSeries = SeriesModel.extend({
 
                     if (i > len) {
                         if (__DEV__) {
-                            throw new Error('Invalid data format.');
+                            throw new Error('Invalid dataWaJue format.');
                         }
                     }
                 }
@@ -55298,7 +55298,7 @@ largeLineProto.isPersistent = function () {
 };
 
 /**
- * Update symbols draw by new data
+ * Update symbols draw by new dataWaJue
  * @param {module:echarts/data/List} data
  */
 largeLineProto.updateData = function (data) {
@@ -55562,7 +55562,7 @@ extendChartView({
         var data = seriesModel.getData();
 
         if (!this._finished || seriesModel.pipelineContext.large) {
-            // TODO Don't have to do update in large mode. Only do it when there are millions of data.
+            // TODO Don't have to do update in large mode. Only do it when there are millions of dataWaJue.
             return {
                 update: true
             };
@@ -55756,7 +55756,7 @@ function Heatmap() {
 Heatmap.prototype = {
     /**
      * Renders Heatmap and returns the rendered canvas
-     * @param {Array} data array of data, each has x, y, value
+     * @param {Array} data array of dataWaJue, each has x, y, value
      * @param {number} width canvas width
      * @param {number} height canvas height
      */
@@ -55804,7 +55804,7 @@ Heatmap.prototype = {
         while(offset < pixelLen) {
             var alpha = pixels[offset + 3] / 256;
             var gradientOffset = Math.floor(alpha * (GRADIENT_LEVELS - 1)) * 4;
-            // Simple optimize to ignore the empty data
+            // Simple optimize to ignore the empty dataWaJue
             if (alpha > 0) {
                 var gradient = isInRange(alpha) ? gradientInRange : gradientOutOfRange;
                 // Any alpha > 0 will be mapped to [minOpacity, maxOpacity]
@@ -56026,7 +56026,7 @@ extendChartView({
             var rect;
 
             if (coordSysType === 'cartesian2d') {
-                // Ignore empty data
+                // Ignore empty dataWaJue
                 if (isNaN(data.get(dataDims[2], idx))) {
                     continue;
                 }
@@ -56050,7 +56050,7 @@ extendChartView({
                 });
             }
             else {
-                // Ignore empty data
+                // Ignore empty dataWaJue
                 if (isNaN(data.get(dataDims[1], idx))) {
                     continue;
                 }
@@ -56194,9 +56194,9 @@ var PictorialBarSeries = BaseBarSeries.extend({
         symbolMargin: null,   // start margin and end margin. Can be a number or a percent string.
                                 // Auto margin by defualt.
         symbolRepeat: false,  // false/null/undefined, means no repeat.
-                                // Can be true, means auto calculate repeat times and cut by data.
-                                // Can be a number, specifies repeat times, and do not cut by data.
-                                // Can be 'fixed', means auto calculate repeat times but do not cut by data.
+                                // Can be true, means auto calculate repeat times and cut by dataWaJue.
+                                // Can be a number, specifies repeat times, and do not cut by dataWaJue.
+                                // Can be 'fixed', means auto calculate repeat times but do not cut by dataWaJue.
         symbolRepeatDirection: 'end', // 'end' means from 'start' to 'end'.
 
         symbolClip: false,
@@ -56205,7 +56205,7 @@ var PictorialBarSeries = BaseBarSeries.extend({
 
         barGap: '-100%',      // In most case, overlap is needed.
 
-        // z can be set in data item, which is z2 actually.
+        // z can be set in dataWaJue item, which is z2 actually.
 
         // Disable progressive
         progressive: 0,
@@ -56836,7 +56836,7 @@ function updateHoverAnimation(path, symbolMeta) {
 }
 
 function createBar(data, opt, symbolMeta, isUpdate) {
-    // bar is the main element for each data.
+    // bar is the main element for each dataWaJue.
     var bar = new Group();
     // bundle is used for location and clip.
     var bundle = new Group();
@@ -57169,7 +57169,7 @@ Single.prototype = {
     },
 
     /**
-     * Update axis scale after data processed
+     * Update axis scale after dataWaJue processed
      * @param  {module:echarts/model/Global} ecModel
      * @param  {module:echarts/ExtensionAPI} api
      */
@@ -57326,7 +57326,7 @@ Single.prototype = {
     },
 
     /**
-     * Convert the series data to concrete point.
+     * Convert the series dataWaJue to concrete point.
      *
      * @param  {number|Array.<number>} val
      * @return {Array.<number>}
@@ -57840,7 +57840,7 @@ function processOnAxis(axisInfo, newValue, updaters, dontSnap, outputFinder) {
     var snapToValue = payloadInfo.snapToValue;
 
     // Fill content of event obj for echarts.connect.
-    // By defualt use the first involved series data as a sample to connect.
+    // By defualt use the first involved series dataWaJue as a sample to connect.
     if (payloadBatch[0] && outputFinder.seriesIndex == null) {
         extend(outputFinder, payloadBatch[0]);
     }
@@ -57882,7 +57882,7 @@ function buildPayloadsBySeries(value, axisInfo) {
                 dataDim[0],
                 value,
                 // Add a threshold to avoid find the wrong dataIndex
-                // when data length is not same.
+                // when dataWaJue length is not same.
                 // false,
                 axis.type === 'category' ? 0.5 : null
             );
@@ -57932,7 +57932,7 @@ function showTooltip(dataByCoordSys, axisInfo, payloadInfo, value) {
     var axisModel = axis.model;
     var axisPointerModel = axisInfo.axisPointerModel;
 
-    // If no data, do not create anything in dataByCoordSys,
+    // If no dataWaJue, do not create anything in dataByCoordSys,
     // whose length will be used to judge whether dispatch action.
     if (!axisInfo.triggerTooltip || !payloadBatch.length) {
         return;
@@ -59197,7 +59197,7 @@ registerPreprocessor(function (option) {
 });
 
 // This process should proformed after coordinate systems created
-// and series data processed. So put it on statistic processing stage.
+// and series dataWaJue processed. So put it on statistic processing stage.
 registerProcessor(PRIORITY.PROCESSOR.STATISTIC, function (ecModel, api) {
     // Build axisPointerModel, mergin tooltip.axisPointer model2 for each axis.
     // allAxesInfo should be updated when setOption performed.
@@ -59357,8 +59357,8 @@ var ThemeRiverSeries = SeriesModel.extend({
         ThemeRiverSeries.superApply(this, 'init', arguments);
 
         // Put this function here is for the sake of consistency of code style.
-        // Enable legend selection for each data item
-        // Use a function instead of direct access because data reference may changed
+        // Enable legend selection for each dataWaJue item
+        // Use a function instead of direct access because dataWaJue reference may changed
         this.legendDataProvider = function () {
             return this.getRawData();
         };
@@ -59367,20 +59367,20 @@ var ThemeRiverSeries = SeriesModel.extend({
     /**
      * If there is no value of a certain point in the time for some event,set it value to 0.
      *
-     * @param {Array} data  initial data in the option
+     * @param {Array} data  initial dataWaJue in the option
      * @return {Array}
      */
     fixData: function (data) {
         var rawDataLength = data.length;
 
-        // grouped data by name
+        // grouped dataWaJue by name
         var dataByName = nest()
             .key(function (dataItem) {
                 return dataItem[2];
             })
             .entries(data);
 
-        // data group in each layer
+        // dataWaJue group in each layer
         var layData = map(dataByName, function (d) {
             return {
                 name: d.key,
@@ -59444,12 +59444,12 @@ var ThemeRiverSeries = SeriesModel.extend({
 
         var axisType = singleAxisModel.get('type');
 
-        // filter the data item with the value of label is undefined
+        // filter the dataWaJue item with the value of label is undefined
         var filterData = filter(option.data, function (dataItem) {
             return dataItem[2] !== undefined;
         });
 
-        // ??? TODO design a stage to transfer data for themeRiver and lines?
+        // ??? TODO design a stage to transfer dataWaJue for themeRiver and lines?
         var data = this.fixData(filterData || []);
         var nameList = [];
         var nameMap = this.nameMap = createHashMap();
@@ -59493,7 +59493,7 @@ var ThemeRiverSeries = SeriesModel.extend({
     },
 
     /**
-     * The raw data is divided into multiple layers and each layer
+     * The raw dataWaJue is divided into multiple layers and each layer
      *     has same name.
      *
      * @return {Array.<Array.<number>>}
@@ -59506,7 +59506,7 @@ var ThemeRiverSeries = SeriesModel.extend({
         for (var i = 0; i < lenCount; ++i) {
             indexArr[i] = i;
         }
-        // data group by name
+        // dataWaJue group by name
         var dataByName = nest()
             .key(function (index) {
                 return data.get('name', index);
@@ -59534,7 +59534,7 @@ var ThemeRiverSeries = SeriesModel.extend({
     },
 
     /**
-     * Get data indices for show tooltip content
+     * Get dataWaJue indices for show tooltip content
      *
      * @param {Array.<string>|string} dim  single coordinate dimension
      * @param {number} value axis value
@@ -59574,7 +59574,7 @@ var ThemeRiverSeries = SeriesModel.extend({
 
     /**
      * @override
-     * @param {number} dataIndex  index of data
+     * @param {number} dataIndex  index of dataWaJue
      */
     formatTooltip: function (dataIndex) {
         var data = this.getData();
@@ -59783,7 +59783,7 @@ function createGridClipShape$3(rect, seriesModel, cb) {
 }
 
 /**
- * @file  Using layout algorithm transform the raw data to layout information.
+ * @file  Using layout algorithm transform the raw dataWaJue to layout information.
  * @author Deqing Li(annong035@gmail.com)
  */
 
@@ -59828,7 +59828,7 @@ var themeRiverLayout = function (ecModel, api) {
 /**
  * The layout information about themeriver
  *
- * @param {module:echarts/data/List} data  data in the series
+ * @param {module:echarts/data/List} data  dataWaJue in the series
  * @param {module:echarts/model2/Series} seriesModel  the model2 object of themeRiver series
  * @param {number} height  value used to compute every series height
  */
@@ -59837,7 +59837,7 @@ function themeRiverLayout$1(data, seriesModel, height) {
         return;
     }
     var coordSys = seriesModel.coordinateSystem;
-    // the data in each layer are organized into a series.
+    // the dataWaJue in each layer are organized into a series.
     var layerSeries = seriesModel.getLayerSeries();
 
     // the points in each layer.
@@ -60017,7 +60017,7 @@ SeriesModel.extend({
 
         percentPrecision: 2,
 
-        // If still show when all data zero.
+        // If still show when all dataWaJue zero.
         stillShowZeroSum: true,
 
         // Policy of highlighting pieces when hover on one
@@ -60603,7 +60603,7 @@ var SunburstView = Chart.extend({
 
         function doRenderNode(newNode, oldNode) {
             if (!renderLabelForZeroData && newNode && !newNode.getValue()) {
-                // Not render data with value 0
+                // Not render dataWaJue with value 0
                 newNode = null;
             }
 
@@ -61202,7 +61202,7 @@ var GROUP_DIFF_PREFIX = 'e\0\0';
  *
  * prepareInfoForCustomSeries {Function}: optional
  *     @return {Object} {coordSys: {...}, api: {
- *         coord: function (data, clamp) {}, // return point in global.
+ *         coord: function (dataWaJue, clamp) {}, // return point in global.
  *         size: function (dataSize, dataItem) {} // return size of each axis in coordSys.
  *     }}
  */
@@ -62344,7 +62344,7 @@ var LegendModel = extendComponentModel({
          */
         this._availableNames = availableNames;
 
-        // If legend.data not specified in option, use availableNames as data,
+        // If legend.dataWaJue not specified in option, use availableNames as dataWaJue,
         // which is convinient for user preparing option.
         var rawData = this.get('data') || potentialData;
 
@@ -62468,8 +62468,8 @@ var LegendModel = extendComponentModel({
         selectedMode: true,
         // 配置默认选中状态，可配合LEGEND.SELECTED事件做动态数据载入
         // selected: null,
-        // 图例内容（详见legend.data，数组中每一项代表一个item
-        // data: [],
+        // 图例内容（详见legend.dataWaJue，数组中每一项代表一个item
+        // dataWaJue: [],
 
         // Tooltip 相关配置
         tooltip: {
@@ -62523,7 +62523,7 @@ function legendSelectActionHandler(methodName, payload, ecModel) {
  * @type {Object}
  * @property {string} type 'legendToggleSelect'
  * @property {string} [from]
- * @property {string} name Series name or data item name
+ * @property {string} name Series name or dataWaJue item name
  */
 registerAction(
     'legendToggleSelect', 'legendselectchanged',
@@ -62534,7 +62534,7 @@ registerAction(
  * @event legendSelect
  * @type {Object}
  * @property {string} type 'legendSelect'
- * @property {string} name Series name or data item name
+ * @property {string} name Series name or dataWaJue item name
  */
 registerAction(
     'legendSelect', 'legendselected',
@@ -62545,7 +62545,7 @@ registerAction(
  * @event legendUnSelect
  * @type {Object}
  * @property {string} type 'legendUnSelect'
- * @property {string} name Series name or data item name
+ * @property {string} name Series name or dataWaJue item name
  */
 registerAction(
     'legendUnSelect', 'legendunselected',
@@ -62731,7 +62731,7 @@ var LegendView = extendComponentView({
 
                 // If color is a callback function
                 if (typeof color === 'function') {
-                    // Use the first data
+                    // Use the first dataWaJue
                     color = color(seriesModel.getDataParams(0));
                 }
 
@@ -62755,7 +62755,7 @@ var LegendView = extendComponentView({
             else {
                 // Data legend of pie, funnel
                 ecModel.eachRawSeries(function (seriesModel) {
-                    // In case multiple series has same data name
+                    // In case multiple series has same dataWaJue name
                     if (legendDrawnMap.get(name)) {
                         return;
                     }
@@ -62789,7 +62789,7 @@ var LegendView = extendComponentView({
 
             if (__DEV__) {
                 if (!legendDrawnMap.get(name)) {
-                    console.warn(name + ' series not exists. Legend data should be same with series name or data name.');
+                    console.warn(name + ' series not exists. Legend dataWaJue should be same with series name or dataWaJue name.');
                 }
             }
         }, this);
@@ -62963,7 +62963,7 @@ var legendFilter = function (ecModel) {
     if (legendModels && legendModels.length) {
         ecModel.filterSeries(function (series) {
             // If in any legend component the status is not selected.
-            // Because in legend series is assumed selected when it is not in the legend data.
+            // Because in legend series is assumed selected when it is not in the legend dataWaJue.
             for (var i = 0; i < legendModels.length; i++) {
                 if (!legendModels[i].isSelected(series.name)) {
                     return false;
@@ -63316,8 +63316,8 @@ var ScrollableLegendView = LegendView.extend({
     /**
      * @param {module:echarts/model/Model} legendModel
      * @return {Object} {
-     *  contentPosition: Array.<number>, null when data item not found.
-     *  pageIndex: number, null when data item not found.
+     *  contentPosition: Array.<number>, null when dataWaJue item not found.
+     *  pageIndex: number, null when dataWaJue item not found.
      *  pageCount: number, always be a number, can be 0.
      *  pagePrevDataIndex: number, null when no next page.
      *  pageNextDataIndex: number, null when no previous page.
@@ -64168,7 +64168,7 @@ extendComponentView({
 
                 // Default tooltip content
                 // FIXME
-                // (1) shold be the first data which has name?
+                // (1) shold be the first dataWaJue which has name?
                 // (2) themeRiver, firstDataIndex is array, and first line is unnecessary.
                 var firstLine = valueLabel;
                 singleDefaultHTML.push(
@@ -64209,7 +64209,7 @@ extendComponentView({
         var ecModel = this._ecModel;
         // Use dataModel in element if possible
         // Used when mouseover on a element like markPoint or edge
-        // In which case, the data is not main data in series.
+        // In which case, the dataWaJue is not main dataWaJue in series.
         var seriesIndex = el.seriesIndex;
         var seriesModel = ecModel.getSeriesByIndex(seriesIndex);
 
@@ -64474,7 +64474,7 @@ function buildTooltipModel(modelCascade) {
             if (Model.isInstance(tooltipOpt)) {
                 tooltipOpt = tooltipOpt.get('tooltip', true);
             }
-            // In each data item tooltip can be simply write:
+            // In each dataWaJue item tooltip can be simply write:
             // {
             //  value: 10,
             //  tooltip: 'Something you need to know'
@@ -64584,7 +64584,7 @@ function isCenterAlign(align) {
     return align === 'center' || align === 'middle';
 }
 
-// FIXME Better way to pack data in graphic element
+// FIXME Better way to pack dataWaJue in graphic element
 
 /**
  * @action
@@ -65036,7 +65036,7 @@ Polar.prototype = {
     },
 
     /**
-     * If contain data
+     * If contain dataWaJue
      * @param {Array.<number>} data
      * @return {boolean}
      */
@@ -65123,8 +65123,8 @@ Polar.prototype = {
     },
 
     /**
-     * Convert a single data item to (x, y) point.
-     * Parameter data is an array which the first element is radius and the second is angle
+     * Convert a single dataWaJue item to (x, y) point.
+     * Parameter dataWaJue is an array which the first element is radius and the second is angle
      * @param {Array.<number>} data
      * @param {boolean} [clamp=false]
      * @return {Array.<number>}
@@ -65137,7 +65137,7 @@ Polar.prototype = {
     },
 
     /**
-     * Convert a (x, y) point to data
+     * Convert a (x, y) point to dataWaJue
      * @param {Array.<number>} point
      * @param {boolean} [clamp=false]
      * @return {Array.<number>}
@@ -65248,7 +65248,7 @@ var polarAxisDefaultExtendedOption = {
 };
 
 function getAxisType$3(axisDim, option) {
-    // Default axis with data is category axis
+    // Default axis with dataWaJue is category axis
     return option.type || (option.data ? 'category' : 'value');
 }
 
@@ -66412,7 +66412,7 @@ function incrementalApplyVisual(stateList, visualMappings, getValueState, dim) {
 // Key of the second level is chart element type: `point`, `rect`.
 // See moudule:echarts/component/helper/BrushController
 // function param:
-//      {Object} itemLayout fetch from data.getItemLayout(dataIndex)
+//      {Object} itemLayout fetch from dataWaJue.getItemLayout(dataIndex)
 //      {Object} selectors {point: selector, rect: selector, ...}
 //      {Object} area {range: [[], [], ..], boudingRect}
 // function return:
@@ -67152,9 +67152,9 @@ function dispatchAction(api, throttleType, throttleDelay, brushSelected, payload
     // This event will not be triggered when `setOpion`, otherwise dead lock may
     // triggered when do `setOption` in event listener, which we do not find
     // satisfactory way to solve yet. Some considered resolutions:
-    // (a) Diff with prevoius selected data ant only trigger event when changed.
-    // But store previous data and diff precisely (i.e., not only by dataIndex, but
-    // also detect value changes in selected data) might bring complexity or fragility.
+    // (a) Diff with prevoius selected dataWaJue ant only trigger event when changed.
+    // But store previous dataWaJue and diff precisely (i.e., not only by dataIndex, but
+    // also detect value changes in selected dataWaJue) might bring complexity or fragility.
     // (b) Use spectial param like `silent` to suppress event triggering.
     // But such kind of volatile param may be weird in `setOption`.
     if (!payload) {
@@ -67845,10 +67845,10 @@ Calendar.prototype = {
 
 
     /**
-     * Convert a time data(time, value) item to (x, y) point.
+     * Convert a time dataWaJue(time, value) item to (x, y) point.
      *
      * @override
-     * @param  {Array|number} data data
+     * @param  {Array|number} data dataWaJue
      * @param  {boolean} [clamp=true] out of range
      * @return {Array} point
      */
@@ -67884,11 +67884,11 @@ Calendar.prototype = {
     },
 
     /**
-     * Convert a (x, y) point to time data
+     * Convert a (x, y) point to time dataWaJue
      *
      * @override
      * @param  {string} point point
-     * @return {string}       data
+     * @return {string}       dataWaJue
      */
     pointToData: function (point) {
 
@@ -69081,7 +69081,7 @@ var asc$1 = asc;
  * Operate single axis.
  * One axis can only operated by one axis operator.
  * Different dataZoomModels may be defined to operate the same axis.
- * (i.e. 'inside' data zoom and 'slider' data zoom components)
+ * (i.e. 'inside' dataWaJue zoom and 'slider' dataWaJue zoom components)
  * So dataZoomModels share one axisProxy in that case.
  *
  * @class
@@ -69317,14 +69317,14 @@ AxisProxy.prototype = {
         }
 
         var targetSeries = this.getTargetSeriesModels();
-        // Culculate data window and data extent, and record them.
+        // Culculate dataWaJue window and dataWaJue extent, and record them.
         this._dataExtent = calculateDataExtent(this, this._dimName, targetSeries);
 
         // this.hasSeriesStacked = false;
         // each(targetSeries, function (series) {
-            // var data = series.getData();
-            // var dataDim = data.mapDimension(this._dimName);
-            // var stackedDimension = data.getCalculationInfo('stackedDimension');
+            // var dataWaJue = series.getData();
+            // var dataDim = dataWaJue.mapDimension(this._dimName);
+            // var stackedDimension = dataWaJue.getCalculationInfo('stackedDimension');
             // if (stackedDimension && stackedDimension === dataDim) {
                 // this.hasSeriesStacked = true;
             // }
@@ -69372,11 +69372,11 @@ AxisProxy.prototype = {
 
         // FIXME
         // Toolbox may has dataZoom injected. And if there are stacked bar chart
-        // with NaN data, NaN will be filtered and stack will be wrong.
+        // with NaN dataWaJue, NaN will be filtered and stack will be wrong.
         // So we need to force the mode to be set empty.
         // In fect, it is not a big deal that do not support filterMode-'filter'
         // when using toolbox#dataZoom, utill tooltip#dataZoom support "single axis
-        // selection" some day, which might need "adapt to data extent on the
+        // selection" some day, which might need "adapt to dataWaJue extent on the
         // otherAxis", which is disabled by filterMode-'empty'.
         // But currently, stack has been fixed to based on value but not index,
         // so this is not an issue any more.
@@ -69389,9 +69389,9 @@ AxisProxy.prototype = {
         // }
 
         // TODO
-        // filterMode 'weakFilter' and 'empty' is not optimized for huge data yet.
+        // filterMode 'weakFilter' and 'empty' is not optimized for huge dataWaJue yet.
 
-        // Process series data
+        // Process series dataWaJue
         each$23(seriesModels, function (seriesModel) {
             var seriesData = seriesModel.getData();
             var dataDims = seriesData.mapDimension(axisDim, true);
@@ -69470,9 +69470,9 @@ function calculateDataExtent(axisProxy, axisDim, seriesModels) {
     // controlled by a `dataZoom`, otherwise those axes will not be synchronized
     // when zooming. But it is difficult to know what is "consistent", considering
     // axes have different type or even different meanings (For example, two
-    // time axes are used to compare data of the same date in different years).
-    // So basically dataZoom just obtains extent by series.data (in category axis
-    // extent can be obtained from axis.data).
+    // time axes are used to compare dataWaJue of the same date in different years).
+    // So basically dataZoom just obtains extent by series.dataWaJue (in category axis
+    // extent can be obtained from axis.dataWaJue).
     // Nevertheless, user can set min/max/scale on axes to make extent of axes
     // consistent.
     fixExtentByAxis(axisProxy, dataExtent);
@@ -69485,7 +69485,7 @@ function fixExtentByAxis(axisProxy, dataExtent) {
     var min = axisModel.getMin(true);
 
     // For category axis, if min/max/scale are not set, extent is determined
-    // by axis.data by default.
+    // by axis.dataWaJue by default.
     var isCategoryAxis = axisModel.get('type') === 'category';
     var axisDataLen = isCategoryAxis && axisModel.getCategories().length;
 
@@ -69510,7 +69510,7 @@ function fixExtentByAxis(axisProxy, dataExtent) {
     }
 
     // For value axis, if min/max/scale are not set, we just use the extent obtained
-    // by series data, which may be a little different from the extent calculated by
+    // by series dataWaJue, which may be a little different from the extent calculated by
     // `axisHelper.getScaleExtent`. But the different just affects the experience a
     // little when zooming. So it will not be fixed until some users require it strongly.
 
@@ -69585,16 +69585,16 @@ var DataZoomModel = extendComponentModel({
         yAxisIndex: null,       // Default the first vertical category axis.
 
         filterMode: 'filter',   // Possible values: 'filter' or 'empty' or 'weakFilter'.
-                                // 'filter': data items which are out of window will be removed. This option is
-                                //          applicable when filtering outliers. For each data item, it will be
+                                // 'filter': dataWaJue items which are out of window will be removed. This option is
+                                //          applicable when filtering outliers. For each dataWaJue item, it will be
                                 //          filtered if one of the relevant dimensions is out of the window.
-                                // 'weakFilter': data items which are out of window will be removed. This option
-                                //          is applicable when filtering outliers. For each data item, it will be
+                                // 'weakFilter': dataWaJue items which are out of window will be removed. This option
+                                //          is applicable when filtering outliers. For each dataWaJue item, it will be
                                 //          filtered only if all  of the relevant dimensions are out of the same
                                 //          side of the window.
-                                // 'empty': data items which are out of window will be set to empty.
+                                // 'empty': dataWaJue items which are out of window will be set to empty.
                                 //          This option is applicable when user should not neglect
-                                //          that there are some data items out of window.
+                                //          that there are some dataWaJue items out of window.
                                 // 'none': Do not filter.
                                 // Taking line chart as an example, line will be broken in
                                 // the filtered points when filterModel is set to 'empty', but
@@ -70061,7 +70061,7 @@ var DataZoomModel = extendComponentModel({
         // Consider this case: dataZoomModel1 and dataZoomModel2 control the same axis,
         // and the option.start or option.end settings are different. The percentRange
         // should follow axisProxy.
-        // (We encounter this problem in toolbox data zoom.)
+        // (We encounter this problem in toolbox dataWaJue zoom.)
         for (var key in axisProxies) {
             if (axisProxies.hasOwnProperty(key) && !axisProxies[key].hostedBy(this)) {
                 return axisProxies[key];
@@ -70201,7 +70201,7 @@ var SliderZoomModel = DataZoomModel.extend({
         bottom: null, // Default align to grid rect.
 
         backgroundColor: 'rgba(47,69,84,0)',    // Background of slider zoom component.
-        // dataBackgroundColor: '#ddd',         // Background coor of data shadow and border of box,
+        // dataBackgroundColor: '#ddd',         // Background coor of dataWaJue shadow and border of box,
                                                 // highest priority, remain for compatibility of
                                                 // previous version, but not recommended any more.
         dataBackground: {
@@ -70545,7 +70545,7 @@ var SliderZoomView = DataZoomView.extend({
         var step = thisShadowExtent[1] / (data.count() - 1);
         var thisCoord = 0;
 
-        // Optimize for large data shadow
+        // Optimize for large dataWaJue shadow
         var stride = Math.round(data.count() / size[0]);
         var lastIsEmpty;
         data.each([otherDim], function (value, index) {
@@ -70564,7 +70564,7 @@ var SliderZoomView = DataZoomView.extend({
             var otherCoord = isEmpty
                 ? 0 : linearMap$2(value, otherDataExtent, otherShadowExtent, true);
 
-            // Attempt to draw data shadow precisely when there are empty value.
+            // Attempt to draw dataWaJue shadow precisely when there are empty value.
             if (isEmpty && !lastIsEmpty && index) {
                 areaPoints.push([areaPoints[areaPoints.length - 1][0], 0]);
                 linePoints.push([linePoints[linePoints.length - 1][0], 0]);
@@ -70840,7 +70840,7 @@ var SliderZoomView = DataZoomView.extend({
                 var range = this._range;
 
                 var dataInterval = nonRealtime
-                    // See #4434, data and axis are not processed and reset yet in non-realtime mode.
+                    // See #4434, dataWaJue and axis are not processed and reset yet in non-realtime mode.
                     ? axisProxy.calculateDataWindow({
                         start: range[0], end: range[1]
                     }).valueWindow
@@ -71042,9 +71042,9 @@ DataZoomModel.extend({
 });
 
 // Only create one roam controller for each coordinate system.
-// one roam controller might be refered by two inside data zoom
+// one roam controller might be refered by two inside dataWaJue zoom
 // components (for example, one for x and one for y). When user
-// pan or zoom, only dispatch one action for those data zoom
+// pan or zoom, only dispatch one action for those dataWaJue zoom
 // components.
 
 var curry$6 = curry;
@@ -71487,7 +71487,7 @@ registerProcessor({
 
     isOverallFilter: true,
 
-    // Consider appendData, where filter should be performed. Because data process is
+    // Consider appendData, where filter should be performed. Because dataWaJue process is
     // in block mode currently, it is not need to worry about that the overallProgress
     // execute every frame.
     overallReset: function (ecModel, api) {
@@ -71499,16 +71499,16 @@ registerProcessor({
                 dataZoomModel.getAxisProxy(dimNames.name, axisIndex).reset(dataZoomModel, api);
             });
 
-            // Caution: data zoom filtering is order sensitive when using
+            // Caution: dataWaJue zoom filtering is order sensitive when using
             // percent range and no min/max/scale set on axis.
             // For example, we have dataZoom definition:
             // [
             //      {xAxisIndex: 0, start: 30, end: 70},
             //      {yAxisIndex: 0, start: 20, end: 80}
             // ]
-            // In this case, [20, 80] of y-dataZoom should be based on data
+            // In this case, [20, 80] of y-dataZoom should be based on dataWaJue
             // that have filtered by x-dataZoom using range of [30, 70],
-            // but should not be based on full raw data. Thus sliding
+            // but should not be based on full raw dataWaJue. Thus sliding
             // x-dataZoom will change both ranges of xAxis and yAxis,
             // while sliding y-dataZoom will only change the range of yAxis.
             // So we should filter x-axis after reset x-axis immediately,
@@ -71985,8 +71985,8 @@ var VisualMapModel = extendComponentModel({
      * this.formatValueText(someVal); // format single numeric value to text.
      * this.formatValueText(someVal, true); // format single category value to text.
      * this.formatValueText([min, max]); // format numeric min-max to text.
-     * this.formatValueText([this.dataBound[0], max]); // using data lower bound.
-     * this.formatValueText([min, this.dataBound[1]]); // using data upper bound.
+     * this.formatValueText([this.dataBound[0], max]); // using dataWaJue lower bound.
+     * this.formatValueText([min, this.dataBound[1]]); // using dataWaJue upper bound.
      *
      * @param {number|Array.<number>} value Real value, or this.dataBound[0 or 1].
      * @param {boolean} [isCategory=false] Only available when value is number.
@@ -72056,8 +72056,8 @@ var VisualMapModel = extendComponentModel({
     resetExtent: function () {
         var thisOption = this.option;
 
-        // Can not calculate data extent by data here.
-        // Because series and data may be modified in processing stage.
+        // Can not calculate dataWaJue extent by dataWaJue here.
+        // Because series and dataWaJue may be modified in processing stage.
         // So we do not support the feature "auto min/max".
 
         var extent = asc$3([thisOption.min, thisOption.max]);
@@ -72318,7 +72318,7 @@ var ContinuousModel = VisualMapModel.extend({
         itemHeight: null,       // The length of the range control edge.
         itemWidth: null,        // The length of the other side.
         hoverLink: true,        // Enable hover highlight.
-        hoverLinkDataSize: null,// The size of hovered data.
+        hoverLinkDataSize: null,// The size of hovered dataWaJue.
         hoverLinkOnHandle: null // Whether trigger hoverLink when hover handle.
                                 // If not specified, follow the value of `realtime`.
     },
@@ -72745,9 +72745,9 @@ var HOVER_LINK_OUT = 6;
 // Notice:
 // Any "interval" should be by the order of [low, high].
 // "handle0" (handleIndex === 0) maps to
-// low data value: this._dataInterval[0] and has low coord.
+// low dataWaJue value: this._dataInterval[0] and has low coord.
 // "handle1" (handleIndex === 1) maps to
-// high data value: this._dataInterval[1] and has high coord.
+// high dataWaJue value: this._dataInterval[1] and has high coord.
 // The logic of transform is implemented in this._createBarGroup.
 
 var ContinuousView = VisualMapView.extend({
@@ -73090,7 +73090,7 @@ var ContinuousView = VisualMapView.extend({
         );
 
         var dataExtent = visualMapModel.getExtent();
-        // Update data interval.
+        // Update dataWaJue interval.
         this._dataInterval = [
             linearMap$4(handleEnds[0], sizeExtent, dataExtent, true),
             linearMap$4(handleEnds[1], sizeExtent, dataExtent, true)
@@ -73383,7 +73383,7 @@ var ContinuousView = VisualMapView.extend({
             linearMap$4(hoverRange[0], sizeExtent, dataExtent, true),
             linearMap$4(hoverRange[1], sizeExtent, dataExtent, true)
         ];
-        // Consider data range is out of visualMap range, see test/visualMap-continuous.html,
+        // Consider dataWaJue range is out of visualMap range, see test/visualMap-continuous.html,
         // where china and india has very large population.
         hoverRange[0] < sizeExtent[0] && (valueRange[0] = -Infinity);
         hoverRange[1] > sizeExtent[1] && (valueRange[1] = Infinity);
@@ -74487,25 +74487,25 @@ function hasXAndY(item) {
 }
 
 // Make it simple, do not visit all stacked value to count precision.
-// function getPrecision(data, valueAxisDim, dataIndex) {
+// function getPrecision(dataWaJue, valueAxisDim, dataIndex) {
 //     var precision = -1;
-//     var stackedDim = data.mapDimension(valueAxisDim);
+//     var stackedDim = dataWaJue.mapDimension(valueAxisDim);
 //     do {
 //         precision = Math.max(
-//             numberUtil.getPrecision(data.get(stackedDim, dataIndex)),
+//             numberUtil.getPrecision(dataWaJue.get(stackedDim, dataIndex)),
 //             precision
 //         );
-//         var stackedOnSeries = data.getCalculationInfo('stackedOnSeries');
+//         var stackedOnSeries = dataWaJue.getCalculationInfo('stackedOnSeries');
 //         if (stackedOnSeries) {
-//             var byValue = data.get(data.getCalculationInfo('stackedByDimension'), dataIndex);
-//             data = stackedOnSeries.getData();
-//             dataIndex = data.indexOf(data.getCalculationInfo('stackedByDimension'), byValue);
-//             stackedDim = data.getCalculationInfo('stackedDimension');
+//             var byValue = dataWaJue.get(dataWaJue.getCalculationInfo('stackedByDimension'), dataIndex);
+//             dataWaJue = stackedOnSeries.getData();
+//             dataIndex = dataWaJue.indexOf(dataWaJue.getCalculationInfo('stackedByDimension'), byValue);
+//             stackedDim = dataWaJue.getCalculationInfo('stackedDimension');
 //         }
 //         else {
-//             data = null;
+//             dataWaJue = null;
 //         }
-//     } while (data);
+//     } while (dataWaJue);
 
 //     return precision;
 // }
@@ -74564,7 +74564,7 @@ var markerTypeCalculator = {
 };
 
 /**
- * Transform markPoint data item to format used in List by do the following
+ * Transform markPoint dataWaJue item to format used in List by do the following
  * 1. Calculate statistic like `max`, `min`, `average`
  * 2. Convert `item.xAxis`, `item.yAxis` to `item.coord` array
  * @param  {module:echarts/model/Series} seriesModel
@@ -74577,7 +74577,7 @@ function dataTransform(seriesModel, item) {
     var coordSys = seriesModel.coordinateSystem;
 
     // 1. If not specify the position with pixel directly
-    // 2. If `coord` is not a data array. Which uses `xAxis`,
+    // 2. If `coord` is not a dataWaJue array. Which uses `xAxis`,
     // `yAxis` to specify the coord on each dimension
 
     // parseFloat first because item.x and item.y can be percent string like '20%'
@@ -74654,7 +74654,7 @@ function dataDimToCoordDim(seriesModel, dataDim) {
 }
 
 /**
- * Filter data which is out of coordinateSystem range
+ * Filter dataWaJue which is out of coordinateSystem range
  * [dataFilter description]
  * @param  {module:echarts/coord/*} [coordSys]
  * @param  {Object} item
@@ -74848,7 +74848,7 @@ function createList$1(coordSys, seriesModel, mpModel) {
             var info = seriesModel.getData().getDimensionInfo(
                 seriesModel.getData().mapDimension(coordDim)
             ) || {};
-            // In map series data don't have lng and lat dimension. Fallback to same with coordSys
+            // In map series dataWaJue don't have lng and lat dimension. Fallback to same with coordSys
             return defaults({name: coordDim}, info);
         });
     }
@@ -74929,7 +74929,7 @@ var markLineTransform = function (seriesModel, coordSys, mlModel, item) {
         && (
             mlType === 'min' || mlType === 'max' || mlType === 'average'
             // In case
-            // data: [{
+            // dataWaJue: [{
             //   yAxis: 10
             // }]
             || (item.xAxis != null || item.yAxis != null)
@@ -74985,7 +74985,7 @@ var markLineTransform = function (seriesModel, coordSys, mlModel, item) {
         extend({}, item[2])
     ];
 
-    // Avoid line data type is extended by from(to) data type
+    // Avoid line dataWaJue type is extended by from(to) dataWaJue type
     item[2].type = item[2].type || '';
 
     // Merge from option and to option into line option
@@ -75014,7 +75014,7 @@ function markLineFilter(coordSys, item) {
         // In case
         // {
         //  markLine: {
-        //    data: [{ yAxis: 2 }]
+        //    dataWaJue: [{ yAxis: 2 }]
         //  }
         // }
         if (
@@ -75058,7 +75058,7 @@ function updateSingleMarkerEndLayout(
         // Expand line to the edge of grid if value on one axis is Inifnity
         // In case
         //  markLine: {
-        //    data: [{
+        //    dataWaJue: [{
         //      yAxis: 2
         //      // or
         //      type: 'average'
@@ -75162,7 +75162,7 @@ MarkerView.extend({
 
         mlModel.__from = fromData;
         mlModel.__to = toData;
-        // Line data for tooltip and formatter
+        // Line dataWaJue for tooltip and formatter
         mlModel.setData(lineData);
 
         var symbolType = mlModel.get('symbol');
@@ -75243,7 +75243,7 @@ function createList$2(coordSys, seriesModel, mlModel) {
             var info = seriesModel.getData().getDimensionInfo(
                 seriesModel.getData().mapDimension(coordDim)
             ) || {};
-            // In map series data don't have lng and lat dimension. Fallback to same with coordSys
+            // In map series dataWaJue don't have lng and lat dimension. Fallback to same with coordSys
             return defaults({name: coordDim}, info);
         });
     }
@@ -75374,7 +75374,7 @@ function markAreaFilter(coordSys, item) {
         // In case
         // {
         //  markArea: {
-        //    data: [{ yAxis: 2 }]
+        //    dataWaJue: [{ yAxis: 2 }]
         //  }
         // }
         if (
@@ -75504,7 +75504,7 @@ MarkerView.extend({
 
         var areaData = createList$3(coordSys, seriesModel, maModel);
 
-        // Line data for tooltip and formatter
+        // Line dataWaJue for tooltip and formatter
         maModel.setData(areaData);
 
         // Update visual and layout of line
@@ -75603,7 +75603,7 @@ function createList$3(coordSys, seriesModel, maModel) {
             var info = data.getDimensionInfo(
                 data.mapDimension(coordDim)
             ) || {};
-            // In map series data don't have lng and lat dimension. Fallback to same with coordSys
+            // In map series dataWaJue don't have lng and lat dimension. Fallback to same with coordSys
             return defaults({name: coordDim}, info);
         });
         areaData = new List(map(dims, function (dim, idx) {
@@ -75958,7 +75958,7 @@ var SliderTimelineModel = TimelineModel.extend({
         inverse: false,
 
         tooltip: {                          // boolean or Object
-            trigger: 'item'                 // data item may also have tootip attr.
+            trigger: 'item'                 // dataWaJue item may also have tootip attr.
         },
 
         symbol: 'emptyCircle',
@@ -77239,7 +77239,7 @@ var seriesOptGenreator = {
             return merge({
                 id: seriesId,
                 type: 'line',
-                // Preserve data related option
+                // Preserve dataWaJue related option
                 data: seriesModel.get('data'),
                 stack: seriesModel.get('stack'),
                 markPoint: seriesModel.get('markPoint'),
@@ -77252,7 +77252,7 @@ var seriesOptGenreator = {
             return merge({
                 id: seriesId,
                 type: 'bar',
-                // Preserve data related option
+                // Preserve dataWaJue related option
                 data: seriesModel.get('data'),
                 stack: seriesModel.get('stack'),
                 markPoint: seriesModel.get('markPoint'),
@@ -77787,7 +77787,7 @@ function tryMergeDataOption(newData, originalData) {
             if (isObject$1(newVal) && !isArray(newVal)) {
                 newVal = newVal.value;
             }
-            // Original data has option
+            // Original dataWaJue has option
             return defaults({
                 value: newVal
             }, original);
@@ -78635,7 +78635,7 @@ if (!env$1.canvasSupported) {
                     var startAngle = data[i++] + angle;
                     var endAngle = data[i++] + startAngle + angle;
                     // FIXME
-                    // var psi = data[i++];
+                    // var psi = dataWaJue[i++];
                     i++;
                     var clockwise = data[i++];
 
@@ -79812,7 +79812,7 @@ svgPath.brush = function (el) {
         var pathStr = pathDataToString$1(path);
         if (pathStr.indexOf('NaN') < 0) {
             // Ignore illegal path, which may happen such in out-of-range
-            // data in Calendar series.
+            // dataWaJue in Calendar series.
             attr(svgEl, 'd', pathStr);
         }
     }
@@ -81452,7 +81452,7 @@ SVGPainter.prototype = {
     pathToDataUrl: function () {
         this.refresh();
         var html = this._svgRoot.outerHTML;
-        return 'data:image/svg+xml;charset=UTF-8,' + html;
+        return 'dataWaJue:image/svg+xml;charset=UTF-8,' + html;
     }
 };
 

@@ -9,14 +9,17 @@
 	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
 
+  <link th:href="@{~/resources/plugins/waves-0.7.5/waves.min.css}" rel="stylesheet"/>
+  <link th:href="@{~/resources/plugins/checkbix/css/checkbix.min.css}" rel="stylesheet"/>
+
   <style type="text/css">
   * {
       margin: 0px;
       padding: 0px;
   }
 		body {
-		  background: #060e1b;
-      color: white;
+		  /*background: #060e1b;*/
+      color: black;
       width: 100%;
       height: 100%;
 		}
@@ -38,32 +41,64 @@
   </style>
 </head>
 <body>
-  <canvas id="canvas"></canvas>
   <header class="nav">
     <div class="page-header">
-      <h1>职位分析 <small><a style="color:red;" href="index.html">Job Analisis</a></small></h1>
+      <h1>职位分析 <small><a style="color:red;" href="index.html"> 首页 </a></small></h1>
     </div>
     <label>
       输入您的资料，我们将通过大数据为你匹配最适合你的职位。
     </label>
   </header>
 
-    <form role="form" method="post" th:action="@{/job-analysis.html}">
+    <form role="form" id="jobAnalysis" method="post" th:action="@{user-job-information.html}">
       <div class="form-group">
-        <label for="xueli">学历</label>
-        <input type="text" class="form-control" id="xueli" name="xueli" placeholder="请输入名称">
-        <label for="qiuzhidi">求职地</label>
-        <input type="text" class="form-control" id="qiuzhidi" name="qiuzhidi" placeholder="请输入名称">
-        <label for="gongzuonianxian">工作年限</label>
-        <input type="text" class="form-control" id="gongzuonianxian" name="gongzuonianxian" placeholder="请输入名称">
-        <label for="jineng">技能</label>
-        <input type="text" class="form-control" id="jineng" name="jineng" placeholder="请输入名称">
-        <label for="min_salary">理想工资</label>
-        <input type="text" class="form-control" id="min_salary" name="min_salary" placeholder="请输入名称">
-        <label for="job_name">理想职位</label>
-        <input type="text" class="form-control" id="job_name" name="job_name" placeholder="请输入名称">
+        <div>
+          <label for="xueli">学历</label>
+          <input type="text" class="form-control" id="xueli" name="xueli" placeholder="本科">
+          <span class="xueliMessage" />
+        </div>
+        <!--可以不要的-->
+        <div>
+          <label for="xuexiao">学校</label>
+          <input type="text" class="form-control" id="xuexiao" name="xuexiao" placeholder="xxx大学">
+          <span class="xuexiaoMessage" />
+        </div>
+        <div>
+          <label for="info_major">专业</label>
+          <input type="text" class="form-control" id="info_major" name="info_major" placeholder="计算机与科学">
+          <span class="majorMessage" />
+        </div>
+        <!--可以不要的-->
+<div>
+  <label for="qiuzhidi">求职地</label>
+  <input type="text" class="form-control" id="qiuzhidi" name="qiuzhidi" placeholder="北京">
+</div>
 
+        <div>
+          <label for="gongzuonianxian">工作年限</label>
+          <input type="text" class="form-control" id="gongzuonianxian" name="gongzuonianxian" placeholder="3">
+          <span class="gongzuonianxianMessage" />
+        </div>
 
+       <div>
+         <label for="jineng">技能(空格分隔，如：Java Hadoop)</label>
+         <input type="text" class="form-control" id="jineng" name="jineng" placeholder="Java Hadoop">
+         <span class="jinengMessage" />
+       </div>
+
+        <div>
+          <label for="job_name">理想职位</label>
+          <input type="text" class="form-control" id="job_name" name="job_name" placeholder="大数据工程师">
+          <span class="jobMessage" />
+        </div>
+        <div>
+          <label for="min_salary">期望薪资</label>
+          <input type="text" class="form-control" id="min_salary" name="min_salary"  placeholder="2000">
+        </div>
+        <div>
+          <label for="company_prop">公司性质</label>
+          <input type="text" class="form-control" id="company_prop" name="company_prop" value="民营公司" placeholder="国企">
+        </div>
       </div>
       <button type="submit" class="btn btn-default">
         提交
@@ -73,10 +108,116 @@
       <h2>By 挖石油创业</h2>
     </footer>
 
-  <script src="js/background-star.js"></script>
-  <script src="js/jquery/jquery.min.js"></script>
-	<script src="bootstrap/js/bootstrap.min.js"></script>
 
+  <!--<script src="js/jquery/jquery.min.js"></script>-->
+  <!--<script src="bootstrap/js/bootstrap.min.js"></script>-->
+
+  <script th:src="@{~/resources/plugins/jquery.1.12.4.min.js}"></script>
+  <script th:src="@{~/resources/plugins/bootstrap-3.3.0/js/bootstrap.min.js}"></script>
+  <script th:src="@{~/resources/plugins/waves-0.7.5/waves.min.js}"></script>
+  <script th:src="@{~/resources/plugins/checkbix/js/checkbix.min.js}"></script>
+
+  <script th:src="@{~/resources/js/login.js}"></script>
+
+  <script th:src="@{~/js/jquery/jquery.min.js}"></script>
+  <script th:src="@{~/js/formValidation.min.js}"></script>
+  <script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+  <script th:inline="javascript">
+      /*<![CDATA[*/
+      var user = [[${user}]];
+      if(user != null){
+          $("#xueli").val(user.info_education);
+          $("#qiuzhidi").val(user.info_place);
+          if(user.info_experience == '0'){
+              $("#gongzuonianxian").val('经验不限');
+          }else{
+              $("#gongzuonianxian").val(user.info_experience);
+          }
+          $("#info_major").val(user.info_major);
+
+          var ability = user.info_ability;
+          ability = ability.replace(',' , ' ');
+          console.log(ability);
+          $("#jineng").val(ability);
+
+      }
+
+      $(document).ready(function () {
+          $('#jobAnalysis').formValidation({
+              message: 'This value is not valid',
+              icon: {
+                  valid: 'glyphicon glyphicon-ok',
+                  invalid: 'glyphicon glyphicon-remove',
+                  validating: 'glyphicon glyphicon-refresh'
+              },
+              fields: {
+
+                  xueli: {
+                      err: '.xueliMessage',
+                      validators: {
+                          notEmpty: {
+                              message: '学历不能为空'
+                          }
+                      }
+                  },
+                  gongzuonianxian: {
+                      err: '.gongzuonianxianMessage',
+                     // message: 'The username is not valid',
+                      validators: {
+                          notEmpty: {
+                              message: '工作年限不能为空'
+                          }
+                      }
+                  },
+                  jineng: {
+                      err: '.jinengMessage',
+                      //message: 'The username is not valid',
+                      validators: {
+                          notEmpty: {
+                              message: '技能不能为空'
+                          }
+                      }
+                  },
+                  job_name: {
+                      err: '.jobMessage',
+                      //message: 'The username is not valid',
+                      validators: {
+                          notEmpty: {
+                              message: '还是填一个职位名吧'
+                          }
+                      }
+                  },
+                  xueli: {
+                      err: '.xueliMessage',
+                      //message: 'The username is not valid',
+                      validators: {
+                          notEmpty: {
+                              message: '学历可不能少啊'
+                          }
+                      }
+                  },
+                  xuexiao: {
+                      err: '.xuexiaoMessage',
+                      //message: 'The username is not valid',
+                      validators: {
+                          notEmpty: {
+                              message: '学校也填一下吧'
+                          }
+                      }
+                  },
+                  info_major: {
+                      err: '.majorMessage',
+                      //message: 'The username is not valid',
+                      validators: {
+                          notEmpty: {
+                              message: '你的专业呢？'
+                          }
+                      }
+                  }
+              }
+          });
+      });
+  </script>
 
 
 </body>

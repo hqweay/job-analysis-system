@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>爬虫设置</title>
+    <link rel="stylesheet" th:href="@{~/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link th:href="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.css}" rel="stylesheet"/>
+    <style>
+        body{
+            text-align: center;
+        }
+        #editSpider{
+            margin: 0 auto;
+            margin-top: 12%;
+            width: 60%;
+        }
+    </style>
+</head>
+<body>
+<div id="editSpider">
+    <form name="f" id="editSpiderForm" class="form-horizontal"  >
+        <div class="form-group ">
+            <label for="inputPath" class="col-sm-2 control-label">聚类的输入目录</label>
+            <div class="col-sm-8">
+                <input type="text" name="inputPath" class="form-control" value="D:\dataClean" id="inputPath" placeholder="也就是清洗的输出目录">
+                <span class="spiderNameMessage" />
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="outputPath" class="col-sm-2 control-label">聚类的输出目录</label>
+            <div class="col-sm-8">
+                <input type="text" name="outputPath" class="form-control" value="D:\dataCluster" id="outputPath" placeholder="也就是清洗的输出目录">
+                <span class="spiderNameMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-1 col-sm-10">
+                <button type="button" id="editSpiderButton" class="btn btn-default">设置</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/js/formValidation.min.js}"></script>
+<script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+<script th:src="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.js}"></script>
+<script src="js/jquery/jquery.min.js"></script>
+<script src="js/formValidation.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script>
+    $("#editSpiderButton").click(function () {
+        $.confirm({
+            type: 'dark',
+            animationSpeed: 300,
+            title: '确认以此配置开始聚类操作？',
+            content:"<p>如果您非专业人士，请使用默认配置。</p> ",
+            buttons: {
+                confirm: {
+                    text: '确认',
+                    btnClass: 'waves-effect waves-button',
+                    action: function () {
+                        $.ajax({
+                            url:"/admin/editSpider",
+                            method:"post",
+                            traditional: true,//属性在这里设置 有啥用？没得这个好像传不了数据诶
+                            data:$("#editSpiderForm").serializeArray(),
+                            dataType:"json",
+                            success:function(data){
+                                if(data.state=="success"){
+                                    $.alert('聚类已经在后台开始工作！');
+                                }
+                            },
+                            error:function(){
+                                $.alert('聚类运行失败！');
+                            }
+                        });
+                    },
+                },
+                cancel: {
+                    text: '取消',
+                    btnClass: 'waves-effect waves-button'
+                }
+            }
+        });
+    });
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,164 +1,276 @@
-<!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
-
+﻿<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <title>注册</title>
-
-    <style type="text/css">
-        h1 {
-            text-align: center;
+    <meta charset="utf-8" />
+    <title>用户注册</title>
+    <style>
+        body {
+            background-color: #DBDBDB;
+            margin: 0 auto;
         }
+        * {
+            margin:0px;
+            padding:0px;
+            margin: 0 auto;
+        }
+
+        .header2 {
+            height: 53px;
+            width:90%;
+            background-color: #104E8B;
+            color: white;
+            /* margin: 0 auto; */
+            line-height: 53px;
+            text-align: center;
+            align-content: center;
+        }
+        .header2 ul li {
+            display: inline;
+            list-style: none;
+            padding-left: 90px;
+            /* float: left; */
+            background-color: #104E8B;
+        }
+        .header2 ul li a {
+            text-decoration: none;
+            color: white;
+            /* display: block; */
+            padding: 10px 15px;
+            padding-left: 28px;
+            padding-right: 28px;
+        }
+        .header2 ul li a:hover {
+            background-color: #7D9EC0;
+            background-repeat: repeat-x;
+        }
+        .theone2 {
+            background-color: #DBDBDB;
+            height: 500px;
+            width: 1084px;
+            margin-top: 30px;
+            padding-top: 50px;
+            /* padding-left: 140px;
+            padding-right: 140px; */
+            margin : 3% auto;
+        }
+        .first2 {
+            padding-top: 30px;
+            background-color: #4A708B;
+            width: 70%;
+            /*height: 410px;*/
+            height: 92%;
+            margin-left: 98px;
+            padding-left: 98px;
+            padding-right: 98px;
+            /* border: 5px solid #C9C9C9; */
+            /* border-right-style: inset; */
+            border-radius: 15px;
+        }
+        #iform {
+            background-color: #7D9EC0;
+            height: 320px;
+            width: 690px;
+            /* border: 5px dashed #C9C9C9; */
+            /* border-right-style:dashed; */
+            border-radius: 10px;
+            font-size:small;
+        }
+        #iform tr {
+            text-align: center;
+            border-radius: 10px;
+        }
+        #iform td {
+            padding-left: 40px;
+            padding-right: 40px;
+            margin:0px;
+
+        }
+        #iform input {
+            text-align: center;
+            height: 33px;
+            width: 240px;
+            /* background-color: #DBDBDB; */
+            color: black;
+            /* border: 2px solid lightsteelblue; */
+            border-radius: 3px;
+            border: none;
+            margin: 0px;
+        }
+        p {
+            text-align:center;
+            padding-bottom:10px;
+        }
+        a {
+            text-decoration: none;
+            color: white;
+        }
+        a:hover{
+            color: darkgrey;
+        }
+        #iform2 {
+            text-align: center;
+            padding-top: 10px;
+        }
+        #iform2 input:hover {
+            color: slategrey;
+            background-color: #DBDBDB;
+        }
+
+        #iform2 input {
+            border-radius: 10px;
+            border: 0px solid;
+            width: 65px;
+            height: 35px;
+        }
+
     </style>
-</head>
-
+</head >
 <body>
-
-    <div class="container">
-
-        <div class="header">
-            搞一些东西充实一下 算求了 也阔以了现在
-        </div>
-
-        <div id="register" class=" col-md-6 col-md-offset-3">
-            <h1>注册一下吧</h1>
-            <form id="registerForm" class="form-horizontal " method="POST" th:action="@{register}">
-                <div class="form-group">
-                    <label for="nameRegister" class="col-sm-2 control-label">用户名</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="name" class="form-control" id="nameRegister" placeholder="用户名">
-                        <span class="nameMessage" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="emailRegister" class="col-sm-2 control-label">Email</label>
-                    <div class="col-sm-10">
-                        <input type="email" name="email" class="form-control" id="emailRegister" placeholder="Email">
-                        <span class="emailMessage" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="passwordRegister" class="col-sm-2 control-label">Password</label>
-                    <div class="col-sm-10">
-                        <input type="password" name="password" class="form-control" id="passwordRegister" placeholder="Password">
-                        <span class="passwordMessage" />
-                    </div>
-                </div>
-                
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-default">注 册</button>
-                    </div>
-                </div>
-                <div>
-                    <h2> 已经注册啦?
-                        <a href="login.html" id="turnLogin">登录</a>
-                    </h2>
-                </div>
-                <div th:if="${param.error}">
-                    <div class="alert alert-danger">
-                        注册失败。
-                    </div>
-                </div>
-            </form>
-        </div>
+<div class="header2">
+    <ul>
+        <li><a href="index.html">首页</a></li>
 
 
-
+    </ul>
+</div>
+<div class="theone2">
+    <div class="first2">
+        <b><p>欢迎注册本站会员，如果您已有账号，则可在此 <a href="log in.html">登录</a> !</p></b>
+        <p style="color: burlywood;">登录后请尽快修改自己的个人信息，我们将为您做更精确的推荐！！</p>
+        <form  id="form1" method="POST" th:action="@{register}">
+            <table id="iform" cellpadding="0" cellspacing="0" align="center">
+                <tr style="background-color:#E0EEEE;">
+                    <td style="width:88px;">用 户 名 ：</td>
+                    <td><input type="text" name="name" id="user" value="" placeholder="请输入用户名" onblur="return checkname()" /></td>
+                    <td id="namets"style="width:120px;font-size:smaller;"></td>
+                </tr>
+                <tr style="background-color:#E0EEEE;">
+                    <td>邮 箱 ：</td>
+                    <td><input type="email" name="email" id="em" value="" placeholder="请输入邮箱" onblur="return checkemail()" /></td>
+                    <td id="emailts"style="width:120px;font-size:smaller;"></td>
+                </tr>
+                <tr>
+                    <td>设 置 密 码 ：</td>
+                    <td><input type="password" name="password" id="pw" value="" placeholder="请输入密码" onblur="return checkpass()"/></td>
+                    <td id="pwts"style="width:120px;font-size:smaller;"></td>
+                </tr>
+                <tr style="background-color:#E0EEEE;">
+                    <td>确 认 密 码 ：</td>
+                    <td><input type="password" name="repassword" id="rpw" value="" placeholder="请再次输入密码" onblur="return checkrpass()" /></td>
+                    <td id="rpassts"style="width:120px;font-size:smaller;"></td>
+                </tr>
+            </table>
+            <table id="iform2" cellpadding="0" cellspacing="0" align="center">
+                <tr>
+                    <td colspan="2">
+                        <input id="regis" type="submit" value="注册" onclick="return register()"/>
+                        <input id="reset" type="reset" name="rs" value="重置" />
+                    </td>
+                </tr>
+            </table>
+        </form>
     </div>
+</div>
 
-
-
-    <script src="../static/js/jquery/jquery.min.js"></script>
-    <script src="../static/js/formValidation.min.js"></script>
-    <script src="../static/bootstrap/js/bootstrap.min.js"></script>
-
-    <script type="text/javascript">
-
-        $("#turnLogin").click(function () {
-            $("#register").hide();
-            $("#login").show();
+<script type="text/javascript" src="js/jquery/jquery.min.js"></script>
+<script type="text/javascript">
+    function register() {
+        if (!checkname()) {
+            return false;
+        } else if (!checkemail()) {
+            return false;
+        }
+        else if (!checkpass()) {
+            return false;
+        }
+        return true;
+    }
+    function checkname() {
+        var name = document.getElementById("user").value;
+        var ts = document.getElementById("namets");
+        if (name.length < 3 || name.length > 15) {
+            ts.innerHTML = "用户名长度须在3-15之间!";
+            ts.style.color = "red";
+            return false;
+        }
+        $.post("checkUserName.action", { "userName": name }, function (data) {
+            var d = $.parseJSON(data);
+            //console.log(d.success);
+            if (d.success != "success") {
+                ts.innerHTML = '用户名已存在!';
+                ts.style.color = 'red';
+                return true;
+            }
         });
-        $("#turnRegister").click(function () {
-            $("#login").hide();
-            $("#register").show();
+        ts.innerHTML = '用户名设置成功！';
+        ts.style.color = 'green';
+        return true;
+    }
+    function checkpass() {
+        var password = document.getElementById("pw").value;
+        var pts = document.getElementById("pwts");
+
+        if (password.length < 6 || password.length > 15) {
+            pts.innerHTML = "密码长度须在6-15之间!";
+            pts.style.color = "red";
+            return false;
+        }
+        pts.innerHTML = "密码设置成功！";
+        pts.style.color = "green";
+        return true;
+    }
+    function checkrpass() {
+        var password = document.getElementById("pw").value;
+        var rpassword = document.getElementById("rpw").value;
+        var rpts = document.getElementById("rpassts");
+        if (password != rpassword) {
+            rpts.innerHTML = "两次密码输入不一致!";
+            rpts.style.color = "red";
+            return false;
+        }
+        rpts.innerHTML = "输入一致!";
+        rpts.style.color = "green";
+        return true;
+    }
+    function checkemail() {
+        var email = $("#em").val();
+        var ets = document.getElementById("emailts");
+        if (!isEmail(email)) {
+            ets.innerHTML = "邮箱格式不正确!";
+            ets.style.color = "red";
+            return false;
+        }
+        $.post("checkUserEmail.action", { "email": email }, function (data) {
+            var d = $.parseJSON(data);
+            //console.log(d.success);
+            if (d.success != "success") {
+                ets.innerHTML = '邮箱已存在哦!';
+                ets.style.color = 'red';
+                return true;
+            }
         });
+        ets.innerHTML = "邮箱可以使用!";
+        ets.style.color = "green";
+        return true;
+    }
+    function isEmail(str) {
+        var reg = /[a-z0-9-]{1,30}@[a-z0-9-]{1,65}.[a-z]{3}/;
+        return reg.test(str);
+    }
 
+    function checkMobile() {
+        var  tel = document.getElementById("tel").value;
+        var telts = document.getElementById("telts");
+        if (!(/^1[3|4|5|8][0-9]\d{4,8}$/.test(tel))) {
+            telts.innerHTML = "手机格式不正确!";
+            telts.style.color = "red";
+            return false;
+        }
+        telts.innerHTML = "手机设置成功!";
+        telts.style.color = "green";
+        return true;
+    }
 
-        $(document).ready(function () {
-            $('#registerForm').formValidation({
-                message: 'This value is not valid',
-                icon: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
-                fields: {
-                    name: {
-                        err: '.nameMessage',
-                        validators: {
-                            notEmpty: {
-                                message: '用户名不能为空'
-                            }
-                        }
-                    },
-                    email: {
-                        err: '.emailMessage',
-                        validators: {
-                            notEmpty: {
-                                message: '邮箱不能为空'
-                            }
-                        }
-                    },
-                    password: {
-                        message: 'The username is not valid',
-                        validators: {
-                            notEmpty: {
-                                message: '密码不能为空'
-                            },
-                            stringLength: {
-                                min: 6,
-                                max: 15,
-                                message: '密码不能少于6位大于15位'
-                            }
-                        }
-                    }
-                }
-            });
-        });
-        $(document).ready(function () {
-            $('#loginForm').formValidation({
-                message: 'This value is not valid',
-                icon: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
-                fields: {
-
-                    email: {
-                        err: '.emailMessage',
-                        validators: {
-                            notEmpty: {
-                                message: '邮箱不能为空'
-                            }
-                        }
-                    },
-                    password: {
-                        message: 'The username is not valid',
-                        validators: {
-                            notEmpty: {
-                                message: '密码不能为空'
-                            }
-                        }
-                    }
-                }
-            });
-        });
-    </script>
-</body>
-
-</html>
+</script>
+</body >
+</html >

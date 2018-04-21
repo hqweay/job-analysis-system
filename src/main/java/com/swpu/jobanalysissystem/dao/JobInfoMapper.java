@@ -1,6 +1,6 @@
 package com.swpu.jobanalysissystem.dao;
 
-import com.swpu.jobanalysissystem.entity.JobAnalysis;
+import com.swpu.jobanalysissystem.pojo.JobAnalysis;
 import com.swpu.jobanalysissystem.entity.JobInfo;
 import org.apache.ibatis.annotations.*;
 
@@ -23,12 +23,24 @@ public interface JobInfoMapper {
   //妈的工作年限不转数值比较了，里面有中文啊，就这样说不定还要好点
   //最低工资搞一下就ojbk了  这种方式可以吗？我还没转为int啊，但是好像也可以诶
 
-  @Select("select id,job_name,min_salary,top_salary,min_xueli,job_place,company_name,experience,job_url,job_num,job_desc from (select job_id,(GROUP_CONCAT(label SEPARATOR ' ' ) )as label from job_image group by job_id )A join job_info on job_info.id=A.job_id where (label like '%' #{jineng} '%' or job_name like '%' #{jineng} '%') and min_xueli like '%' #{xueli} '%' and experience like '%' #{gongzuonianxian} '%' and job_place like '%' #{qiuzhidi} '%' and min_salary >= #{min_salary} and job_name like '%' #{job_name} '%' limit 10;")
+  @Select("select id,job_name,min_salary,top_salary,min_xueli,job_place,company_name,experience,job_url,job_num,job_desc from (select job_id,(GROUP_CONCAT(label SEPARATOR ' ' ) )as label from job_image group by job_id )A join job_info on job_info.id=A.job_id where label like '%' #{jineng} '%' or job_name like '%' #{jineng} '%' or min_xueli = #{xueli} or experience >= #{gongzuonianxian} or job_place  = #{qiuzhidi} or (min_salary >= (#{min_salary} - 2000) and min_salary <= (#{min_salary} + 2000)) or job_name like '%' #{job_name} '%' order by min_salary desc ")
   List<JobInfo> getRecommenedJobsBySqlQuery(JobAnalysis jobAnalysis);
+
+
+  @Select("select count(id) from (select job_id,(GROUP_CONCAT(label SEPARATOR ' ' ) )as label from job_image group by job_id )A join job_info on job_info.id=A.job_id where label like '%' #{jineng} '%' or job_name like '%' #{jineng} '%' or min_xueli like '%' #{xueli} '%' or experience like '%' #{gongzuonianxian} '%' or job_place like '%' #{qiuzhidi} '%' or  (min_salary >= (#{min_salary} - 2000) and min_salary <= (#{min_salary} + 2000)) or job_name like '%' #{job_name} '%'")
+  int getRecommenedJobsCountBySqlQuery(JobAnalysis jobAnalysis);
+
+
 
   //妈的 坑啊 不要加分号 用分页插件的时候是在后面补上
   @Select("select * from job_info")
   List<JobInfo> selectJobInfo();
+
+  @Select("select * from job_info where id = #{txt} or job_name like '%' #{txt} '%' or company_name like '%' #{txt} '%' or job_place like '%' #{txt} '%' ")
+  List<JobInfo> selectJobInfoByTxt(String txt);
+
+  @Select("select count(id) from job_info where id = #{txt} or job_name like '%' #{txt} '%' or company_name like '%' #{txt} '%' or job_place like '%' #{txt} '%' ")
+  int selectJobInfoByTxtCount(String txt);
 
   @Select("select count(id) from job_info")
   int getCount();

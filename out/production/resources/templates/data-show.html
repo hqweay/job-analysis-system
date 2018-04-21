@@ -1,157 +1,129 @@
 <!DOCTYPE html>
-<html lang="zh-CN" xmlns:th="http://www.springframework.org/schema/mvc">
+<html xmlns:th="http://www.springframework.org/schema/mvc">
 <head>
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>大数据展示</title>
-	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
-	<link rel="stylesheet" type="text/css" href="css/htmleaf-demo.css">
-	<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
-	<script src="bootstrap/css/bootstrap.min.css"></script>
-	<style type="text/css">
-		* {
-			margin: 0px;
-			padding: 0px;
-		}
-		body {
-			background: #060e1b;
-			/* overflow: hidden; */
-			color: white;
-		}
-		#canvas{
-			z-index : -1;
-			position : absolute;
-		}
-		.center{
-			text-align: center;
-		}
-		.nav{
-			width: 100%;
-			position:relative;
-			z-index:9999;
-		}
-		.center{
-			margin-top: 20%;
-		}
-		.chart div{
-			margin: 0 auto;
-			color: white;
-		}
+    <title>大数据展示</title>
+    <meta charset="UTF-8">
+    <!--<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/bootstrap-3.3.4.css">-->
 
-	</style>
+    <link rel="stylesheet" type="text/css" th:href="@{~/bootstrap/css/bootstrap.css}">
+    <!--<link rel="stylesheet" type="text/css" href="http://www.jq22.com/jquery/font-awesome.4.6.0.css">-->
+
+    <link rel="stylesheet" th:href="@{~/bTabs/b.tabs.css}" type="text/css">
+    <style type="text/css">
+        .nav-header-hqweay {
+            width:90%;
+            background-color: #104E8B;
+            color: white;
+            margin: 0 auto;
+        }
+        .nav-header-hqweay ul li a {
+            text-decoration: none;
+            color: white;
+            /*display: block;*/
+            padding-left: 28px;
+            padding-right: 28px;
+        }
+        .nav-header-hqweay ul li a:hover {
+            background-color: #7D9EC0;
+            background-repeat: repeat-x;
+        }
+
+        .nav{
+            /*width: 100%;*/
+            position:relative;
+            z-index:9999;
+        }
+        .chart div{
+            margin: 0 auto;
+            color: black;
+        }
+        div.menuSideBar { }
+        div.menuSideBar li.nav-header { font-size: 14px; padding: 3px 15px; }
+        div.menuSideBar .nav-list > li > a, div.menuSideBar .dropdown-menu li a { -webkit-border-radius: 0px; -moz-border-radius: 0px; -ms-border-radius: 0px; border-radius: 0px; }
+    </style>
 </head>
+
 <body>
-<canvas id="canvas"></canvas>
-<header class="nav">
-	<div class="page-header">
-		<h1>大数据展示 <small><a style="color:red;" href="index.html">Job Analisis</a></small></h1>
-	</div>
-</header>
-<header class="nav">
-	<div class="nav-menu">
-		<ul class="nav nav-pills">
-			<li role="presentation" class="active"><a href="#gongzi">岗位工资的影响因素</a></li>
-			<li role="presentation"><a href="#qiye">岗位能力的需求图谱</a></li>
-			<li role="presentation"><a href="#huaxiang">岗位招聘的企业画像</a></li>
-		</ul>
-	</div>
-</header>
-<nav class="center">
-	<div class="chart">
-		<h2 id="gongzi">岗位工资的影响因素</h2>
-		<div class="salary">
-			<h3>地区工资图</h3>
-			<div id="place" style="width: 500px;height: 400px;"></div>
-		</div>
-		<div class="salary">
-			<h3>学历工资图</h3>
-			<div id="xueli" style="width: 500px;height: 400px;"></div>
-		</div>
-		<div class="salary">
-			<h3>经验工资图</h3>
-			<div id="experience" style="width: 500px;height: 400px;"></div>
-		</div>
-		<div class="salary">
-			<h3>工资性质工资图</h3>
-			<div id="company" style="width: 500px;height: 400px;"></div>
-		</div>
-	</div>
-	<div class="chart">
-	<h2 id="qiye">岗位能力的需求图谱</h2>
-		<div id="ability" style="width: 500px;height: 400px;"></div>
-	</div>
-	<h2 id="huaxiang">岗位招聘的企业画像</h2>
-	<div>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio, vitae, dolor. Nam ut vero sapiente officiis quam rerum, odit illo dolore tempora quaerat vitae. Doloremque numquam, cupiditate molestias corrupti magnam!</div>
-		<div>Deserunt, corporis eum, rem, pariatur dignissimos quasi aperiam ipsam voluptates in neque ab animi odit itaque perferendis aspernatur architecto? Laboriosam officia enim dolore quibusdam provident maxime illum, aut corporis voluptatum.</div>
-		<div>Aut, dolore, quod. Deserunt molestias illo, beatae neque, cupiditate ex placeat nisi, repellendus vel commodi temporibus nemo illum, iste dolores eius aperiam officiis. Beatae at atque, dolorum dicta nihil doloribus?</div>
-		<div>Consectetur placeat doloremque labore. Distinctio, adipisci quo neque quisquam hic, ut laboriosam? Numquam molestias accusamus laborum ipsum, perspiciatis velit. Laudantium minima laboriosam rem pariatur, ipsam hic nemo! Voluptatibus deserunt, veniam.</div>
-		<div>Nemo explicabo ea, facere alias iste, quaerat dolores iusto vero fugiat nobis beatae velit. Facere dolorem, amet velit iste doloribus magnam, odio eligendi voluptas illum distinctio non vitae sint enim?</div>
-		<div>Voluptas quasi debitis, praesentium doloribus rerum? Magnam mollitia fuga quas quasi tempora debitis rerum placeat porro soluta explicabo id, consectetur voluptates aspernatur fugiat totam provident corporis distinctio quisquam perferendis incidunt.</div>
-		<div>Est rem laboriosam quidem ipsum repudiandae soluta accusantium temporibus, id sequi perferendis unde, nisi necessitatibus minus facilis amet veritatis velit beatae consectetur, corporis tempora nobis libero. Corporis dolores, ut consequuntur.</div>
-		<div>Dolorum quo, officiis rem aliquid voluptatum cumque ratione dolores sequi pariatur saepe voluptatibus nobis est quas laborum, delectus itaque, maiores sed cupiditate laudantium, ipsam amet doloremque! Voluptates, consectetur. Labore, inventore?</div>
-		<div>Saepe nemo sint adipisci deserunt consequuntur obcaecati possimus animi dolorum sunt. Distinctio corrupti cumque possimus aut consequatur iure, minus quidem! Et autem laborum eos expedita amet voluptatibus, dolorem soluta accusamus.</div>
-	</div>
-</nav>
+<div class="navbar-collapse collapse nav-header-hqweay" style="text-align: center;">
+    <ul class="nav navbar-nav " style="display: inline-block;float: none;">
+        <li role="presentation" class="active nav-role">
+            <a href="index.html">首页</a>
+        </li>
+        <li role="presentation" class="active nav-role">
+            <a href="job-analysis.html">职位分析</a>
+        </li>
+    </ul>
+</div>
+<div class="content">
+    <div class="container">
+        <h2>数据展示</h2>
+        <h3 class="page-header">打开想要查看的标签，支持多开哦！</h3>
+        <div class="">
+            <div class="row-fluid">
+                <div class="col-md-2" style="padding-left: 0px;">
+                    <div class="well menuSideBar" style="padding: 8px 0px;">
+                        <ul class="nav nav-list" id="menuSideBar">
+                            <li class="nav-header">导航菜单</li>
+                            <li class="nav-divider"></li>
+                            <li mid="tab1" funurl="dataShow/salary.html"><a tabindex="-1" href="javascript:void(0);">工资影响</a></li>
+                            <li mid="tab2" funurl="dataShow/ability-rep.html"><a tabindex="-1" href="javascript:void(0);">技能要求</a></li>
+                            <li mid="tab3" funurl="dataShow/company.html"><a tabindex="-1" href="javascript:void(0);">公司信息</a></li>
+                            <li mid="tab4" funurl="dataShow/other-show.html"><a tabindex="-1" href="javascript:void(0);">个性化数据展示</a></li>
 
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-10" id="mainFrameTabs" style="padding : 0px;">
 
-<footer>
-	<h2>By 挖石油创业</h2>
-</footer>
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active noclose"><a href="#bTabs_navTabsMainPage" data-toggle="tab">首页</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="bTabs_navTabsMainPage">
+                            <!--<div class="page-header">-->
+                                <!--<h2 style="font-size: 31.5px;text-align: center;font-weight: normal;">欢迎使用</h2>-->
+                            <!--</div>-->
+                            <!--<div style="text-align: center;font-size: 20px;line-height: 20px;"> Welcome to use bTabs plugin! </div>-->
 
 
 
-<!--动态背景不求要了
-     <script src="js/background-star.js"></script> -->
-<script src="js/jquery/jquery.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<!-- 绘表函数-->
+                            <iframe src="/dataShow/index.html" scrolling="yes" style="width:100%;height:692px;" frameborder="0"> </iframe>
 
-<script src="js/echarts.js"></script>
-<script src="js/chart/type_salary.js"></script>
-<script src="js/echarts-wordcloud.min.js"></script>
-<script src="js/chart/type_ability.js"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+        <script type="text/javascript" th:src="@{~/bootstrap/js/bootstrap.js}"></script>
+        <script type="text/javascript" th:src="@{~/bTabs/b.tabs.js}" ></script>
+        <script type="text/javascript" th:src="@{~/bTabs/demo.js}" ></script>
 
-<script type="text/javascript">
-    $(window).scroll(function(event){
-        if($(document).scrollTop() == 0){
-            $(".page-header").show('slow/400/fast', function() {
-                //dosomething
-            });
-        }
-        if($(document).scrollTop() > 20){
-            $(".nav").css({"position":"fixed", "top":"0", "background-color":"black"});
-            $(".page-header").hide('slow/400/fast', function() {
-                //dosomething
-            });
-        }
-    });
-</script>
-<script th:inline="javascript">
-    /*<![CDATA[*/
+<!--<script th:src="@{~/js/echarts.js}"></script>-->
+<!--<script th:src="@{~/js/chart/type_salary.js}"></script>-->
+<!--<script th:src="@{~/js/chart/type_ability_pie_top_ten.js}"></script>-->
+<!--<script th:inline="javascript">-->
+    <!--/*<![CDATA[*/-->
 
-    var placeSalary = [[${placeSalary}]];
-    var xueliSalary = [[${xueliSalary}]];
-    var experienceSalary = [[${experienceSalary}]];
-    var companySalary = [[${companySalary}]];
-    var jobImages = [[${jobImage}]];
-
-    var placelist = JSON.parse(placeSalary);
-    var xuelilist = JSON.parse(xueliSalary);
-    var experiencelist = JSON.parse(experienceSalary);
-    var companylist = JSON.parse(companySalary);
-	var joblist = JSON.parse(jobImages);
-
-    drawSalaryChart("place", placelist, "place");
-    drawSalaryChart("xueli", xuelilist, "xueli");
-    drawSalaryChart("experience", experiencelist, "experience");
-    drawSalaryChart("company", companylist, "company");
-    drawAbilityChart("ability", joblist)
+    <!--var placeSalary = [[${placeSalary}]];-->
 
 
-    /*]]>*/
-</script>
+    <!--var topTenGroup = [[${topTenGroup}]];-->
+
+    <!--var placelist = JSON.parse(placeSalary);-->
+
+
+
+    <!--drawSalaryChart("place", placelist);-->
+
+
+    <!--drawAbilityChartPieTopTen("ability_pie", topTenGroup);-->
+    <!--/*]]>*/-->
+<!--</script>-->
 </body>
 </html>

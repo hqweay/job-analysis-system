@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dao.GroupMapper">
+  <resultMap id="BaseResultMap" type="com.example.entity.Group">
+    <id column="group_id" jdbcType="INTEGER" property="group_id" />
+    <result column="job_num" jdbcType="INTEGER" property="job_num" />
+    <result column="key_word" jdbcType="VARCHAR" property="key_word" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    group_id, job_num, key_word
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from group_info
+    where group_id = #{group_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from group_info
+    where group_id = #{group_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.Group">
+    insert into group_info (group_id, job_num, key_word
+      )
+    values (#{group_id,jdbcType=INTEGER}, #{job_num,jdbcType=INTEGER}, #{key_word,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.Group">
+    insert into group_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="group_id != null">
+        group_id,
+      </if>
+      <if test="job_num != null">
+        job_num,
+      </if>
+      <if test="key_word != null">
+        key_word,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="group_id != null">
+        #{group_id,jdbcType=INTEGER},
+      </if>
+      <if test="job_num != null">
+        #{job_num,jdbcType=INTEGER},
+      </if>
+      <if test="key_word != null">
+        #{key_word,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.Group">
+    update group_info
+    <set>
+      <if test="job_num != null">
+        job_num = #{job_num,jdbcType=INTEGER},
+      </if>
+      <if test="key_word != null">
+        key_word = #{key_word,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where group_id = #{group_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.Group">
+    update group_info
+    set job_num = #{job_num,jdbcType=INTEGER},
+      key_word = #{key_word,jdbcType=VARCHAR}
+    where group_id = #{group_id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.example.entity.Group">
+    <id column="job_id" jdbcType="INTEGER" property="job_id" />
+    <result column="group_id" jdbcType="INTEGER" property="group_id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    job_id, group_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from job_group_relation
+    where job_id = #{job_id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from job_group_relation
+    where job_id = #{job_id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.entity.Group">
+    insert into job_group_relation (job_id, group_id)
+    values (#{job_id,jdbcType=INTEGER}, #{group_id,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.Group">
+    insert into job_group_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="job_id != null">
+        job_id,
+      </if>
+      <if test="group_id != null">
+        group_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="job_id != null">
+        #{job_id,jdbcType=INTEGER},
+      </if>
+      <if test="group_id != null">
+        #{group_id,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.entity.Group">
+    update job_group_relation
+    <set>
+      <if test="group_id != null">
+        group_id = #{group_id,jdbcType=INTEGER},
+      </if>
+    </set>
+    where job_id = #{job_id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.entity.Group">
+    update job_group_relation
+    set group_id = #{group_id,jdbcType=INTEGER}
+    where job_id = #{job_id,jdbcType=INTEGER}
+  </update>
+</mapper>

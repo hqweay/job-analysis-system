@@ -34,12 +34,14 @@ public class JobController {
 
   @ResponseBody
   @RequestMapping(value="jobPageInfo",produces="html/text;charset=UTF-8")
-  public String pageInfo(@RequestParam int pageNumber, int pageSize, HttpServletResponse response) {
+  public String pageInfo(@RequestParam int pageNumber, int pageSize,String txt, HttpServletResponse response) {
     response.setContentType("text/json");
     response.setCharacterEncoding("utf-8");
     PageHelper.startPage(pageNumber,pageSize);
-    List<JobInfo> pageInfo = jobInfoMapper.selectJobInfo();
-    int total = jobInfoMapper.getCount();
+    //List<JobInfo> pageInfo = jobInfoMapper.selectJobInfo();
+    //int total = jobInfoMapper.getCount();
+    List<JobInfo> pageInfo = jobInfoMapper.selectJobInfoByTxt(txt);
+    int total = jobInfoMapper.selectJobInfoByTxtCount(txt);
     JSONObject result = new JSONObject();
     result.put("rows",pageInfo);
     result.put("total",total);

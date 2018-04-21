@@ -37,7 +37,7 @@
             return 'All';
         },
         formatExport: function () {
-            return 'Export data';
+            return 'Export dataWaJue';
         },
         formatClearFilters: function () {
             return 'Clear filters';

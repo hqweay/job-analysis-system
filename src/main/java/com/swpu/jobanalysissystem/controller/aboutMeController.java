@@ -10,6 +10,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.validation.Valid;
+
 @Controller
 public class aboutMeController {
   @Autowired
@@ -22,15 +24,12 @@ public class aboutMeController {
     return "aboutMe";
   }
   @ResponseBody
-  @RequestMapping("/editUser")
-  public String editUser(User user){
-    int flag;
-    flag = userMapper.editUser(user);
+  @RequestMapping("editUser")
+  public String editUser(@Valid User user){
+    int flag = userMapper.editUser(user);
     JSONObject result = new JSONObject();
     if(flag > 0){
-      result.put("state", "success");
-    }else{
-      result.put("state", "error");
+      result.put("state","success");
     }
     return result.toJSONString();
   }

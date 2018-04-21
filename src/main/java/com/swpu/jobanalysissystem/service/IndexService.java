@@ -38,18 +38,18 @@ public class IndexService {
     User user = getUser();
     model.addAttribute("role",user);
     //得到推荐jobs
-    PageHelper.startPage(3,5);
-    List<JobInfo> jobInfoList = jobInfoMapper.selectJobInfo();
-    model.addAttribute("jobs", jobInfoList);
+  //  PageHelper.startPage(3,5);
+  //  List<JobInfo> jobInfoList = jobInfoMapper.selectJobInfo();
+  //  model.addAttribute("jobs", jobInfoList);
     return model;
   }
 
   public Model showBasicIndex( Model model){
-    PageHelper.startPage(1,5);
-    List<JobInfo> jobInfoList = jobInfoMapper.selectJobInfo();
+  //  PageHelper.startPage(1,5);
+  //  List<JobInfo> jobInfoList = jobInfoMapper.selectJobInfo();
   //  String jobs = JSON.toJSONString(jobInfoList);
-    model.addAttribute("role",null);
-    model.addAttribute("jobs", jobInfoList);
+       model.addAttribute("role",null);
+  //  model.addAttribute("jobs", jobInfoList);
     //展示基本首页各种情况
     return model;
   }

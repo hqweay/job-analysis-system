@@ -145,12 +145,12 @@
                 translate = 'translate(' + (velocity.x) + 'px, ' + (velocity.y) + 'px)';
             }
 
-            // Attach data to element
-            ripple.setAttribute('data-hold', Date.now());
-            ripple.setAttribute('data-x', relativeX);
-            ripple.setAttribute('data-y', relativeY);
-            ripple.setAttribute('data-scale', scale);
-            ripple.setAttribute('data-translate', translate);
+            // Attach dataWaJue to element
+            ripple.setAttribute('dataWaJue-hold', Date.now());
+            ripple.setAttribute('dataWaJue-x', relativeX);
+            ripple.setAttribute('dataWaJue-y', relativeY);
+            ripple.setAttribute('dataWaJue-scale', scale);
+            ripple.setAttribute('dataWaJue-translate', translate);
 
             // Set ripple position
             var rippleStyle = {
@@ -256,13 +256,13 @@
 
         ripple.classList.remove('waves-rippling');
 
-        var relativeX = ripple.getAttribute('data-x');
-        var relativeY = ripple.getAttribute('data-y');
-        var scale     = ripple.getAttribute('data-scale');
-        var translate = ripple.getAttribute('data-translate');
+        var relativeX = ripple.getAttribute('dataWaJue-x');
+        var relativeY = ripple.getAttribute('dataWaJue-y');
+        var scale     = ripple.getAttribute('dataWaJue-scale');
+        var translate = ripple.getAttribute('dataWaJue-translate');
 
         // Get delay beetween mousedown and mouse leave
-        var diff = Date.now() - Number(ripple.getAttribute('data-hold'));
+        var diff = Date.now() - Number(ripple.getAttribute('dataWaJue-hold'));
         var delay = 350 - diff;
 
         if (delay < 0) {

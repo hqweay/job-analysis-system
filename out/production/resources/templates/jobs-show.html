@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<html lang="zh-cn" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Job </title>
+
+    <link th:href="@{~/resources/plugins/bootstrap-3.3.0/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/material-design-iconic-font-2.2.0/css/material-design-iconic-font.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/bootstrap-table-1.11.0/bootstrap-table.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/waves-0.7.5/waves.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/select2/css/select2.min.css}" rel="stylesheet"/>
+
+    <link th:href="@{~/resources/css/common.css}" rel="stylesheet"/>
+</head>
+<body>
+
+
+<div id="main">
+
+    <table id="table"></table>
+</div>
+
+
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-3.3.0/js/bootstrap.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-table-1.11.0/bootstrap-table.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-table-1.11.0/locale/bootstrap-table-zh-CN.min.js}"></script>
+<script th:src="@{~/resources/plugins/waves-0.7.5/waves.min.js}"></script>
+<script th:src="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.js}"></script>
+<script th:src="@{~/resources/plugins/select2/js/select2.min.js}"></script>
+
+<script th:src="@{~/resources/js/common.js}"></script>
+
+
+<script>
+    var $table = $('#table');
+    $(function() {
+        $(document).on('focus', 'input[type="text"]', function() {
+            $(this).parent().find('label').addClass('active');
+        }).on('blur', 'input[type="text"]', function() {
+            if ($(this).val() == '') {
+                $(this).parent().find('label').removeClass('active');
+            }
+        });
+        // bootstrap table初始化
+        // http://bootstrap-table.wenzhixin.net.cn/zh-cn/documentation/
+        $table.bootstrapTable({//对应table标签的id
+            //	url: 'resources/dataWaJue/data1.json',//获取表格数据的url
+            //	method:'post',
+            method:"POST",
+            //极为重要，缺失无法执行queryParams，传递page参数
+            contentType : "application/x-www-form-urlencoded",
+            dataType:"json",
+            url: '/admin/jobPageInfo',
+            queryParams:queryParam,
+            pageNumber:1,//首页页码
+            pageSize:10,//分页，页面数据条数
+            pagination: true, //分页
+            singleSelect: false,
+            height: getHeight(),
+            striped: true,
+            search: true,//前端搜索 意义不大
+            searchOnEnterKey: true,
+            showRefresh: true,
+            showToggle: true,
+            showColumns: true,
+            minimumCountColumns: 2,
+            showPaginationSwitch: true,
+            clickToSelect: true,
+            detailView: true,
+            detailFormatter: 'detailFormatter',
+            paginationLoop: false,
+            classes: 'table table-hover table-no-bordered',
+            sidePagination: 'server',
+            //silentSort: false,
+            smartDisplay: false,
+            idField: 'id',
+            sortName: 'id',
+            //   sortOrder: 'desc',//排序方式
+            escape: true,
+            searchOnEnterKey: true,
+            idField: 'id',//设置主键
+            maintainSelected: true,
+            toolbar: '#toolbar',
+            //显示的东西吧.....这么说没得问题哦哦哦哦哦哦哦哦
+            columns: [
+                {field: 'state', checkbox: true},
+                {field: 'id', title: '编号', sortable: true, halign: 'center'},
+                {field: 'job_name', title: '名称', sortable: true, halign: 'center'},
+                {field: 'min_salary', title: '最低工资', sortable: true, halign: 'center'},
+                {field: 'top_salary', title: '最高工资', sortable: true, halign: 'center'},
+                {field: 'min_xueli', title: '最低学历', sortable: true, halign: 'center'},
+                {field: 'job_place', title: '地点', sortable: true, halign: 'center'},
+                {field: 'company_name', title: '公司名', sortable: true, halign: 'center'},
+                {field: 'job_url', title: '原网页', sortable: true, halign: 'center'},
+                {field: 'experience', title: '工作经验', sortable: true, halign: 'center'},
+                {field: 'job_num', title: '招聘人数', sortable: true, halign: 'center'},
+                {field: 'job_desc', title: '工作描述', sortable: true, halign: 'center'}
+            ]
+        }).on('all.bs.table', function (e, name, args) {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+        });
+    });
+    function queryParam(params){
+        var param = {
+            limit : this.limit, // 页面大小
+            offset : this.offset, // 页码
+            pageNumber : this.pageNumber,
+            pageSize : this.pageSize
+        };
+        return param;
+    }
+    //分页
+    function detailFormatter(index, row) {
+        var html = [];
+        $.each(row, function (key, value) {
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+        });
+        return html.join('');
+    }
+</script>
+</body>
+</html>

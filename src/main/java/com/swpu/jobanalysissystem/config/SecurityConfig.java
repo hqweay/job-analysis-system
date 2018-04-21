@@ -45,16 +45,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             .antMatchers("/abouMe")
             .authenticated()
          //   .antMatchers("/job-analysis.html")
-            .antMatchers("/admin")
+      .antMatchers("/admin")
             //具备权限  hasRole 是具备角色
             //authenticated 要求用户必须已经登录
-            .hasAuthority("ROLE_ADMIN")
+      .hasAuthority("ROLE_ADMIN")
             //后面如果再用antMatchers 意味着对上面的恶fiter补充 使之更加具体，
             //想使之平行，可以把两个路径放在一个matcher里面，或者跟上and
-
-
-
-
             .and()
     .formLogin()
                 //下面这里的参数是登录页面的地址

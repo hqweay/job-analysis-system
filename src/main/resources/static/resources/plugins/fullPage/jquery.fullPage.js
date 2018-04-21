@@ -506,7 +506,7 @@
 
             //no anchors option? Checking for them in the DOM attributes
             if(!options.anchors.length){
-                options.anchors = $('[data-anchor]').map(function(){
+                options.anchors = $('[dataWaJue-anchor]').map(function(){
                     return $(this).data('anchor').toString();
                 }).get();
             }
@@ -574,7 +574,7 @@
                 var destiny = value[0];
 
                 if(destiny.length){
-                    var section = $('[data-anchor="'+destiny+'"]');
+                    var section = $('[dataWaJue-anchor="'+destiny+'"]');
 
                     if(section.length){
                         if(options.autoScrolling){
@@ -670,11 +670,11 @@
         }
 
         /**
-        * Sets the data-anchor attributes to the menu elements and activates the current one.
+        * Sets the dataWaJue-anchor attributes to the menu elements and activates the current one.
         */
         function styleMenu(section, index){
             if (typeof options.anchors[index] !== 'undefined') {
-                section.attr('data-anchor', options.anchors[index]);
+                section.attr('dataWaJue-anchor', options.anchors[index]);
 
                 //activating the menu / nav element on load
                 if(section.hasClass(ACTIVE)){
@@ -1412,9 +1412,9 @@
                 destiny = $(slide);
             }
 
-            destiny.find('img[data-src], source[data-src], audio[data-src]').each(function(){
+            destiny.find('img[dataWaJue-src], source[dataWaJue-src], audio[dataWaJue-src]').each(function(){
                 $(this).attr('src', $(this).data('src'));
-                $(this).removeAttr('data-src');
+                $(this).removeAttr('dataWaJue-src');
 
                 if($(this).is('source')){
                     $(this).closest('video').get(0).load();
@@ -1444,7 +1444,7 @@
             destiny.find('video, audio').each(function(){
                 var element = $(this).get(0);
 
-                if( !element.hasAttribute('data-ignore') && typeof element.pause === 'function' ) {
+                if( !element.hasAttribute('dataWaJue-ignore') && typeof element.pause === 'function' ) {
                     element.pause();
                 }
             });
@@ -1874,7 +1874,7 @@
         function activateMenuElement(name){
             if(options.menu){
                 $(options.menu).find(ACTIVE_SEL).removeClass(ACTIVE);
-                $(options.menu).find('[data-menuanchor="'+name+'"]').addClass(ACTIVE);
+                $(options.menu).find('[dataWaJue-menuanchor="'+name+'"]').addClass(ACTIVE);
             }
         }
 
@@ -2028,7 +2028,7 @@
         */
         function getSectionByAnchor(sectionAnchor){
             //section
-            var section = $(SECTION_SEL + '[data-anchor="'+sectionAnchor+'"]');
+            var section = $(SECTION_SEL + '[dataWaJue-anchor="'+sectionAnchor+'"]');
             if(!section.length){
                 section = $(SECTION_SEL).eq( (sectionAnchor -1) );
             }
@@ -2041,7 +2041,7 @@
         */
         function getSlideByAnchor(slideAnchor, section){
             var slides = section.find(SLIDES_WRAPPER_SEL);
-            var slide =  slides.find(SLIDE_SEL + '[data-anchor="'+slideAnchor+'"]');
+            var slide =  slides.find(SLIDE_SEL + '[dataWaJue-anchor="'+slideAnchor+'"]');
 
             if(!slide.length){
                 slide = slides.find(SLIDE_SEL).eq(slideAnchor);
@@ -2540,7 +2540,7 @@
             //anchors can not have the same value as any element ID or NAME
             $.each(options.anchors, function(index, name){
                 if($('#' + name).length || $('[name="'+name+'"]').length ){
-                    showError('error', 'data-anchor tags can not have the same value as any `id` element on the site (or `name` element for IE).');
+                    showError('error', 'dataWaJue-anchor tags can not have the same value as any `id` element on the site (or `name` element for IE).');
                 }
             });
         }

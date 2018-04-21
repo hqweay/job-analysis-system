@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>大数据展示</title>
+	<link rel="stylesheet" type="text/css" th:href="@{~/css/normalize.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{~/css/htmleaf-demo.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{~/bootstrap/css/bootstrap.min.css}">
+
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		body {
+			/*background: #060e1b;*/
+			/* overflow: hidden; */
+			color: white;
+		}
+		h1{
+			color: brown;
+		}
+		h2{
+			color: black;
+		}
+		#canvas{
+			z-index : -1;
+			position : absolute;
+		}
+		.center{
+			text-align: center;
+		}
+		.nav{
+			width: 100%;
+			position:relative;
+			z-index:9999;
+		}
+		.center{
+			margin-top: 2%;
+		}
+		.chart div{
+			margin: 0 auto;
+			color: black;
+		}
+
+	</style>
+</head>
+<body>
+<!--<canvas id="canvas"></canvas>-->
+<!--<header class="nav">-->
+	<!--<div class="page-header">-->
+		<!--<h1>大数据展示 <small><a style="color:red;" href="dataWaJue-show.html">数据展示</a></small></h1>-->
+	<!--</div>-->
+<!--</header>-->
+<!--<header class="nav">-->
+	<!--<div class="nav-menu">-->
+		<!--<ul class="nav nav-pills">-->
+			<!--<li role="presentation"><a href="#place">地区与工资</a></li>-->
+			<!--<li role="presentation"><a href="#xueli">学历与工资</a></li>-->
+			<!--<li role="presentation"><a href="#experience">经验与工资</a></li>-->
+			<!--<li role="presentation"><a href="#company">公司性质与工资</a></li>-->
+		<!--</ul>-->
+	<!--</div>-->
+<!--</header>-->
+<nav class="center">
+
+	<div class="chart">
+		<h1>工资相关数据分析</h1>
+		<div class="salary">
+			<h2>地区与工资</h2>
+			<div id="place" style="width: 500px;height: 400px;"></div>
+		</div>
+		<div class="salary">
+			<h2>学历与工资</h2>
+			<div id="xueli" style="width: 500px;height: 400px;"></div>
+		</div>
+		<div class="salary">
+			<h2>经验与工资</h2>
+			<div id="experience" style="width: 500px;height: 400px;"></div>
+		</div>
+		<div class="salary">
+			<h2>公司性质与工资</h2>
+			<div id="company" style="width: 500px;height: 400px;"></div>
+		</div>
+		</div>
+</nav>
+
+
+<footer>
+	<h2>By 挖石油创业</h2>
+</footer>
+
+
+
+<!--动态背景不求要了
+     <script src="js/background-star.js"></script> -->
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+<!-- 绘表函数-->
+
+<script th:src="@{~/js/echarts.js}"></script>
+<script th:src="@{~/js/chart/type_salary.js}"></script>
+
+<!--导航 没用-->
+<script type="text/javascript">
+    $(window).scroll(function(event){
+        if($(document).scrollTop() == 0){
+            $(".page-header").show('slow/400/fast', function() {
+                //dosomething
+            });
+        }
+        if($(document).scrollTop() > 20){
+            $(".nav").css({"position":"fixed", "top":"0", "background-color":"black"});
+            $(".page-header").hide('slow/400/fast', function() {
+                //dosomething
+                $("header h1").css("color", "aliceblue");
+            });
+        }
+    });
+</script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    var placeSalary = [[${placeSalary}]];
+    var xueliSalary = [[${xueliSalary}]];
+    var experienceSalary = [[${experienceSalary}]];
+    var companySalary = [[${companySalary}]];
+
+
+    var placelist = JSON.parse(placeSalary);
+    var xuelilist = JSON.parse(xueliSalary);
+    var experiencelist = JSON.parse(experienceSalary);
+    var companylist = JSON.parse(companySalary);
+
+    drawSalaryChart("place", placelist, "place");
+    drawSalaryChart("xueli", xuelilist, "xueli");
+    drawSalaryChart("experience", experiencelist, "experience");
+    drawSalaryChart("company", companylist, "company");
+    /*]]>*/
+</script>
+</body>
+</html>

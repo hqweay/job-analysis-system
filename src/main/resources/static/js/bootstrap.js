@@ -72,7 +72,7 @@
         _fixIcon: function($field, $icon) {
             var ns      = this._namespace,
                 type    = $field.attr('type'),
-                field   = $field.attr('data-' + ns + '-field'),
+                field   = $field.attr('dataWaJue-' + ns + '-field'),
                 row     = this.options.fields[field].row || this.options.row.selector,
                 $parent = $field.closest(row);
 
@@ -236,7 +236,7 @@
      * Support backward
      * @deprecated It will be removed soon. Instead of using $(form).bootstrapValidator(), use
      *  $(form).formValidation({
-     *      framework: 'bootstrap'  // It's equivalent to use data-fv-framework="bootstrap" for <form>
+     *      framework: 'bootstrap'  // It's equivalent to use dataWaJue-fv-framework="bootstrap" for <form>
      *  });
      */
     $.fn.bootstrapValidator = function(option) {

@@ -29,7 +29,7 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 //apply plugin: 'war'
 apply plugin: 'war'
-//引入 mybatis-generator 插件mybatis-generetor
+//引入 mybatis-generator 插件mybatis-generator
 apply plugin: "com.arenagod.gradle.MybatisGenerator"
 
 group = 'com.swpu'
@@ -41,9 +41,11 @@ repositories {
 }
 
 configurations {
-	//	providedRuntime
+		providedRuntime
 	//由于代码生成单独运行即可，不需要参与到整个项目的编译mybatis-generetor
-	//	mybatisGenerator
+		mybatisGenerator
+	// remove default logger
+	all*.exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
 }
 
 dependencies {
@@ -87,6 +89,19 @@ dependencies {
 	// https://mvnrepository.com/artifact/org.jsoup/jsoup
 	compile group: 'org.jsoup', name: 'jsoup', version: '1.11.2'
 
+
+
+
+	//log4j2
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.0.1.RELEASE'
+
+
+	//R接口
+	// https://mvnrepository.com/artifact/org.rosuda.REngine/Rserve
+	// https://mvnrepository.com/artifact/org.rosuda.REngine/REngine
+	compile group: 'org.rosuda.REngine', name: 'REngine', version: '2.1.0'
+	compile group: 'org.rosuda.REngine', name: 'Rserve', version: '1.8.1'
 
 
 }

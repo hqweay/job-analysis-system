@@ -1,174 +1,312 @@
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns:th="http://www.springframework.org/schema/mvc"
 
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+>
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-  <style type="text/css">
-    * {
-      margin: 0px;
-      padding: 0px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link th:href="@{~/resources/plugins/bootstrap-3.3.0/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/material-design-iconic-font-2.2.0/css/material-design-iconic-font.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/bootstrap-table-1.11.0/bootstrap-table.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/waves-0.7.5/waves.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/select2/css/select2.min.css}" rel="stylesheet"/>
+
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 90%;
+            /*background-color: #ebebeb;*/
+
+        }
+
+        .nav-header {
+            /*height: 40px;*/
+            width: 100%;
+            background-color: #104E8B;
+            color: white;
+            margin: 0 auto;
+            /*line-height: 40px;*/
+        }
+
+        .nav-header ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding-left: 28px;
+            padding-right: 28px;
+        }
+
+        .nav-header ul li a:hover {
+            background-color: #7D9EC0;
+            background-repeat: repeat-x;
+        }
+
+        .nav a {
+            color: black;
+        }
+
+        .nav-image{
+            float: left;
+            margin-top: 10%;
+        }
+        .search-container{
+            margin-top: 2%;
+        }
+        #data_show img {
+            width: 100%;
+            opacity: 1;
+        }
+        #job_analysis img {
+            /* 92%  */
+            width: 92%;
+            opacity: 0.7;
+        }
+        .search {
+            margin-top: 2%;
+        }
+        .input-group{
+            display: flex;
+        }
 
 
 
-    body {
-      margin: 0 auto;
-      width: 90%;
-      /*background-color: #ebebeb;*/
-
-    }
-
-    .nav a{
-      color: black;
-    }
-
-    .main {
-      width: 100%;
-    }
-
-    #data_show img {
-      width: 100%;
-      opacity: 1;
-    }
-
-    #job_analysis img {
-      width: 92%;
-      opacity: 0.7;
-    }
-
-    .main {
-      clear: both;
-      margin-top: 2%;
-    }
-
-    .nav-head {
-      background-color:white;
-    }
-
-    .search {
-      margin-top: 2%;
-    }
-    .main-container{
-      width: 90%;
-      background-color: black;
-    }
-    .cc {
-      margin-top: 10px;
-      display: block;
-      width: 80%;
-      height: 500px;
-      background-color: aqua;
-    }
-  </style>
-  <title>Job Analysis System</title>
+    </style>
+    <title>Job Analysis System</title>
 </head>
 
 <body>
 <header>
-  <div>
-    <div class="navbar-collapse collapse nav-head" style="text-align: center;">
-      <ul class="nav navbar-nav " style="display: inline-block;float: none;">
-        <li role="presentation" class="active nav-role">
-          <a href="login.html">登录</a>
-        </li>
-        <li role="presentation" class="nav-role">
-          <a href="register.html">注册</a>
-        </li>
-        <li role="presentation"  th:if="${role} != null">
-          <a href="#" th:href="@{/aboutMe(id=${role.id})}" th:text="${role.name}">用户名</a>
-        </li>
-        <li role="presentation"  th:if="${role} != null">
-          <a href="#" th:href="@{/logout}">退出登录</a>
-        </li>
-          <!--<form th:action="@{/logout}" method="post">-->
-            <!--<input type="submit" value="注销"/>-->
-          <!--</form>-->
+    <div>
+        <div class="navbar-collapse collapse nav-header" style="text-align: center;">
+            <ul class="nav navbar-nav " style="display: inline-block;float: none;">
+                <li role="presentation" class="active nav-role">
+                    <a href="login.html">登录</a>
+                </li>
+                <li role="presentation" class="nav-role">
+                    <a href="register.html">注册</a>
+                </li>
+                <li role="presentation" th:if="${role} != null">
+                    <a href="#" th:href="@{/aboutMe(id=${role.id})}" th:text="${role.name}">用户名</a>
+                </li>
+                <li role="presentation" th:if="${role} != null">
+                    <a href="#" th:if="${role.name eq 'root'}" th:href="@{/admin}">后台管理</a>
+                </li>
+                <li role="presentation" th:if="${role} != null">
+                    <a href="#" th:href="@{/logout}">退出登录</a>
+                </li>
 
-
-      </ul>
-    </div>
-
-    <div class="search">
-      <form action="" class="search-form form-horizontal col-md-offset-7">
-        <div class="input-group col-md-9">
-          <input type="text" class="form-control" placeholder="搜索职位呗" />
-          <span class="input-group-btn">
-
-              <button class="btn btn-info btn-search">添加</button>
-            </span>
+            </ul>
         </div>
-
-      </form>
     </div>
-  </div>
 </header>
-<div class="main container">
 
-  <div class="nav-left col-md-4">
-    <table class="table table-bordered">
-      <tr class="active">
-        <td class="success">工作</td>
-        <td class="success">地点</td>
-        <td class="success">工资</td>
-      </tr>
-    </table>
-    <table class="table table-bordered" th:each="job : ${jobs}">
-      <tr class="active">
-        <td class="info"><a th:href="@{${job.job_url}}" th:text="${job.job_name}" style="color: red;"></a></td>
-        <td class="info" th:text="${job.job_place}">成都</td>
-        <td class="info" th:text="${job.min_salary}">5000</td>
-      </tr>
-    </table>
-  </div>
-
-
-  <div class="nav-image ">
-
-    <div class="index-data col-md-3" id="data_show" title="点击进入大数据展示">
-      <label  class="col-sm-offset-3 control-label">数据展示</label>
-      <a href="data-show.html">
-        <img src="images/data-show.png">
-      </a>
+<div class="container">
+    <div class="nav-image col-md-5">
+        <div class="index-data col-md-5" id="data_show" title="点击进入大数据展示">
+            <label class="col-sm-offset-3 control-label">数据展示</label>
+            <a href="data-show.html">
+                <img src="images/data-show.png">
+            </a>
+        </div>
+        <div class="index-chartRegionSalary col-md-5" id="job_analysis" title="点击进入职位测评">
+            <label class="col-sm-offset-3 control-label">职位推荐</label>
+            <a href="job-analysis.html">
+                <img src="images/job-analysis.jpg">
+            </a>
+        </div>
     </div>
 
-
-    <div class="index-chartRegionSalary col-md-3" id="job_analysis" title="点击进入职位测评">
-
-      <label class="col-sm-offset-3 control-label">职位推荐</label>
-      <a href="job-analysis.html">
-        <img src="images/job-analysis.jpg">
-      </a>
+    <div class="search-container col-md-5" >
+        <div class="search" id="search">
+            <div class="input-group">
+                <input type="text" class="form-control search" placeholder="来，搜索试试！"/>
+                <span class="input-group-btn">
+                      <button class="btn btn-info btn-search search" type="button">搜索</button>
+                </span>
+            </div>
+        </div>
+        <div style="margin-top: 2%; height: 500px;" class="nav-left " id="job" >
+            <table id="table"></table>
+        </div>
     </div>
-  </div>
-
-
-
-</div>
-<div class="container ">
-    <span class="cdc">
-
-    </span>
 </div>
 
-<footer>
-  <h2>By 挖石油创业</h2>
+<footer style="margin-top: 10%;">
+    <h2>By 挖石油创业</h2>
 </footer>
 
 <script src="js/jquery/jquery.min.js"></script>
 <script src="bootstrap/js/bootstrap.min.js"></script>
 
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-3.3.0/js/bootstrap.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-table-1.11.0/bootstrap-table.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-table-1.11.0/locale/bootstrap-table-zh-CN.min.js}"></script>
+<script th:src="@{~/resources/plugins/waves-0.7.5/waves.min.js}"></script>
+<script th:src="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.js}"></script>
+<script th:src="@{~/resources/plugins/select2/js/select2.min.js}"></script>
+<script th:src="@{~/resources/js/common.js}"></script>
 <script th:inline="javascript">
+    //
+    var $table = $('#table');
+    $(function() {
+        $(document).on('focus', 'input[type="text"]', function() {
+            $(this).parent().find('label').addClass('active');
+        }).on('blur', 'input[type="text"]', function() {
+            if ($(this).val() == '') {
+                $(this).parent().find('label').removeClass('active');
+            }
+        });
+        $table.bootstrapTable(
+            {
+            method:"post",
+            //极为重要，缺失无法执行queryParams，传递page参数
+            contentType : "application/x-www-form-urlencoded",
+            dataType:"json",
+            url: '/searchJob',
+            queryParams:queryParam,
+            pageNumber:1,//首页页码  妈的假装一下
+            pageSize:5,//分页，页面数据条数
+            pagination: true, //分页
+            singleSelect: false,
+            height: getHeight(),
+            searchOnEnterKey: true,
+            minimumCountColumns: 2,
+            showPaginationSwitch: true,
+            clickToSelect: true,
+            detailView: true,
+            detailFormatter: 'detailFormatter',
+            paginationLoop: false,
+            classes: 'table table-hover table-no-bordered',
+            sidePagination: 'server',
+            smartDisplay: false,
+            escape: true,
+            searchOnEnterKey: true,
+            height: 350,
+            maintainSelected: true,
+            columns: [
+                {field: 'job_name', title: '名称', halign: 'center'},
+                {field: 'min_salary', title: '最低工资', halign: 'center'},
+
+                {field: 'job_place', title: '地点', halign: 'center'},
+                {field: 'company_name', title: '公司名', halign: 'center'},
+            ],
+            onClickRow: function (row) {
+                //window.location.href = row.job_url;
+                window.open(row.job_url);
+            }
+        }).on('all.bs.table', function (e, name, args) {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+        });
+    });
+
+    function queryParam(params){
+        var param = {
+            limit : this.limit, // 页面大小
+            offset : this.offset, // 页码
+            pageNumber : this.pageNumber,
+            pageSize : this.pageSize,
+            txt : $("input.search").val()
+        };
+        return param;
+    }
+    //分页
+    function detailFormatter(index, row) {
+        var html = [];
+        $.each(row, function (key, value) {
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+        });
+        return html.join('');
+    }
+    //搜索
+$("button.search").click(function () {
+    search();
+});
+function search(){
+    var $table = $('#table');
+    $(function() {
+        $(document).on('focus', 'input[type="text"]', function() {
+            $(this).parent().find('label').addClass('active');
+        }).on('blur', 'input[type="text"]', function() {
+            if ($(this).val() == '') {
+                $(this).parent().find('label').removeClass('active');
+            }
+        });
+        $table.bootstrapTable('refresh', {
+            method:"post",
+            //极为重要，缺失无法执行queryParams，传递page参数
+            contentType : "application/x-www-form-urlencoded",
+            dataType:"json",
+            url:"/searchJob" ,
+            queryParams:queryParam,
+            pageNumber:1,//首页页码  妈的假装一下
+            pageSize:5,//分页，页面数据条数
+            pagination: true, //分页
+            singleSelect: false,
+            height: getHeight(),
+            searchOnEnterKey: true,
+            minimumCountColumns: 2,
+            showPaginationSwitch: true,
+            clickToSelect: true,
+            detailView: true,
+            detailFormatter: 'detailFormatter',
+            paginationLoop: false,
+            classes: 'table table-hover table-no-bordered',
+            sidePagination: 'server',
+            smartDisplay: false,
+            escape: true,
+            searchOnEnterKey: true,
+            height: 350,
+            maintainSelected: true,
+            columns: [
+                {field: 'job_name', title: '名称', halign: 'center'},
+                {field: 'min_salary', title: '最低工资', halign: 'center'},
+                {field: 'job_place', title: '地点', halign: 'center'},
+                {field: 'company_name', title: '公司名', halign: 'center'},
+            ],
+            onClickRow: function (row) {
+                //window.location.href = row.job_url;
+                window.open(row.job_url);
+            }
+        }).on('all.bs.table', function (e, name, args) {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+        });
+    });
+
+}
+    //搜素
+
+</script>
+
+
+<script th:inline="javascript">
+    $(window).resize(function(){
+        //执行代码块
+        if($(window).width() < 900){
+            $(".index-data img").css("width", "60px");
+            $(".index-chartRegionSalary img").css("width", "60px");
+        }else{
+            $(".index-data img").css("width", "100%");
+            $(".index-chartRegionSalary img").css("width", "92%");
+        }
+    });
     /*<![CDATA[*/
     var role = [[${role}]];
-    if(role == null){
+    if (role == null) {
         //
-    }else{
-      $(".nav-role").hide();
+    } else {
+        $(".nav-role").hide();
     }
 
     $("#data_show img").mouseover(function () {

@@ -17,6 +17,14 @@
 </head>
 <body>
 <div id="main">
+	<div style="margin-top: 1%;" class="search col-md-5 clo-md-offset-3">
+		<div class="input-group">
+			<input type="text" class="form-control search" placeholder="来，搜索试试！"/>
+			<span class="input-group-btn">
+                      <button class="btn btn-info btn-search search" id="search" type="button">搜索</button>
+                </span>
+		</div>
+	</div>
 	<div id="toolbar">
 		<a class="waves-effect waves-button" href="javascript:;" onclick="createAction()"><i class="zmdi zmdi-plus"></i> 新增用户</a>
 		<a class="waves-effect waves-button" href="javascript:;" onclick="updateAction()"><i class="zmdi zmdi-edit"></i> 编辑用户</a>
@@ -111,7 +119,7 @@ $(function() {
         singleSelect: false,
         height: getHeight(),
         striped: true,
-        search: true,//前端搜索 意义不大
+     //   search: true,//前端搜索 意义不大
         searchOnEnterKey: true,
         showRefresh: true,
         showToggle: true,
@@ -231,13 +239,14 @@ function updateAction() {
 		$.confirm({
 			type: 'blue',
 			animationSpeed: 300,
-			title: '编辑 Job',
+			title: '编辑 User',
 			content: $('.createDialog').html(),
             onOpen: function(){
                 this.$content.click(function(){
 
                     if($('.name:last').val() == "" && $('.password:last').val() == ""){
                         //把选取的数据先填充到表单
+                        $('.name:last').val(row.name);
                         $('.email:last').val(row.email);
                         $('.info_education:last').val(row.info_education);
                         $('.info_major:last').val(row.info_major);

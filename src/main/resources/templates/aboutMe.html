@@ -2,10 +2,15 @@
 <html lang="zh-CN" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>gerenxinxi</title>
+    <title>个人信息</title>
     <link rel="stylesheet" th:href="@{~/bootstrap/css/bootstrap.min.css}">
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
     <link th:href="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.css}" rel="stylesheet"/>
+
+    <script type="text/javascript" src="tags/js/tag.js"></script>
+    <link rel="stylesheet" type="text/css" href="tags/css/tag.css" />
+
+    <!--<link href="check/css/check.css" type="text/css" rel="stylesheet" />-->
+
     <style>
 
         #aboutMe{
@@ -13,10 +18,46 @@
             margin-top: 12%;
             width: 60%;
         }
+        .nav-header {
+            /*height: 40px;*/
+            width: 80%;
+            background-color: #104E8B;
+            color: white;
+            margin: 0 auto;
+            /*line-height: 40px;*/
+        }
+
+        .nav-header ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding-left: 28px;
+            padding-right: 28px;
+        }
+
+        .nav-header ul li a:hover {
+            background-color: #7D9EC0;
+            background-repeat: repeat-x;
+        }
     </style>
 </head>
 <body>
+<header>
+    <div>
+        <div class="navbar-collapse collapse nav-header" style="text-align: center;">
+            <ul class="nav navbar-nav " style="display: inline-block;float: none;">
+                <li role="presentation" class="active nav-role">
+                    <a href="/index.html">首页</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>
 <div id="aboutMe">
+    <div>
+        <h1>说明：</h1>
+        <p>您的资料越详细，我们给您的推荐将越精确。</p>
+    </div>
     <form name="f" id="aboutMeForm" class="form-horizontal"  >
         <div class="form-group ">
             <label for="name" class="col-sm-2 control-label">用户名</label>
@@ -33,6 +74,60 @@
             </div>
         </div>
         <div class="form-group">
+            <label for="info_education" class="col-sm-2 control-label">教育程度</label>
+            <div class="col-sm-10">
+                <input type="text" name="info_education" class="form-control" id="info_education" placeholder="本科">
+                <span class="info_educationMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="info_major" class="col-sm-2 control-label">专业</label>
+            <div class="col-sm-10">
+                <input type="text" name="info_major" class="form-control" id="info_major" placeholder="计算机与科学">
+                <span class="info_majorMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="info_place" class="col-sm-2 control-label">所在地</label>
+            <div class="col-sm-10">
+                <input type="text" name="info_place" class="form-control" id="info_place" placeholder="成都">
+                <span class="info_placeMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tagValueAbility" class="col-sm-2 control-label">技能</label>
+            <div class="col-sm-10" >
+                       <p>输入后按回车添加你的技能标签</p>
+                       <p>双击可修改</p>
+                       <p>点击标签上的 x 可删除标签</p>
+                <p style="color: #00B83F;" id="ability"></p>
+                       <input type="text" id="tagValueAbility" >
+                </div>
+            </div>
+
+        <div class="form-group">
+            <label for="info_experience" class="col-sm-2 control-label">工作经历（单位：年）</label>
+            <div class="col-sm-10">
+                <input type="text" name="info_experience" class="form-control" id="info_experience" placeholder="3">
+                <span class="info_experienceMessage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="tagValueLikes" class="col-sm-2 control-label">喜好标签</label>
+
+            <!--<div class="col-sm-10">-->
+                <!--<input type="text" name="likes" class="form-control" id="likes" placeholder="Java,Hadoop">-->
+                <!--<span class="likesMessage" />-->
+            <!--</div>-->
+            <div class="col-sm-10" >
+                <p>输入后按回车添加你的喜好标签</p>
+                <p>双击可修改</p>
+                <p>点击标签上的 x 可删除标签</p>
+                <p style="color: #00B83F;" id="likes"></p>
+                <input type="text" id="tagValueLikes" >
+            </div>
+        </div>
+        <div class="form-group">
             <label for="password" class="col-sm-2 control-label">密码</label>
             <div class="col-sm-10">
                 <input type="text" name="password" class="form-control" id="password" placeholder="password">
@@ -40,61 +135,27 @@
             </div>
         </div>
         <div class="form-group">
-            <label for="info_education" class="col-sm-2 control-label">教育程度</label>
-            <div class="col-sm-10">
-                <input type="text" name="info_education" class="form-control" id="info_education" placeholder="info_education">
-                <span class="info_educationMessage" />
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" id="editInfoButton" class="btn btn-default">修改</button>
             </div>
         </div>
-        <div class="form-group">
-            <label for="info_major" class="col-sm-2 control-label">专业</label>
-            <div class="col-sm-10">
-                <input type="text" name="info_major" class="form-control" id="info_major" placeholder="info_major">
-                <span class="info_majorMessage" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="info_place" class="col-sm-2 control-label">所在地</label>
-            <div class="col-sm-10">
-                <input type="text" name="info_place" class="form-control" id="info_place" placeholder="info_place">
-                <span class="info_placeMessage" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="info_ability" class="col-sm-2 control-label">技能</label>
-            <div class="col-sm-10">
-                <input type="text" name="info_ability" class="form-control" id="info_ability" placeholder="info_ability">
-                <span class="info_abilityMessage" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="info_experience" class="col-sm-2 control-label">工作经历（单位：年）</label>
-            <div class="col-sm-10">
-                <input type="text" name="info_experience" class="form-control" id="info_experience" placeholder="info_experience">
-                <span class="info_experienceMessage" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="likes" class="col-sm-2 control-label">喜好标签</label>
-            <div class="col-sm-10">
-                <input type="text" name="likes" class="form-control" id="likes" placeholder="Java Hadoop">
-                <span class="likesMessage" />
-            </div>
-        </div>
-
     </form>
 </div>
 
+
+
 <script th:src="@{~/js/jquery/jquery.min.js}"></script>
+
+
 <script th:src="@{~/js/formValidation.min.js}"></script>
 <script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
 <script th:src="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.js}"></script>
-<script src="js/jquery/jquery.min.js"></script>
-<script src="js/formValidation.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
+
+    <!--<script type="text/javascript" src="check/js/check.js"></script>-->
 
 <script th:inline="javascript">
     /*<![CDATA[*/
+
     var userJson = [[${user}]];
     var user = JSON.parse(userJson);
     $("#name").val(user.name);
@@ -103,31 +164,93 @@
     $("#info_education").val(user.info_education);
     $("#info_major").val(user.info_major);
     $("#info_place").val(user.info_place);
-    $("#info_ability").val(user.info_ability);
+    //$("#info_ability").val(user.info_ability);
     $("#info_experience").val(user.info_experience);
-    $("#likes").val(user.likes);
+    //$("#likes").val(user.likes);
+    var ability = user.info_ability;
+    var likes = user.likes;
+
+    var tagAbility = new Tag("tagValueAbility");
+    if(ability != ""){
+        tagAbility.tagValue = ability;
+    }else{
+        var abilityShow =  document.getElementById("ability");
+        abilityShow.innerHTML = "您还没有自己设定过喜好标签呢，瞧瞧我们为您默认设置的标签合不合适？";
+        tagAbility.tagValue = "大数据,Java";
+    }
+    tagAbility.initView();
+
+    var tagLikes = new Tag("tagValueLikes");
+    if(likes != ""){
+        tagLikes.tagValue = likes;
+    }else{
+        var likesShow =  document.getElementById("likes");
+        likesShow.innerHTML = "您还没有自己设定过喜好标签，我们默认为您推荐了如下标签。";
+        tagLikes.tagValue = "大数据,Mahout,机器学习";
+    }
+    tagLikes.initView();
 
 
-    $("#editSpiderButton").click(function () {
+    $("#editInfoButton").click(function () {
         $.confirm({
             type: 'dark',
             animationSpeed: 300,
             title: '确认修改？',
-            content:"<p>点击修改后不可恢复哦？。</p> ",
+            content:"<p>点击修改后不可恢复哦？</p> ",
             buttons: {
                 confirm: {
                     text: '确认',
                     btnClass: 'waves-effect waves-button',
                     action: function () {
+
+                        var param = $("#aboutMeForm").serializeArray();
+                        var id = new Object();
+                        id.name = "id";
+                        id.value = user.id;
+                        param.push(id);
+
+                        var abilityStr = "";
+                        //遍历name为txt的所有input元素
+                        $("#tagValueAbility_tagcontaine > .tagList > .tagItem > span").each(function () {
+                            abilityStr += $(this).text() + ",";
+                        });
+                        //去掉最后一个逗号(如果不需要去掉，就不用写)
+                        if (abilityStr.length > 0) {
+                            abilityStr = abilityStr.substr(0,abilityStr.length - 1);
+                        }
+                        var ability = new Object();
+                        ability.name = "info_ability";
+                        ability.value = abilityStr;
+                        param.push(ability);
+
+                        var likesStr = "";
+                        //遍历name为txt的所有input元素
+                        $("#tagValueLikes_tagcontaine > .tagList > .tagItem > span").each(function () {
+                            likesStr += $(this).text() + ",";
+                        });
+                        //去掉最后一个逗号(如果不需要去掉，就不用写)
+                        if (likesStr.length > 0) {
+                            likesStr = likesStr.substr(0,likesStr.length - 1);
+                        }
+                        var likes = new Object();
+                        likes.name = "likes";
+                        likes.value = likesStr;
+                        param.push(likes);
+
+
+
                         $.ajax({
                             url:"/editUser",
                             method:"post",
                             traditional: true,//属性在这里设置 有啥用？没得这个好像传不了数据诶
-                            data:$("#aboutMeForm").serializeArray(),
+                            data:param,
                             dataType:"json",
                             success:function(data){
                                 if(data.state=="success"){
                                     $.alert('修改成功！');
+                                    window.location.href="http://localhost:8082/aboutMe?id="+user.id;
+                                }else{
+                                    $.alert('修改失败，请按格式修改！');
                                 }
                             },
                             error:function(){

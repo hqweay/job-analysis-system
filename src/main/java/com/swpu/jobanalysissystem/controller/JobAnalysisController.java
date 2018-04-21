@@ -2,22 +2,18 @@ package com.swpu.jobanalysissystem.controller;
 
 import com.swpu.jobanalysissystem.dao.JobInfoMapper;
 import com.swpu.jobanalysissystem.dao.RecommendJobImageMapper;
-import com.swpu.jobanalysissystem.entity.JobInfo;
-import com.swpu.jobanalysissystem.entity.JobAnalysis;
+import com.swpu.jobanalysissystem.dao.UserMapper;
+import com.swpu.jobanalysissystem.entity.User;
+import com.swpu.jobanalysissystem.pojo.Login;
+import com.swpu.jobanalysissystem.service.SecurityService;
 import com.swpu.jobanalysissystem.until.ContentRecommedStrategy;
 import com.swpu.jobanalysissystem.until.SqlQueryRecommedStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import java.util.List;
-
-
-import static org.springframework.web.bind.annotation.RequestMethod.POST;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by lenovo on 2018/3/7.
@@ -32,38 +28,31 @@ public class JobAnalysisController {
     public JobInfoMapper jobInfoMapper;
     @Autowired
     public SqlQueryRecommedStrategy sqlQueryRecommedStrategy;
+
+    @Autowired
+    private SecurityService securityService;
+    @Autowired
+    private UserMapper userMapper;
+
     @RequestMapping(value = {
             "/job-analysis.html"
     })
- //   @PreAuthorize("hasRole('ROLE_USER')")
-    public String showJobAnalysis(){
+    public String showJobAnalysis(Model model){
+        //若已经登陆啦
+        if(securityService.hasRole("ROLE_USER") ||securityService.hasRole("ROLE_ADMIN")){
+            Login userLogin = (Login) SecurityContextHolder.getContext()
+                    .getAuthentication()
+                    .getPrincipal();
+            User user = userMapper.selectByUsernameUser(userLogin.getUsername());
+            model.addAttribute("user", user);
+        }
+
         return "job-analysis";
     }
 
-    @RequestMapping(value = "/job-analysis.html", method = POST)
-    public String getUserInformation(@ModelAttribute("jobAnalysis") JobAnalysis jobAnalysis, Model model){
-        //基于内容的推荐
-//        ArrayList<Integer> jobIds = new ArrayList<Integer>();
-//        //得到list
-//        List<RecommedJobImage> recommedJobImages = recommendJobImageMapper.getRecommenedJobImages();
-//        //web前端传来的user信息封装
-//        HashMap<String,Double> user = new HashMap<>();
-//        user.put(jobAnalysis.getXueli(),1.0);
-//
-//        user.put(jobAnalysis.getQiuzhidi(),5.0);
-//        user.put(jobAnalysis.getGongzuonianxian(),1.0);
-//        user.put(jobAnalysis.getJineng(),1.0);
-//        //获得job的id集合并格式化
-//        jobIds = contentRecommedStrategy.getRecommendJobIds(user);
-//        //格式化一下
-//        String ids = jobIds.toString().replace("[", "").replace("]","");
-//        //通过格式化的id集合找到job集合
-//        List<JobInfo> jobs = jobInfoMapper.getRecommenedJobs(ids);
-//jobs = recommendJobImageMapper.getRecommenedJobsBySqlQuery(jobAnalysis);
-        List<JobInfo> jobs;
-        jobs = sqlQueryRecommedStrategy.getRecommendJobIds(jobAnalysis);
-        System.out.println(jobs.get(0).getJob_desc());
-        model.addAttribute("jobs", jobs);
-        return "user-job-information";
-    }
+
+
+
+
+
 }

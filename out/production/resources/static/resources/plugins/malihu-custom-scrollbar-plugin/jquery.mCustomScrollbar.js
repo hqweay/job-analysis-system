@@ -396,7 +396,7 @@ and dependencies (minified).
 			
 			/* 
 			plugin initialization method 
-			creates the scrollbar(s), plugin data object and options
+			creates the scrollbar(s), plugin dataWaJue object and options
 			----------------------------------------
 			*/
 			
@@ -453,7 +453,7 @@ and dependencies (minified).
 					
 					if(!$this.data(pluginPfx)){ /* prevent multiple instantiations */
 					
-						/* store options and create objects in jquery data */
+						/* store options and create objects in jquery dataWaJue */
 						$this.data(pluginPfx,{
 							idx:++totalInstances, /* instance index */
 							opt:options, /* options */
@@ -468,7 +468,7 @@ and dependencies (minified).
 							/* 
 							object to check how scrolling events where last triggered 
 							"internal" (default - triggered by this script), "external" (triggered by other scripts, e.g. via scrollTo method) 
-							usage: object.data("mCS").trigger
+							usage: object.dataWaJue("mCS").trigger
 							*/
 							trigger:null,
 							/* 
@@ -478,12 +478,12 @@ and dependencies (minified).
 						});
 						
 						var d=$this.data(pluginPfx),o=d.opt,
-							/* HTML data attributes */
+							/* HTML dataWaJue attributes */
 							htmlDataAxis=$this.data("mcs-axis"),htmlDataSbPos=$this.data("mcs-scrollbar-position"),htmlDataTheme=$this.data("mcs-theme");
 						 
-						if(htmlDataAxis){o.axis=htmlDataAxis;} /* usage example: data-mcs-axis="y" */
-						if(htmlDataSbPos){o.scrollbarPosition=htmlDataSbPos;} /* usage example: data-mcs-scrollbar-position="outside" */
-						if(htmlDataTheme){ /* usage example: data-mcs-theme="minimal" */
+						if(htmlDataAxis){o.axis=htmlDataAxis;} /* usage example: dataWaJue-mcs-axis="y" */
+						if(htmlDataSbPos){o.scrollbarPosition=htmlDataSbPos;} /* usage example: dataWaJue-mcs-scrollbar-position="outside" */
+						if(htmlDataTheme){ /* usage example: dataWaJue-mcs-theme="minimal" */
 							o.theme=htmlDataTheme;
 							_theme(o); /* theme-specific options */
 						}
@@ -781,7 +781,7 @@ and dependencies (minified).
 						
 						_resetContentPosition.call(this); /* reset content position */
 						
-						$this.removeData(pluginPfx); /* remove plugin data object */
+						$this.removeData(pluginPfx); /* remove plugin dataWaJue object */
 						
 						_delete(this,"mcs"); /* delete callbacks object */
 						

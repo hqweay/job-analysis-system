@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.springframework.org/schema/mvc"
+
+>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        body {
+            margin: 0 auto;
+            width: 90%;
+            /*background-color: #ebebeb;*/
+
+        }
+
+        .nav-header {
+            /*height: 40px;*/
+            width: 100%;
+            background-color: #104E8B;
+            color: white;
+            margin: 0 auto;
+            /*line-height: 40px;*/
+        }
+
+        .nav-header ul li a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            padding-left: 28px;
+            padding-right: 28px;
+        }
+
+        .nav-header ul li a:hover {
+            background-color: #7D9EC0;
+            background-repeat: repeat-x;
+        }
+
+        .nav a {
+            color: black;
+        }
+
+
+
+        .nav-image{
+            float: left;
+            margin-top: 5%;
+        }
+        .search-container{
+            margin-top: 2%;
+        }
+        #data_show img {
+            width: 100%;
+            opacity: 1;
+        }
+
+        #job_analysis img {
+            /* 92%  */
+            width: 92%;
+            opacity: 0.7;
+        }
+
+        /*.main {*/
+            /*clear: both;*/
+            /*margin-top: 2%;*/
+        /*}*/
+
+
+        .search {
+            margin-top: 2%;
+        }
+
+
+
+
+    </style>
+    <title>Job Analysis System</title>
+</head>
+
+<body>
+<header>
+    <div>
+        <div class="navbar-collapse collapse nav-header" style="text-align: center;">
+            <ul class="nav navbar-nav " style="display: inline-block;float: none;">
+                <li role="presentation" class="active nav-role">
+                    <a href="login.html">登录</a>
+                </li>
+                <li role="presentation" class="nav-role">
+                    <a href="register.html">注册</a>
+                </li>
+                <li role="presentation" th:if="${role} != null">
+                    <a href="#" th:href="@{/aboutMe(id=${role.id})}" th:text="${role.name}">用户名</a>
+                </li>
+                <li role="presentation" th:if="${role} != null">
+                    <a href="#" th:href="@{/logout}">退出登录</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="nav-image col-md-6">
+        <div class="index-data col-md-5" id="data_show" title="点击进入大数据展示">
+            <label class="col-sm-offset-3 control-label">数据展示</label>
+            <a href="data-show.html">
+                <img src="images/data-show.png">
+            </a>
+        </div>
+        <div class="index-chartRegionSalary col-md-5" id="job_analysis" title="点击进入职位测评">
+            <label class="col-sm-offset-3 control-label">职位推荐</label>
+            <a href="job-analysis.html">
+                <img src="images/job-analysis.jpg">
+            </a>
+        </div>
+    </div>
+
+    <div class="search-container col-md-4">
+        <div class="search">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="来，搜索试试！"/>
+                <span class="input-group-btn">
+                      <button class="btn btn-info btn-search">搜索</button>
+                </span>
+            </div>
+        </div>
+        <div style="margin-top: 2%;" class="nav-left " id="job">
+            <table class="table table-bordered">
+                <tr class="active">
+                    <td class="success">工作</td>
+                    <td class="success">地点</td>
+                    <td class="success">工资</td>
+                </tr>
+            </table>
+            <table class="table table-bordered" th:each="job : ${jobs}">
+                <tr class="active">
+                    <td class="info"><a th:href="@{${job.job_url}}" th:text="${job.job_name}" style="color: red;"></a></td>
+                    <td class="info" th:text="${job.job_place}">成都</td>
+                    <td class="info" th:text="${job.min_salary}">5000</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<footer style="margin-top: 10%;">
+    <h2>By 挖石油创业</h2>
+</footer>
+
+<script src="js/jquery/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+<script th:inline="javascript">
+    $(window).resize(function(){
+        //执行代码块
+        if($(window).width() < 900){
+
+            $(".index-data img").css("width", "60px");
+            $(".index-chartRegionSalary img").css("width", "60px");
+        }else{
+            $(".index-data img").css("width", "100%");
+            $(".index-chartRegionSalary img").css("width", "92%");
+        }
+    });
+    /*<![CDATA[*/
+    var role = [[${role}]];
+    if (role == null) {
+        //
+    } else {
+        $(".nav-role").hide();
+    }
+
+    $("#data_show img").mouseover(function () {
+        $(this).css("opacity", "0.7");
+        $(this).css("width", "100%");
+    });
+    $(" #data_show img").mouseout(function () {
+        $(this).css("opacity", "1");
+        $(this).css("width", "100%");
+    });
+    $("#job_analysis img").mouseover(function () {
+        $(this).css("opacity", "1");
+        $(this).css("width", "92%");
+    });
+    $("#job_analysis img").mouseout(function () {
+        $(this).css("opacity", "0.7");
+        $(this).css("width", "92%");
+    });
+</script>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个性化数据展示</title>
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/normalize.css}" />
+    <link rel="stylesheet" type="text/css" th:href="@{~/css/htmleaf-demo.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{~/bootstrap/css/bootstrap.min.css}">
+
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        body {
+            /*background: #060e1b;*/
+            /* overflow: hidden; */
+            color: white;
+        }
+        h1{
+            color: brown;
+        }
+        h2{
+            color: black;
+        }
+        #canvas{
+            z-index : -1;
+            position : absolute;
+        }
+        .center{
+            text-align: center;
+        }
+        .nav{
+            width: 100%;
+            position:relative;
+            z-index:9999;
+        }
+        .center{
+            margin-top: 2%;
+        }
+        .chart div{
+            margin: 0 auto;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<nav class="center">
+
+    <!--<div class="chart">-->
+        <!--<h1>工作需求随时间的变化</h1>-->
+        <!--<div id="planC" style="width: 500px;height: 400px;"></div>-->
+    <!--</div>-->
+    <div class="chart">
+        <h1>想知道工作机会比较多的地方，工资水平如何？</h1>
+        <div id="planA" style="width: 500px;height: 400px;"></div>
+    </div>
+    <div class="chart">
+        <h1>想知道工资水平比较高的地方，工作机会如何？</h1>
+        <div id="planB" style="width: 500px;height: 400px;"></div>
+    </div>
+</nav>
+
+
+<footer>
+    <h2>By 挖石油创业</h2>
+</footer>
+
+
+
+
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+<!-- 绘表函数-->
+
+<script th:src="@{~/js/echarts.js}"></script>
+<script th:src="@{~/js/dataShow/place_salary_count.js}"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    // var myChart = echarts.init(document.getElementById("planC"));
+    // myChart.setOption({
+    //     xAxis: {
+    //         type: 'category',
+    //         data: ['4-11','4-12','4-13', '4-14', '4-15', '4-16']
+    //     },
+    //     yAxis: {
+    //         type: 'value'
+    //     },
+    //     series: [{
+    //         data: [0, 0, 0, 0, 1290, 1330],
+    //         type: 'line'
+    //     }]
+    //
+    //     });
+    var jobPlaceCountSalaryOrderByCountList = [[${jobPlaceCountSalaryOrderByCountList}]];
+    var jobPlaceCountSalaryOrderBySalaryList = [[${jobPlaceCountSalaryOrderBySalaryList}]];
+    drawPlaceSalaryCountOrderByCount(jobPlaceCountSalaryOrderByCountList);
+    drawPlaceSalaryCountOrderBySalary(jobPlaceCountSalaryOrderBySalaryList);
+    /*]]>*/
+</script>
+</body>
+</html>

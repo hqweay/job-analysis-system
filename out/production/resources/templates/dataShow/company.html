@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+    <meta charset="UTF-8">
+    <title>公司详情</title>
+    <link th:href="@{~/resources/plugins/bootstrap-3.3.0/css/bootstrap.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/material-design-iconic-font-2.2.0/css/material-design-iconic-font.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/bootstrap-table-1.11.0/bootstrap-table.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/waves-0.7.5/waves.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.css}" rel="stylesheet"/>
+    <link th:href="@{~/resources/plugins/select2/css/select2.min.css}" rel="stylesheet"/>
+
+</head>
+<body>
+<div class="search col-md-4 " id="search">
+    <div class="input-group">
+        <input type="text" class="form-control search" placeholder="支持搜索公司名！"/>
+        <span class="input-group-btn">
+                      <button class="btn btn-info btn-search search" type="button">搜索</button>
+                </span>
+    </div>
+</div>
+<div id="main">
+
+    <table id="table"></table>
+</div>
+
+
+
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-3.3.0/js/bootstrap.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-table-1.11.0/bootstrap-table.min.js}"></script>
+<script th:src="@{~/resources/plugins/bootstrap-table-1.11.0/locale/bootstrap-table-zh-CN.min.js}"></script>
+<script th:src="@{~/resources/plugins/waves-0.7.5/waves.min.js}"></script>
+<script th:src="@{~/resources/plugins/jquery-confirm/jquery-confirm.min.js}"></script>
+<script th:src="@{~/resources/plugins/select2/js/select2.min.js}"></script>
+<script th:src="@{~/resources/js/common.js}"></script>
+<script th:inline="javascript">
+    var $table = $('#table');
+    $(function() {
+        $(document).on('focus', 'input[type="text"]', function() {
+            $(this).parent().find('label').addClass('active');
+        }).on('blur', 'input[type="text"]', function() {
+            if ($(this).val() == '') {
+                $(this).parent().find('label').removeClass('active');
+            }
+        });
+        $table.bootstrapTable({
+            method:"post",
+            //极为重要，缺失无法执行queryParams，传递page参数
+            contentType : "application/x-www-form-urlencoded",
+            dataType:"json",
+            url: '/dataShow/getCompanies',
+            queryParams:queryParam,
+            pageNumber:1,//首页页码  妈的假装一下
+            pageSize:10,//分页，页面数据条数
+            pagination: true, //分页
+            singleSelect: false,
+            height: getHeight(),
+            striped: true,
+            //search: true,//前端搜索 意义不大
+            searchOnEnterKey: true,
+            showRefresh: true,
+            showToggle: true,
+            showColumns: true,
+            minimumCountColumns: 2,
+            showPaginationSwitch: true,
+            clickToSelect: true,
+            detailView: true,
+            detailFormatter: 'detailFormatter',
+            paginationLoop: false,
+            classes: 'table table-hover table-no-bordered',
+            sidePagination: 'server',
+            //silentSort: false,
+            smartDisplay: false,
+            idField: 'id',
+            sortName: 'id',
+            //   sortOrder: 'desc',//排序方式
+            escape: true,
+            searchOnEnterKey: true,
+            idField: 'id',//设置主键
+            maintainSelected: true,
+            toolbar: '#toolbar',
+            //显示的东西吧.....这么说没得问题哦哦哦哦哦哦哦哦
+            columns: [
+                {field: 'Button', title: '详情',
+                events : operateEvents,
+                formatter : AddFunctionAlty
+                },
+                {field: 'company_name', title: '公司名', halign: 'center'},
+                {field: 'job_count', title: '工作数量' , halign: 'center'},
+                {field: 'job_ids', title: '工作 id',  halign: 'center'},
+                {field: 'job_names', title: '工作名',  halign: 'center'},
+                {field: 'job_min_salaries', title: '工作对应工资', halign: 'center'},
+                {field: 'job_places', title: '工作对应地点',  halign: 'center'},
+               ]
+        }).on('all.bs.table', function (e, name, args) {
+            $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="popover"]').popover();
+        });
+    });
+    window.operateEvents = {
+        'click #editInfoButton': function(e, value, row, index) {
+            var goTo = "https://www.baidu.com/s?wd=" + row.company_name;
+            window.open(goTo);
+            //取到这个 打开新页面
+        }
+    };
+    function AddFunctionAlty(value, row, index) {
+        return [
+            ' <button type="button" id="editInfoButton" class="btn btn-default">查看</button>\n' +
+            '          ',
+        ].join('');
+    }
+    //传参
+    function queryParam(params){
+        var param = {
+            limit : this.limit, // 页面大小
+            offset : this.offset, // 页码
+            pageNumber : this.pageNumber,
+            pageSize : this.pageSize,
+            txt : $("input.search").val()
+        };
+        return param;
+    }
+    //分页
+    function detailFormatter(index, row) {
+        var html = [];
+        $.each(row, function (key, value) {
+            html.push('<p><b>' + key + ':</b> ' + value + '</p>');
+        });
+        return html.join('');
+    }
+
+    //搜索
+    $("button.search").click(function () {
+        search();
+    });
+    function search(){
+        var $table = $('#table');
+        $(function() {
+            $(document).on('focus', 'input[type="text"]', function() {
+                $(this).parent().find('label').addClass('active');
+            }).on('blur', 'input[type="text"]', function() {
+                if ($(this).val() == '') {
+                    $(this).parent().find('label').removeClass('active');
+                }
+            });
+            $table.bootstrapTable('refresh',{
+                method:"post",
+                //极为重要，缺失无法执行queryParams，传递page参数
+                contentType : "application/x-www-form-urlencoded",
+                dataType:"json",
+                url: '/dataShow/getCompanies',
+                queryParams:queryParam,
+                pageNumber:1,//首页页码  妈的假装一下
+                pageSize:10,//分页，页面数据条数
+                pagination: true, //分页
+                singleSelect: false,
+                height: getHeight(),
+                striped: true,
+                //search: true,//前端搜索 意义不大
+                searchOnEnterKey: true,
+                showRefresh: true,
+                showToggle: true,
+                showColumns: true,
+                minimumCountColumns: 2,
+                showPaginationSwitch: true,
+                clickToSelect: true,
+                detailView: true,
+                detailFormatter: 'detailFormatter',
+                paginationLoop: false,
+                classes: 'table table-hover table-no-bordered',
+                sidePagination: 'server',
+                //silentSort: false,
+                smartDisplay: false,
+                idField: 'id',
+                sortName: 'id',
+                //   sortOrder: 'desc',//排序方式
+                escape: true,
+                searchOnEnterKey: true,
+                idField: 'id',//设置主键
+                maintainSelected: true,
+                toolbar: '#toolbar',
+                //显示的东西吧.....这么说没得问题哦哦哦哦哦哦哦哦
+                columns: [
+                    {field: 'Button', title: '详情',
+                        events : operateEvents,
+                        formatter : AddFunctionAlty
+                    },
+                    {field: 'company_name', title: '公司名', halign: 'center'},
+                    {field: 'job_count', title: '工作数量' , halign: 'center'},
+                    {field: 'job_ids', title: '工作 id',  halign: 'center'},
+                    {field: 'job_names', title: '工作名',  halign: 'center'},
+                    {field: 'job_min_salaries', title: '工作对应工资', halign: 'center'},
+                    {field: 'job_places', title: '工作对应地点',  halign: 'center'},
+                ]
+            }).on('all.bs.table', function (e, name, args) {
+                $('[data-toggle="tooltip"]').tooltip();
+                $('[data-toggle="popover"]').popover();
+            });
+        });
+
+    }
+
+    //搜素
+</script>
+</body>
+</html>

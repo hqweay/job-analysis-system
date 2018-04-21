@@ -9,24 +9,24 @@ public class User implements Serializable {
     private Integer id;
 
     @NotNull
-    private String name;
+    private String name = "";
     @NotNull
-    private String email;
+    private String email = "";
 
-    private String info_education;
+    private String info_education = "";
 
-    private String info_major;
+    private String info_major = "";
 
-    private String info_place;
+    private String info_place = "";
 
-    private String info_ability;
+    private String info_ability = "";
 
-    private String info_experience;
+    private String info_experience = "";
 
-    private String likes;
+    private String likes = "";
     @NotNull
     @Size(min = 6, max = 15)
-    private String password;
+    private String password = "";
 
     private static final long serialVersionUID = 1L;
 

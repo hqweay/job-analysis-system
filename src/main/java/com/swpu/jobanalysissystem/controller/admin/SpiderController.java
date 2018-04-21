@@ -1,6 +1,9 @@
 package com.swpu.jobanalysissystem.controller.admin;
 
 import com.alibaba.fastjson.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 import com.swpu.jobanalysissystem.SpiderRefactor.Main;
 import com.swpu.jobanalysissystem.SpiderRefactor.SpiderConfig;
 import org.springframework.stereotype.Controller;
@@ -27,28 +30,56 @@ public class SpiderController {
     TimeUnit timeUnit = TimeUnit.valueOf(request.getParameter("timeUnit"));//执行时间间隔单位
 
     System.out.println(period);
-
     System.out.println(timeUnit.name());
+    List<SpiderConfig> spiderConfigList = new ArrayList<>();
 
-    SpiderConfig spiderConfig = new SpiderConfig();
-    System.out.println(spiderName);
-    System.out.println("ss");
+    if(spiderName.indexOf(" ") != -1 ){
+      String[] spiderNames = spiderName.split(" ");
+      for(String val : spiderNames){
+        SpiderConfig spiderConfig = new SpiderConfig();
+        spiderConfig.setSpiderName(val);
+        spiderConfigList.add(spiderConfig);
+      }
+    }else{
+      SpiderConfig spiderConfig = new SpiderConfig();
+      spiderConfig.setSpiderName(spiderName);
+      spiderConfigList.add(spiderConfig);
+    }
+
+ //   SpiderConfig spiderConfig = new SpiderConfig();
+ //   System.out.println(spiderName);
+ //   System.out.println("ss");
     JSONObject result = new JSONObject();
     //一番设置传参
-
-    Thread thread = new Thread(){
-      public void run(){
-        Main main = new Main();
-        main.run(spiderConfig);
+    int flag = 0;
+    for(SpiderConfig spiderConfig : spiderConfigList){
+      Thread thread = new Thread(){
+        public void run(){
+          Main main = new Main();
+          main.run(spiderConfig);
+        }
+      };
+      thread.start();
+      //线程运行起了
+      if(thread.isAlive() == true){
+        flag++;
+        if(flag == spiderConfigList.size()){
+          result.put("state","success");
+        }else{
+          result.put("state","error");
+        }
+      }else{
+        result.put("state","error");
       }
-    };
-    thread.start();
-    //线程运行起了
-    if(thread.isAlive() == true){
-      result.put("state","success");
-    }else{
-      result.put("state","error");
     }
+//    Thread thread = new Thread(){
+//      public void run(){
+//        Main main = new Main();
+//        main.run(spiderConfig);
+//      }
+//    };
+//    thread.start();
+
 
     return result.toJSONString();
   //  return

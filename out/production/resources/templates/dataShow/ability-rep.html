@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.springframework.org/schema/mvc">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>大数据展示</title>
+	<link rel="stylesheet" type="text/css" th:href="@{~/css/normalize.css}" />
+	<link rel="stylesheet" type="text/css" th:href="@{~/css/htmleaf-demo.css}">
+	<link rel="stylesheet" type="text/css" th:href="@{~/bootstrap/css/bootstrap.min.css}">
+
+	<style type="text/css">
+		* {
+			margin: 0px;
+			padding: 0px;
+		}
+		body {
+			/*background: #060e1b;*/
+			/* overflow: hidden; */
+			color: white;
+		}
+		h1{
+			color: brown;
+		}
+		h2{
+			color: black;
+		}
+		.center{
+			text-align: center;
+			margin-top: 2%;
+		}
+		.nav{
+			width: 100%;
+			position:relative;
+			z-index:9999;
+		}
+
+		.chart div{
+			margin: 0 auto;
+			color: black;
+		}
+
+	</style>
+</head>
+<body>
+<!--<canvas id="canvas"></canvas>-->
+<!--<header class="nav">-->
+	<!--<div class="page-header">-->
+		<!--<h1>大数据展示 <small><a style="color:red;" href="dataWaJue-show.html">数据展示</a></small></h1>-->
+	<!--</div>-->
+<!--</header>-->
+<!--<header class="nav">-->
+	<!--<div class="nav-menu">-->
+		<!--<ul class="nav nav-pills">-->
+			<!--<li role="presentation"><a href="#ability">岗位能力需求词云</a></li>-->
+			<!--<li role="presentation"><a href="#ability_pie">岗位能力的需求详情</a></li>-->
+		<!--</ul>-->
+	<!--</div>-->
+<!--</header>-->
+<nav class="center">
+
+	<div class="chart">
+	<h1>岗位能力的需求图谱</h1>
+		<h2>岗位能力需求词云</h2>
+		<div id="ability" style="width: 500px;height: 400px;"></div>
+		<h2>岗位能力的需求详情</h2>
+		<div id="ability_pie" style="width: 1000px;height: 800px;"></div>
+
+	</div>
+</nav>
+
+
+<footer>
+	<h2>By 挖石油创业</h2>
+</footer>
+
+
+
+<!--动态背景不求要了
+     <script src="js/background-star.js"></script> -->
+<script th:src="@{~/js/jquery/jquery.min.js}"></script>
+<script th:src="@{~/bootstrap/js/bootstrap.min.js}"></script>
+<!-- 绘表函数-->
+
+<script th:src="@{~/js/echarts.js}"></script>
+<script th:src="@{~/js/echarts-wordcloud.min.js}"></script>
+<script th:src="@{~/js/chart/type_ability.js}"></script>
+<script th:src="@{~/js/chart/type_ability_pie.js}"></script>
+
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+	var group = [[${group}]];
+
+    drawAbilityChart("ability", group);
+    drawAbilityChartPie("ability_pie", group);
+    /*]]>*/
+</script>
+</body>
+</html>

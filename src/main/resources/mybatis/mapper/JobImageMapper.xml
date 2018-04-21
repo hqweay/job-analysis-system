@@ -109,4 +109,58 @@
       </if>
     </trim>
   </insert>
+  <resultMap id="BaseResultMap" type="com.example.entity.JobImage">
+    <result column="job_id" jdbcType="INTEGER" property="job_id" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.entity.JobImage">
+    insert into job_image (job_id, label)
+    values (#{job_id,jdbcType=INTEGER}, #{label,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.JobImage">
+    insert into job_image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="job_id != null">
+        job_id,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="job_id != null">
+        #{job_id,jdbcType=INTEGER},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.example.entity.JobImage">
+    <result column="job_id" jdbcType="INTEGER" property="job_id" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+  </resultMap>
+  <insert id="insert" parameterType="com.example.entity.JobImage">
+    insert into job_image (job_id, label)
+    values (#{job_id,jdbcType=INTEGER}, #{label,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.entity.JobImage">
+    insert into job_image
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="job_id != null">
+        job_id,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="job_id != null">
+        #{job_id,jdbcType=INTEGER},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
 </mapper>

@@ -44,7 +44,7 @@ public class UserController {
 
   @ResponseBody
   @RequestMapping("addUser")
-  public String addJob(@Valid User user){
+  public String addUser(@Valid User user){
     System.out.println("收到了吗");
     int flag = userMapper.addUser(user);
     JSONObject result = new JSONObject();
@@ -56,7 +56,7 @@ public class UserController {
 
   @ResponseBody
   @RequestMapping("editUser")
-  public String editJob(@Valid User user){
+  public String editUser(@Valid User user){
     int flag = userMapper.editUser(user);
     JSONObject result = new JSONObject();
     if(flag > 0){
@@ -67,7 +67,7 @@ public class UserController {
 
   @ResponseBody
   @RequestMapping("deleteUser")
-  public String deleteJob(HttpServletRequest request){
+  public String deleteUser(HttpServletRequest request){
     String[] list=request.getParameterValues("ids");
     for (int i = 0; i < list.length; i++) {
       String id = list[i];
